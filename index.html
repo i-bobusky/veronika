@@ -488,6 +488,176 @@
 
     .gallery-item:hover .gallery-caption-sub { transform: translateY(0); }
 
+    /* ─── Kindergeburtstag ──────────────────────────────────────────── */
+    #kindergeburtstag {
+      padding: 9rem 8vw;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .geburtstag-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 5rem;
+      align-items: end;
+    }
+
+    .geburtstag-header h2 {
+      font-size: clamp(2.5rem, 3.5vw, 4rem);
+      font-weight: 300;
+    }
+
+    .geburtstag-header h2 em {
+      font-style: italic;
+      color: var(--charcoal-lt);
+    }
+
+    .geburtstag-header p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+
+    .geburtstag-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .geburtstag-card {
+      background: var(--white);
+      padding: 3.5rem 3rem;
+      border: 1px solid rgba(201, 169, 110, 0.18);
+      border-radius: 2px;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .geburtstag-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(28, 28, 40, 0.10);
+      border-color: rgba(201, 169, 110, 0.45);
+    }
+
+    .geburtstag-card.gold {
+      background: linear-gradient(160deg, #1c1c28 0%, #2a2a3a 100%);
+      border-color: rgba(201, 169, 110, 0.4);
+    }
+
+    .geburtstag-tier {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .geburtstag-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 2.6vw, 2.8rem);
+      font-weight: 300;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .geburtstag-card.gold h3 { color: var(--white); }
+    .geburtstag-card.gold h3 em { color: var(--gold-lt); font-style: italic; }
+    .geburtstag-card h3 em { font-style: italic; color: var(--charcoal-lt); }
+
+    .geburtstag-duration {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .geburtstag-card.gold .geburtstag-duration {
+      color: rgba(255,255,255,0.55);
+    }
+
+    .geburtstag-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 1.75rem;
+    }
+
+    .geburtstag-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .geburtstag-features li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .geburtstag-card.gold .geburtstag-features li {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .geburtstag-features li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .geburtstag-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(201, 169, 110, 0.18);
+    }
+
+    .geburtstag-card.gold .geburtstag-price {
+      border-top-color: rgba(201, 169, 110, 0.25);
+    }
+
+    .geburtstag-price-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--text-main);
+    }
+
+    .geburtstag-card.gold .geburtstag-price-value { color: var(--white); }
+
+    .geburtstag-price-currency {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .geburtstag-note {
+      margin-top: 3.5rem;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     /* ─── Aktueller Anlass ──────────────────────────────────────────── */
     #anlass {
       background: var(--charcoal);
@@ -754,6 +924,10 @@
 
       .referenzen-header { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
 
+      .geburtstag-header { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 3rem; }
+      .geburtstag-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .geburtstag-card { padding: 2.5rem 2rem; }
+
       .gallery-duo { grid-template-columns: 1fr; }
       .gallery-item:first-child { aspect-ratio: 16 / 10; }
       .gallery-item:last-child  { aspect-ratio: 16 / 10; }
@@ -766,7 +940,7 @@
     }
 
     @media (max-width: 560px) {
-      #ueber-mich, #referenzen, #anlass { padding: 6rem 6vw; }
+      #ueber-mich, #referenzen, #kindergeburtstag, #anlass { padding: 6rem 6vw; }
       footer { padding: 4rem 6vw 2.5rem; }
       .btn-row { flex-direction: column; }
       .btn { text-align: center; justify-content: center; }
@@ -781,6 +955,7 @@
     <ul class="nav-links">
       <li><a href="#ueber-mich">Über mich</a></li>
       <li><a href="#referenzen">Referenzen</a></li>
+      <li><a href="#kindergeburtstag">Kindergeburtstag</a></li>
       <li><a href="#anlass">Anlass</a></li>
       <li><a href="#kontakt">Kontakt</a></li>
       <li><a href="https://i-bobusky.github.io/tierwelt/" target="_blank" rel="noopener" class="nav-highlight">Tierwelt →</a></li>
@@ -880,6 +1055,64 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ─── Kindergeburtstag ───────────────────────────────────────── -->
+  <section id="kindergeburtstag">
+    <div class="geburtstag-header">
+      <div>
+        <span class="section-label reveal">Kindergeburtstag</span>
+        <h2 class="reveal reveal-delay-1">Ein Geburtstag,<br /><em>der unvergesslich bleibt</em></h2>
+      </div>
+      <p class="reveal reveal-delay-2">
+        Ich gestalte den Geburtstag Ihres Kindes mit liebevoll geplanten Spielen,
+        kreativen Aktivitäten und Materialien – damit Sie als Eltern entspannt
+        feiern können und die Kinder einen Tag voller Freude erleben.
+      </p>
+    </div>
+
+    <div class="geburtstag-grid">
+      <!-- Silver -->
+      <div class="geburtstag-card reveal">
+        <p class="geburtstag-tier">Silver</p>
+        <h3>Kindergeburtstag<br /><em>Silver</em></h3>
+        <p class="geburtstag-duration">2 Stunden · für kleinere Runden</p>
+        <div class="geburtstag-rule"></div>
+        <ul class="geburtstag-features">
+          <li>Kreatives Programm, individuell auf das Kind abgestimmt</li>
+          <li>Spiele und Mitmachaktionen für die ganze Gruppe</li>
+          <li>Bastelmaterial inklusive</li>
+          <li>Persönliche Betreuung während der gesamten Feier</li>
+        </ul>
+        <div class="geburtstag-price">
+          <span class="geburtstag-price-value">350</span>
+          <span class="geburtstag-price-currency">CHF</span>
+        </div>
+      </div>
+
+      <!-- Gold -->
+      <div class="geburtstag-card gold reveal reveal-delay-2">
+        <p class="geburtstag-tier">Gold</p>
+        <h3>Kindergeburtstag<br /><em>Gold</em></h3>
+        <p class="geburtstag-duration">4 Stunden · das volle Erlebnis</p>
+        <div class="geburtstag-rule"></div>
+        <ul class="geburtstag-features">
+          <li>Geburtstag mit Wunschthema (z. B. Tierwelt, Piraten, Prinzessin)</li>
+          <li>Passende Dekoration und stimmige Atmosphäre</li>
+          <li>Erweitertes Programm mit mehreren Aktivitäten</li>
+          <li>Bastel- und Spielstationen, Materialien inklusive</li>
+          <li>Persönliche Betreuung über die gesamten 4 Stunden</li>
+        </ul>
+        <div class="geburtstag-price">
+          <span class="geburtstag-price-value">650</span>
+          <span class="geburtstag-price-currency">CHF</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="geburtstag-note reveal reveal-delay-3">
+      Gerne gestalte ich das Programm individuell nach Ihren Wünschen – nehmen Sie einfach Kontakt auf.
+    </p>
   </section>
 
   <!-- ─── Aktueller Anlass ───────────────────────────────────────── -->

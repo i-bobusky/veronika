@@ -1,0 +1,11 @@
+# Private business records — do NOT publish to the public website repo
+business/
+invoice_template.htm
+accounting_2026.csv
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

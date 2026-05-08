@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kindergeburtstag ohne Stress — Veronika Bobuska</title>
+  <meta name="description" content="Kreative, altersgerechte Kindergeburtstage nach dem Baukasten-Prinzip. Pakete, Add-ons, Preisrechner und unverbindliche Anfrage." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Kindergeburtstag ohne Stress — Veronika Bobuska" />
+  <meta property="og:description" content="Liebevoll geplant. Kreativ begleitet. Einfach gefeiert." />
+  <meta property="og:image" content="https://i-bobusky.github.io/veronika/images/veronika.jpg" />
+  <meta property="og:url" content="https://i-bobusky.github.io/veronika/kindergeburtstag.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base (matches index.html) ─────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal:    #1c1c28;
+      --charcoal-md: #2a2a3a;
+      --charcoal-lt: #3d3d52;
+      --gold:        #c9a96e;
+      --gold-lt:     #dfc08e;
+      --cream:       #faf8f4;
+      --cream-deep:  #f3efe6;
+      --warm-grey:   #b8b4ac;
+      --text-main:   #2d2b28;
+      --text-muted:  #7a7670;
+      --sage:        #8a9e8c;
+      --white:       #ffffff;
+      --line:        #e6e1d6;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      color: var(--text-main);
+      background: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      line-height: 1.2;
+    }
+
+    .serif { font-family: 'Cormorant Garamond', serif; }
+
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── Nav ───────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 5vw;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(28, 28, 40, 0.97);
+      box-shadow: 0 1px 0 rgba(201, 169, 110, 0.2);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; color: var(--charcoal); letter-spacing: 0.04em;
+    }
+    nav.scrolled .nav-logo { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(28,28,40,0.65); transition: color 0.25s;
+    }
+    nav.scrolled .nav-links a { color: rgba(255,255,255,0.7); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-back-link {
+      color: var(--gold) !important;
+      letter-spacing: 0.12em !important;
+    }
+
+    /* ─── Hero ──────────────────────────────────────────────────────── */
+    #kg-hero {
+      min-height: 80vh;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+      padding: 12rem 8vw 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    #kg-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -150px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,110,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 920px; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+    }
+    #kg-hero h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      color: var(--charcoal);
+      margin-bottom: 0.6rem;
+    }
+    #kg-hero h1 em { font-style: italic; color: var(--charcoal-lt); }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      color: var(--text-muted); margin-bottom: 2.5rem;
+    }
+    .hero-rule {
+      width: 60px; height: 1px; background: var(--gold);
+      margin: 0 0 2.5rem;
+    }
+    .hero-intro {
+      font-size: 1.05rem; color: var(--text-main);
+      max-width: 720px; line-height: 1.85; margin-bottom: 2.5rem;
+    }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    /* ─── Buttons ───────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.95rem 2.2rem;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.3s ease; border-radius: 1px;
+      border: 1px solid transparent;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--charcoal);
+      border-color: var(--gold);
+    }
+    .btn-primary:hover {
+      background: var(--gold-lt); border-color: var(--gold-lt);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,169,110,0.25);
+    }
+    .btn-secondary {
+      background: transparent; color: var(--charcoal);
+      border-color: rgba(28,28,40,0.35);
+    }
+    .btn-secondary:hover {
+      border-color: var(--charcoal); background: rgba(28,28,40,0.04);
+      transform: translateY(-2px);
+    }
+
+    /* ─── Section base ─────────────────────────────────────────────── */
+    section {
+      padding: 6rem 8vw;
+    }
+    .section-head {
+      text-align: center;
+      max-width: 740px;
+      margin: 0 auto 4rem;
+    }
+    .section-head h2 {
+      font-size: clamp(2.4rem, 3.5vw, 3.5rem);
+      margin-bottom: 0.75rem;
+    }
+    .section-head h2 em { font-style: italic; color: var(--charcoal-lt); }
+    .section-head p { color: var(--text-muted); font-size: 1.02rem; }
+
+    /* ─── Benefits ──────────────────────────────────────────────────── */
+    #benefits { background: var(--white); }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .benefit-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    .benefit-icon {
+      width: 48px; height: 48px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      background: rgba(201,169,110,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+    }
+    .benefit-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+    .benefit-item p {
+      font-size: 0.92rem; color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Themen ────────────────────────────────────────────────────── */
+    #themen { background: var(--cream); }
+    .themen-cloud {
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+      max-width: 880px; margin: 0 auto;
+      justify-content: center;
+    }
+    .theme-pill {
+      padding: 0.7rem 1.4rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      transition: all 0.25s ease;
+    }
+    .theme-pill:hover {
+      border-color: var(--gold);
+      background: rgba(201,169,110,0.06);
+      transform: translateY(-2px);
+    }
+
+    /* ─── Comparison Table ──────────────────────────────────────────── */
+    #vergleich { background: var(--white); }
+    .compare-wrap { max-width: 1200px; margin: 0 auto; }
+
+    /* desktop table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      box-shadow: 0 18px 50px rgba(28,28,40,0.06);
+      border: 1px solid var(--line);
+    }
+    .compare-table th, .compare-table td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.94rem;
+      vertical-align: top;
+    }
+    .compare-table thead th {
+      background: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--charcoal);
+      text-align: center;
+      padding: 1.5rem 1.25rem;
+      border-bottom: 2px solid var(--gold);
+    }
+    .compare-table thead th.feature-col {
+      text-align: left;
+      background: var(--cream);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-family: 'DM Sans', sans-serif;
+    }
+    .compare-pkg-name {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+    }
+    .compare-pkg-tag {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.4rem;
+    }
+    .compare-pkg-price {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--charcoal);
+      margin-top: 0.6rem;
+    }
+    .compare-pkg-price small {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-right: 0.3rem;
+    }
+    .compare-table td {
+      text-align: center;
+      color: var(--text-main);
+    }
+    .compare-table td.feature {
+      text-align: left;
+      font-weight: 500;
+      color: var(--charcoal);
+      background: rgba(201,169,110,0.04);
+      width: 26%;
+    }
+    .compare-table tr:hover td:not(.feature) { background: rgba(201,169,110,0.04); }
+    .check { color: var(--sage); font-weight: 500; }
+    .dash { color: var(--warm-grey); }
+    .addon-tag { color: var(--text-muted); font-style: italic; font-size: 0.88rem; }
+
+    /* mobile stacked cards (hidden on desktop) */
+    .compare-mobile { display: none; }
+    .compare-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 12px 30px rgba(28,28,40,0.05);
+    }
+    .compare-card-head { text-align: center; margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+    .compare-card-head .compare-pkg-tag { margin-bottom: 0.5rem; }
+    .compare-card-head .compare-pkg-name { font-size: 1.7rem; }
+    .compare-card-row {
+      display: flex; justify-content: space-between; gap: 1rem;
+      padding: 0.6rem 0; border-bottom: 1px dashed var(--line);
+      font-size: 0.92rem;
+    }
+    .compare-card-row:last-child { border-bottom: 0; }
+    .compare-card-row .label { color: var(--text-muted); flex-shrink: 0; max-width: 55%; }
+    .compare-card-row .value { color: var(--charcoal); text-align: right; }
+
+    /* ─── Add-ons ──────────────────────────────────────────────────── */
+    #addons { background: var(--cream); }
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .addon-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1.5rem 1.5rem;
+      transition: all 0.3s ease;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .addon-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(201,169,110,0.4);
+      box-shadow: 0 12px 30px rgba(28,28,40,0.06);
+    }
+    .addon-icon {
+      width: 38px; height: 38px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(201,169,110,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-size: 1.05rem;
+    }
+    .addon-body h4 {
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+    }
+    .addon-price {
+      font-size: 0.9rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* disclaimer block */
+    .disclaimer {
+      max-width: 880px;
+      margin: 3rem auto 0;
+      padding: 1.5rem 2rem;
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* ─── Calculator + Form section ────────────────────────────────── */
+    #calculator-form {
+      background: var(--white);
+      padding: 6rem 8vw;
+    }
+    .cf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: start;
+    }
+    .calc-panel, .form-panel {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 2.5rem;
+      box-shadow: 0 18px 40px rgba(28,28,40,0.05);
+    }
+    .calc-panel { position: sticky; top: 6rem; }
+
+    .calc-panel h3, .form-panel h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--charcoal);
+    }
+    .calc-panel h3 em, .form-panel h3 em {
+      font-style: italic; color: var(--charcoal-lt);
+    }
+
+    .calc-group { margin-bottom: 1.5rem; }
+    .calc-group label, .form-panel label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .pkg-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+    .pkg-option {
+      cursor: pointer;
+      padding: 0.85rem 0.5rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      text-align: center;
+      transition: all 0.25s ease;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+    .pkg-option small {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      letter-spacing: 0.04em;
+      font-weight: 400;
+    }
+    .pkg-option:hover { border-color: rgba(201,169,110,0.5); }
+    .pkg-option.selected {
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+      color: var(--white);
+    }
+    .pkg-option.selected small { color: var(--gold-lt); }
+
+    .calc-num-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .calc-num input {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--text-main);
+      transition: border-color 0.2s;
+    }
+    .calc-num input:focus,
+    .form-panel input:focus,
+    .form-panel select:focus,
+    .form-panel textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .calc-addons {
+      max-height: 280px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .calc-addon-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 0.92rem;
+    }
+    .calc-addon-item:last-child { border-bottom: 0; }
+    .calc-addon-item label {
+      display: flex; align-items: center; gap: 0.7rem;
+      cursor: pointer; flex: 1; margin: 0;
+      font-size: 0.92rem; letter-spacing: 0; text-transform: none; color: var(--text-main);
+      font-weight: 400;
+    }
+    .calc-addon-item input[type="checkbox"],
+    .calc-addon-item input[type="radio"] {
+      width: 18px; height: 18px;
+      accent-color: var(--gold);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .calc-addon-price {
+      color: var(--gold);
+      font-weight: 500;
+      font-size: 0.88rem;
+      flex-shrink: 0;
+    }
+
+    .calc-deko-group {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .calc-deko-group .group-title {
+      font-size: 0.82rem;
+      color: var(--text-main);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .calc-deko-options { display: flex; flex-direction: column; gap: 0.35rem; padding-left: 0.5rem; }
+    .calc-deko-options label {
+      font-size: 0.88rem !important;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text-main);
+      display: flex; align-items: center; gap: 0.6rem;
+      cursor: pointer;
+      font-weight: 400;
+    }
+
+    /* result panel */
+    .calc-result {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--charcoal);
+      color: var(--white);
+      border-radius: 3px;
+    }
+    .calc-result-line {
+      display: flex; justify-content: space-between;
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+    .calc-result-line:last-of-type { border-bottom: 0; }
+    .calc-result-line.addon { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+    .calc-result-total {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--gold);
+      display: flex; justify-content: space-between;
+      align-items: baseline;
+    }
+    .calc-result-total .label {
+      font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .calc-result-total .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--white);
+    }
+    .calc-disclaimer {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* form */
+    .form-panel form { display: flex; flex-direction: column; gap: 1.1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      padding: 0.75rem 0.9rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      transition: border-color 0.2s;
+    }
+    .form-field textarea {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.5;
+    }
+
+    .form-summary {
+      padding: 1rem;
+      background: rgba(201,169,110,0.08);
+      border-radius: 3px;
+      border-left: 3px solid var(--gold);
+      font-size: 0.85rem;
+      color: var(--text-main);
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    .form-checkbox-row {
+      display: flex; gap: 0.7rem; align-items: flex-start;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+    .form-checkbox-row input { width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0; margin-top: 0.15rem; }
+    .form-checkbox-row label { font-size: 0.88rem; letter-spacing: 0; text-transform: none; color: var(--text-main); margin: 0; font-weight: 400; line-height: 1.5; }
+
+    .form-submit-btn {
+      align-self: flex-start;
+      margin-top: 0.5rem;
+    }
+
+    .form-fallback {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .form-fallback a { color: var(--gold); border-bottom: 1px solid rgba(201,169,110,0.4); }
+
+    .form-success {
+      display: none;
+      padding: 2rem;
+      background: rgba(138, 158, 140, 0.12);
+      border-left: 3px solid var(--sage);
+      border-radius: 3px;
+      color: var(--charcoal);
+    }
+    .form-success.visible { display: block; }
+    .form-success h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--charcoal);
+    }
+
+    .hp-field { display: none !important; }
+
+    /* ─── Footer ────────────────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal-md);
+      padding: 5rem 8vw 3rem;
+      border-top: 1px solid rgba(201,169,110,0.25);
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; color: var(--white); margin-bottom: 0.3rem;
+    }
+    .footer-tagline {
+      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2.5rem;
+    }
+    .footer-contact-items { display: flex; flex-direction: column; gap: 0.9rem; }
+    .footer-contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.6); transition: color 0.25s;
+    }
+    .footer-contact-item:hover { color: var(--gold); }
+    .footer-contact-item .icon { width: 18px; height: 18px; opacity: 0.5; flex-shrink: 0; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 2rem; margin-top: 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .footer-made { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+    /* ─── Reveal ────────────────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── Tablet & Mobile ──────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .cf-grid { grid-template-columns: 1fr; }
+      .calc-panel { position: static; }
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 4vw; background: rgba(250,248,244,0.95); }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.65rem; letter-spacing: 0.1em; }
+      #kg-hero { padding: 9rem 6vw 4rem; min-height: auto; }
+
+      section { padding: 4.5rem 6vw; }
+
+      /* hide desktop table on mobile, show stacked cards */
+      .compare-table { display: none; }
+      .compare-mobile { display: block; }
+
+      /* On mobile, calculator+form section comes BEFORE table+addons */
+      #calculator-form { order: 1; }
+      #vergleich       { order: 2; }
+      #addons          { order: 3; }
+      .kg-stack { display: flex; flex-direction: column; }
+
+      .form-row { grid-template-columns: 1fr; }
+      .calc-panel, .form-panel { padding: 1.75rem 1.5rem; }
+      #calculator-form { padding: 4.5rem 6vw; }
+
+      .pkg-options { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .calc-num-row { grid-template-columns: 1fr; }
+      .hero-cta-row { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─────────────────────────────────────────────── -->
+  <nav id="nav">
+    <a class="nav-logo" href="index.html">VB</a>
+    <ul class="nav-links">
+      <li><a href="index.html#ueber-mich">Über mich</a></li>
+      <li><a href="index.html#referenzen">Referenzen</a></li>
+      <li><a href="index.html#anlass">Anlass</a></li>
+      <li><a class="nav-back-link" href="index.html">← Zurück</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ───────────────────────────────────────────────────── -->
+  <section id="kg-hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Kindergeburtstag · Zentralschweiz</p>
+      <h1>Kindergeburtstag<br /><em>ohne Stress</em></h1>
+      <p class="hero-sub">Liebevoll geplant. Kreativ begleitet. Einfach gefeiert.</p>
+      <div class="hero-rule"></div>
+      <p class="hero-intro">
+        Wir gestalten kreative, altersgerechte Kindergeburtstage nach dem Baukasten-Prinzip:
+        Sie wählen ein Grundpaket und ergänzen genau die Extras, die zu Ihrer Familie, Ihrem
+        Kind und Ihrer Feier passen. Ob zu Hause, im Garten, in einem gemieteten Raum oder
+        an einer passenden Location – ich bringe Struktur, Spielideen, kreative Stationen,
+        Dekoration und eine ruhige, persönliche Betreuung mit.
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn btn-primary" href="#calculator-form">Preis berechnen</a>
+        <a class="btn btn-secondary" href="#anfrage">Unverbindlich anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Benefits ───────────────────────────────────────────────── -->
+  <section id="benefits">
+    <div class="section-head">
+      <span class="section-label">Warum Veronika</span>
+      <h2>Was Sie bei mir<br /><em>erwarten dürfen</em></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h4>Persönlich statt standardisiert</h4>
+        <p>Jede Feier wird auf das Kind, die Familie und den Anlass zugeschnitten.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h4>Flexibel an Ihrer Wunschlocation</h4>
+        <p>Zu Hause, im Garten oder im gemieteten Raum – ich komme zu Ihnen.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h4>Klare, transparente Preise</h4>
+        <p>Drei Pakete plus übersichtliche Add-ons – kein Versteckspiel mit Kosten.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h4>Kreativ statt reine Bespassung</h4>
+        <p>Aktivitäten, die Kinder fördern und gleichzeitig richtig Spass machen.</p>
+      </div>
+      <div class="benefit-item reveal">
+        <div class="benefit-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h4>Ruhe und Entspannung für Eltern</h4>
+        <p>Sie geniessen die Feier mit Ihrem Kind – ich kümmere mich um den Ablauf.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Themen ─────────────────────────────────────────────────── -->
+  <section id="themen">
+    <div class="section-head">
+      <span class="section-label">Mögliche Themen</span>
+      <h2>Welches Wunschthema<br /><em>wird es?</em></h2>
+      <p>Lassen Sie sich inspirieren – oder bringen Sie ein ganz eigenes Thema mit.</p>
+    </div>
+    <div class="themen-cloud">
+      <span class="theme-pill">Tierwelt</span>
+      <span class="theme-pill">Prinzessinnen</span>
+      <span class="theme-pill">Piraten</span>
+      <span class="theme-pill">Regenbogen</span>
+      <span class="theme-pill">Dschungel</span>
+      <span class="theme-pill">Weltall</span>
+      <span class="theme-pill">Little Explorers</span>
+      <span class="theme-pill">Rainbow Atelier</span>
+      <span class="theme-pill">Mini Builders</span>
+      <span class="theme-pill">Disco &amp; Glow</span>
+      <span class="theme-pill">Science Light</span>
+      <span class="theme-pill">Calm Toddler Party</span>
+    </div>
+  </section>
+
+  <!-- ─── Stack: order swaps on mobile ────────────────────────────── -->
+  <div class="kg-stack">
+
+  <!-- ─── Comparison Table ──────────────────────────────────────────── -->
+  <section id="vergleich">
+    <div class="section-head">
+      <span class="section-label">Pakete im Vergleich</span>
+      <h2>Drei Pakete,<br /><em>flexibel kombinierbar</em></h2>
+      <p>Wählen Sie die Tiefe, die zu Ihnen passt – von Konzept-Beratung bis Full-Care.</p>
+    </div>
+
+    <div class="compare-wrap">
+
+      <!-- Desktop table -->
+      <table class="compare-table" role="table">
+        <thead>
+          <tr>
+            <th class="feature-col">Leistung</th>
+            <th>
+              <span class="compare-pkg-name">Silver</span>
+              <span class="compare-pkg-tag">Party Plan</span>
+              <span class="compare-pkg-price"><small>ab</small>CHF 220</span>
+            </th>
+            <th>
+              <span class="compare-pkg-name">Gold</span>
+              <span class="compare-pkg-tag">Setup &amp; Play</span>
+              <span class="compare-pkg-price"><small>ab</small>CHF 690</span>
+            </th>
+            <th>
+              <span class="compare-pkg-name">Diamond</span>
+              <span class="compare-pkg-tag">Full Party Care</span>
+              <span class="compare-pkg-price"><small>ab</small>CHF 1'290</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature">Ideal für</td>
+            <td>Eltern, die selbst umsetzen möchten – mit klarer Idee und Struktur</td>
+            <td>Eltern, die eine schöne Feier möchten und vor Ort Unterstützung wünschen</td>
+            <td>Eltern, die den Geburtstag geniessen, während der Ablauf betreut wird</td>
+          </tr>
+          <tr>
+            <td class="feature">Inklusive Kinder</td>
+            <td>Planung für bis zu 12 Kinder</td>
+            <td>Bis zu 10 Kinder</td>
+            <td>Bis zu 12 Kinder</td>
+          </tr>
+          <tr>
+            <td class="feature">Inklusive Zeit</td>
+            <td>1 × 45 Min. Beratung</td>
+            <td>Bis zu 3 Std. vor Ort</td>
+            <td>Bis zu 4 Std. vor Ort</td>
+          </tr>
+          <tr>
+            <td class="feature">Zusätzliches Kind</td>
+            <td><span class="dash">Nach Absprache</span></td>
+            <td>CHF 25 / Kind</td>
+            <td>CHF 25 / Kind</td>
+          </tr>
+          <tr>
+            <td class="feature">Zusätzliche Stunde</td>
+            <td>Beratung: CHF 120 / Std.</td>
+            <td>CHF 120 / Std.</td>
+            <td>CHF 120 / Std.</td>
+          </tr>
+          <tr><td class="feature">Beratungsgespräch</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature">Persönliches Geburtstagskonzept</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature">Ablaufplan für die Feier</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature">Spiel- und Aktivitätsideen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature">Einkaufs- und Materialliste</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature">Deko- und Raumideen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature">Empfehlungen für Zusatzleistungen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr>
+            <td class="feature">Persönliches Wunschthema</td>
+            <td>Basic</td>
+            <td>Personalisiert</td>
+            <td>Voll ausgearbeitet</td>
+          </tr>
+          <tr><td class="feature">Betreuung vor Ort</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr>
+            <td class="feature">Basis-Dekoration des Partybereichs</td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Erweiterte Dekoration</td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Geführte Spiele und Mitmachaktionen</td>
+            <td>Plan only</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Sensorik- oder Spielstation</td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td>1 inklusive</td>
+            <td>Inklusive</td>
+          </tr>
+          <tr>
+            <td class="feature">Kreative Bastelstation</td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td>1 inklusive</td>
+          </tr>
+          <tr>
+            <td class="feature">2–3 Aktivitätsstationen</td>
+            <td><span class="dash">—</span></td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Materialien für inkludierte Aktivitäten</td>
+            <td>Materialliste</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Musik-Playlist</td>
+            <td>Vorschläge</td>
+            <td>Kurze Playlist</td>
+            <td>Voller Party-Flow</td>
+          </tr>
+          <tr>
+            <td class="feature">Food &amp; Drink Handling</td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Kuchenkoordination</td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Geschenke-Moment</td>
+            <td><span class="dash">—</span></td>
+            <td>Nach Absprache</td>
+            <td>Unterstützung inklusive</td>
+          </tr>
+          <tr>
+            <td class="feature">Kleine Ordnung während der Feier</td>
+            <td><span class="dash">—</span></td>
+            <td>Light tidy</td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Basis-Aufräumen nach der Feier</td>
+            <td><span class="dash">—</span></td>
+            <td><span class="dash">—</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Komplettes Aufräumen</td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="addon-tag">Add-on</span></td>
+            <td><span class="addon-tag">Add-on</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Mobile cards -->
+      <div class="compare-mobile">
+        <!-- Silver -->
+        <div class="compare-card">
+          <div class="compare-card-head">
+            <span class="compare-pkg-tag">Party Plan</span>
+            <span class="compare-pkg-name">Silver</span>
+            <span class="compare-pkg-price"><small>ab</small>CHF 220</span>
+          </div>
+          <div class="compare-card-row"><span class="label">Ideal für</span><span class="value">Eltern, die selbst umsetzen</span></div>
+          <div class="compare-card-row"><span class="label">Inklusive Kinder</span><span class="value">Bis zu 12</span></div>
+          <div class="compare-card-row"><span class="label">Inklusive Zeit</span><span class="value">45 Min. Beratung</span></div>
+          <div class="compare-card-row"><span class="label">Zusätzliches Kind</span><span class="value">Nach Absprache</span></div>
+          <div class="compare-card-row"><span class="label">Zusätzliche Stunde</span><span class="value">CHF 120</span></div>
+          <div class="compare-card-row"><span class="label">Konzept &amp; Ablauf</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Spiel-, Deko-, Materialideen</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Wunschthema</span><span class="value">Basic</span></div>
+          <div class="compare-card-row"><span class="label">Betreuung vor Ort</span><span class="value dash">—</span></div>
+          <div class="compare-card-row"><span class="label">Basis-Deko</span><span class="value addon-tag">Add-on</span></div>
+          <div class="compare-card-row"><span class="label">Spielstation</span><span class="value addon-tag">Add-on</span></div>
+        </div>
+
+        <!-- Gold -->
+        <div class="compare-card" style="border-color: rgba(201,169,110,0.5);">
+          <div class="compare-card-head">
+            <span class="compare-pkg-tag">Setup &amp; Play</span>
+            <span class="compare-pkg-name">Gold</span>
+            <span class="compare-pkg-price"><small>ab</small>CHF 690</span>
+          </div>
+          <div class="compare-card-row"><span class="label">Ideal für</span><span class="value">Eltern, die Unterstützung wünschen</span></div>
+          <div class="compare-card-row"><span class="label">Inklusive Kinder</span><span class="value">Bis zu 10</span></div>
+          <div class="compare-card-row"><span class="label">Inklusive Zeit</span><span class="value">Bis zu 3 Std.</span></div>
+          <div class="compare-card-row"><span class="label">Zusätzliches Kind</span><span class="value">CHF 25</span></div>
+          <div class="compare-card-row"><span class="label">Zusätzliche Stunde</span><span class="value">CHF 120</span></div>
+          <div class="compare-card-row"><span class="label">Wunschthema</span><span class="value">Personalisiert</span></div>
+          <div class="compare-card-row"><span class="label">Betreuung vor Ort</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Basis-Deko</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Geführte Spiele</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">1 Spielstation</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Bastelstation</span><span class="value addon-tag">Add-on</span></div>
+          <div class="compare-card-row"><span class="label">Kuchen / Food Handling</span><span class="value addon-tag">Add-on</span></div>
+        </div>
+
+        <!-- Diamond -->
+        <div class="compare-card">
+          <div class="compare-card-head">
+            <span class="compare-pkg-tag">Full Party Care</span>
+            <span class="compare-pkg-name">Diamond</span>
+            <span class="compare-pkg-price"><small>ab</small>CHF 1'290</span>
+          </div>
+          <div class="compare-card-row"><span class="label">Ideal für</span><span class="value">Eltern, die alles aus einer Hand</span></div>
+          <div class="compare-card-row"><span class="label">Inklusive Kinder</span><span class="value">Bis zu 12</span></div>
+          <div class="compare-card-row"><span class="label">Inklusive Zeit</span><span class="value">Bis zu 4 Std.</span></div>
+          <div class="compare-card-row"><span class="label">Zusätzliches Kind</span><span class="value">CHF 25</span></div>
+          <div class="compare-card-row"><span class="label">Zusätzliche Stunde</span><span class="value">CHF 120</span></div>
+          <div class="compare-card-row"><span class="label">Wunschthema</span><span class="value">Voll ausgearbeitet</span></div>
+          <div class="compare-card-row"><span class="label">Erweiterte Deko</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Bastelstation</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">2–3 Aktivitätsstationen</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Food &amp; Drink Handling</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Kuchenkoordination</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label">Basis-Aufräumen</span><span class="value check">✓</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Add-ons ─────────────────────────────────────────────────── -->
+  <section id="addons">
+    <div class="section-head">
+      <span class="section-label">Add-ons</span>
+      <h2>Ergänzen Sie genau das,<br /><em>was Sie brauchen</em></h2>
+      <p>Beliebig zu jedem Paket buchbar – einzeln oder kombiniert.</p>
+    </div>
+
+    <div class="addons-grid">
+      <div class="addon-card"><div class="addon-icon">+</div><div class="addon-body"><h4>Zusätzliches Kind</h4><p class="addon-price">CHF 25 / Kind</p></div></div>
+      <div class="addon-card"><div class="addon-icon">⏱</div><div class="addon-body"><h4>Zusätzliche Stunde</h4><p class="addon-price">CHF 120 / Stunde</p></div></div>
+      <div class="addon-card"><div class="addon-icon">★</div><div class="addon-body"><h4>Sensorik-Spielstation</h4><p class="addon-price">CHF 200</p></div></div>
+      <div class="addon-card"><div class="addon-icon">✄</div><div class="addon-body"><h4>Kreative Bastelstation</h4><p class="addon-price">CHF 250</p></div></div>
+      <div class="addon-card"><div class="addon-icon">❀</div><div class="addon-body"><h4>Premium-Dekoration</h4><p class="addon-price">CHF 300 – 600</p></div></div>
+      <div class="addon-card"><div class="addon-icon">♪</div><div class="addon-body"><h4>Mini-Disco</h4><p class="addon-price">CHF 150</p></div></div>
+      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4>Food &amp; Drink Handling</h4><p class="addon-price">CHF 200</p></div></div>
+      <div class="addon-card"><div class="addon-icon">🎂</div><div class="addon-body"><h4>Kuchenkoordination</h4><p class="addon-price">CHF 120</p></div></div>
+      <div class="addon-card"><div class="addon-icon">🎁</div><div class="addon-body"><h4>Goodie Bags</h4><p class="addon-price">CHF 10 / Kind</p></div></div>
+      <div class="addon-card"><div class="addon-icon">🎨</div><div class="addon-body"><h4>Kinderschminken</h4><p class="addon-price">CHF 150</p></div></div>
+      <div class="addon-card"><div class="addon-icon">✨</div><div class="addon-body"><h4>Glitzer-Tattoos</h4><p class="addon-price">CHF 120</p></div></div>
+      <div class="addon-card"><div class="addon-icon">🗺</div><div class="addon-body"><h4>Schatzsuche</h4><p class="addon-price">CHF 250</p></div></div>
+      <div class="addon-card"><div class="addon-icon">📸</div><div class="addon-body"><h4>Foto-Ecke</h4><p class="addon-price">CHF 200</p></div></div>
+      <div class="addon-card"><div class="addon-icon">⌂</div><div class="addon-body"><h4>Komplettes Aufräumen</h4><p class="addon-price">CHF 250</p></div></div>
+      <div class="addon-card"><div class="addon-icon">⌘</div><div class="addon-body"><h4>Location-Suche</h4><p class="addon-price">CHF 150</p></div></div>
+      <div class="addon-card"><div class="addon-icon">✉</div><div class="addon-body"><h4>Einladung designen &amp; versenden</h4><p class="addon-price">CHF 200</p></div></div>
+      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4>Eltern-Kaffeeecke</h4><p class="addon-price">CHF 100 + Konsumation</p></div></div>
+    </div>
+
+    <div class="disclaimer">
+      Location, Essen, Getränke, Kuchen, Spezialdekoration, Konsumation und externe Anbieter
+      werden separat verrechnet, sofern sie nicht ausdrücklich im Angebot enthalten sind.
+    </div>
+  </section>
+
+  <!-- ─── Calculator + Form ───────────────────────────────────────── -->
+  <section id="calculator-form">
+    <div class="section-head">
+      <span class="section-label">Preisrechner &amp; Anfrage</span>
+      <h2>Stellen Sie sich Ihre<br /><em>Wunschfeier zusammen</em></h2>
+      <p>Wählen Sie Paket und Extras – die Anfrage darunter füllt sich automatisch.</p>
+    </div>
+
+    <div class="cf-grid">
+
+      <!-- ===== Calculator panel ===== -->
+      <aside class="calc-panel" id="calculator">
+        <h3>Preis<em> berechnen</em></h3>
+
+        <div class="calc-group">
+          <label>Paket</label>
+          <div class="pkg-options" role="radiogroup" aria-label="Paket">
+            <div class="pkg-option" data-pkg="silver" role="radio" aria-checked="false" tabindex="0">
+              Silver<small>CHF 220</small>
+            </div>
+            <div class="pkg-option selected" data-pkg="gold" role="radio" aria-checked="true" tabindex="0">
+              Gold<small>CHF 690</small>
+            </div>
+            <div class="pkg-option" data-pkg="diamond" role="radio" aria-checked="false" tabindex="0">
+              Diamond<small>CHF 1'290</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-group">
+          <div class="calc-num-row">
+            <div class="calc-num">
+              <label for="calc-children">Anzahl Kinder</label>
+              <input type="number" id="calc-children" min="1" max="40" value="10" />
+            </div>
+            <div class="calc-num">
+              <label for="calc-hours">Zusätzliche Stunden</label>
+              <input type="number" id="calc-hours" min="0" max="8" value="0" />
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-group">
+          <label>Add-ons</label>
+          <div class="calc-addons">
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="sensorik" data-price="200"> Sensorik-Spielstation</label><span class="calc-addon-price">CHF 200</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="bastel" data-price="250"> Kreative Bastelstation</label><span class="calc-addon-price">CHF 250</span></div>
+
+            <div class="calc-deko-group">
+              <div class="group-title">Premium-Dekoration</div>
+              <div class="calc-deko-options">
+                <label><input type="radio" name="calc-deko" value="0" data-price="0" checked> Keine</label>
+                <label><input type="radio" name="calc-deko" value="basic" data-price="300"> Basic — CHF 300</label>
+                <label><input type="radio" name="calc-deko" value="premium" data-price="600"> Premium — CHF 600</label>
+              </div>
+            </div>
+
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="miniDisco" data-price="150"> Mini-Disco</label><span class="calc-addon-price">CHF 150</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="foodDrink" data-price="200"> Food &amp; Drink Handling</label><span class="calc-addon-price">CHF 200</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="kuchen" data-price="120"> Kuchenkoordination</label><span class="calc-addon-price">CHF 120</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="goodieBags" data-price="10" data-per-child="1"> Goodie Bags</label><span class="calc-addon-price">CHF 10 / Kind</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="kinderschminken" data-price="150"> Kinderschminken</label><span class="calc-addon-price">CHF 150</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="glitzer" data-price="120"> Glitzer-Tattoos</label><span class="calc-addon-price">CHF 120</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="schatzsuche" data-price="250"> Schatzsuche</label><span class="calc-addon-price">CHF 250</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="foto" data-price="200"> Foto-Ecke</label><span class="calc-addon-price">CHF 200</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="aufraumen" data-price="250"> Komplettes Aufräumen</label><span class="calc-addon-price">CHF 250</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="location" data-price="150"> Location-Suche</label><span class="calc-addon-price">CHF 150</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="einladung" data-price="200"> Einladung designen &amp; versenden</label><span class="calc-addon-price">CHF 200</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="kaffeeecke" data-price="100"> Eltern-Kaffeeecke</label><span class="calc-addon-price">CHF 100</span></div>
+          </div>
+        </div>
+
+        <div class="calc-result" aria-live="polite">
+          <div class="calc-result-line"><span>Grundpreis (<span id="r-pkg">Gold</span>)</span><span id="r-base">CHF 690</span></div>
+          <div class="calc-result-line" id="r-extra-children-line" style="display:none;"><span>Zusätzliche Kinder (<span id="r-extra-children-n">0</span>)</span><span id="r-extra-children">CHF 0</span></div>
+          <div class="calc-result-line" id="r-extra-hours-line" style="display:none;"><span>Zusätzliche Stunden (<span id="r-extra-hours-n">0</span>)</span><span id="r-extra-hours">CHF 0</span></div>
+          <div id="r-addons"></div>
+          <div class="calc-result-total">
+            <span class="label">Geschätzter Gesamtpreis</span>
+            <span class="value" id="r-total">CHF 690</span>
+          </div>
+          <p class="calc-disclaimer">
+            Dies ist eine unverbindliche Preisindikation. Das finale Angebot wird nach
+            persönlicher Rücksprache bestätigt.
+          </p>
+        </div>
+      </aside>
+
+      <!-- ===== Form panel ===== -->
+      <div class="form-panel" id="anfrage">
+        <h3>Unverbindliche<em> Anfrage</em></h3>
+
+        <!--
+          ──────────────────────────────────────────────────────────────────
+          FORM SUBMISSION (Web3Forms)
+          - Replace WEB3FORMS_ACCESS_KEY_HERE with your real Web3Forms key.
+          - Free key signup: https://web3forms.com/
+          - If the key is left as the placeholder, the JS handler below
+            falls back to opening a mailto: draft to veronika.bobuska@gmail.com.
+          ──────────────────────────────────────────────────────────────────
+        -->
+        <form id="anfrage-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE" />
+          <input type="hidden" name="subject" value="Neue Kindergeburtstag-Anfrage über die Website" />
+          <input type="hidden" name="from_name" value="Kindergeburtstag Anfrage" />
+          <input type="hidden" name="redirect" value="false" />
+
+          <!-- Honeypot anti-spam (hidden field) -->
+          <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" />
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-name">Vor- und Nachname *</label>
+              <input id="f-name" type="text" name="name" required autocomplete="name" />
+            </div>
+            <div class="form-field">
+              <label for="f-email">E-Mail *</label>
+              <input id="f-email" type="email" name="email" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-phone">Telefon / WhatsApp *</label>
+              <input id="f-phone" type="tel" name="phone" required autocomplete="tel" />
+            </div>
+            <div class="form-field">
+              <label for="f-region">Ort / Adresse / Region</label>
+              <input id="f-region" type="text" name="region" placeholder="Hünenberg, Zug, ..." />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-child-name">Name des Kindes</label>
+              <input id="f-child-name" type="text" name="child_name" />
+            </div>
+            <div class="form-field">
+              <label for="f-child-age">Alter des Kindes</label>
+              <input id="f-child-age" type="number" min="1" max="18" name="child_age" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-date">Gewünschtes Datum</label>
+              <input id="f-date" type="date" name="event_date" />
+            </div>
+            <div class="form-field">
+              <label for="f-time">Gewünschte Uhrzeit</label>
+              <input id="f-time" type="time" name="event_time" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="f-location-type">Wo findet die Feier statt?</label>
+            <select id="f-location-type" name="location_type">
+              <option value="">Bitte wählen ...</option>
+              <option>Zu Hause</option>
+              <option>Im Garten</option>
+              <option>In einem gemieteten Raum</option>
+              <option>An einer anderen Location</option>
+              <option>Noch unklar</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-num-kids">Anzahl Kinder</label>
+              <input id="f-num-kids" type="number" min="1" max="40" name="num_kids" />
+            </div>
+            <div class="form-field">
+              <label for="f-num-adults">Anzahl Erwachsene (falls relevant)</label>
+              <input id="f-num-adults" type="number" min="0" max="50" name="num_adults" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-theme">Wunschthema</label>
+              <input id="f-theme" type="text" name="theme" placeholder="z.B. Tierwelt, Piraten ..." />
+            </div>
+            <div class="form-field">
+              <label for="f-theme-alt">Alternative Themenwünsche</label>
+              <input id="f-theme-alt" type="text" name="theme_alt" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="f-interests">Besondere Interessen des Kindes</label>
+            <input id="f-interests" type="text" name="interests" placeholder="z.B. Dinos, Basteln, Tanzen ..." />
+          </div>
+
+          <div class="form-field">
+            <label for="f-needs">Allergien, besondere Bedürfnisse oder wichtige Hinweise?</label>
+            <textarea id="f-needs" name="special_needs"></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="f-extras">Soll Veronika bei Location, Essen, Kuchen oder Einladungen unterstützen?</label>
+            <textarea id="f-extras" name="extras_help" rows="2"></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="f-summary">Ihre Auswahl aus dem Preisrechner</label>
+            <textarea id="f-summary" name="calculator_summary" readonly rows="6" class="form-summary"></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="f-message">Nachricht / weitere Wünsche</label>
+            <textarea id="f-message" name="message" rows="3"></textarea>
+          </div>
+
+          <div class="form-checkbox-row">
+            <input id="f-confirm" type="checkbox" name="confirm" required />
+            <label for="f-confirm">
+              Ich verstehe, dass die Anfrage unverbindlich ist und das finale Angebot
+              persönlich bestätigt wird.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit-btn">Unverbindliche Anfrage senden</button>
+
+          <p class="form-fallback">
+            Lieber per E-Mail oder WhatsApp? <br />
+            <a href="mailto:veronika.bobuska@gmail.com">veronika.bobuska@gmail.com</a> ·
+            <a href="tel:+41786858627">078 685 86 27</a>
+          </p>
+        </form>
+
+        <div class="form-success" id="form-success" role="status" aria-live="polite">
+          <h4>Vielen Dank für Ihre Anfrage</h4>
+          <p>Ich melde mich persönlich bei Ihnen mit einem passenden Vorschlag.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  </div><!-- /.kg-stack -->
+
+  <!-- ─── Footer ─────────────────────────────────────────────────── -->
+  <footer>
+    <div>
+      <p class="footer-name">Veronika Bobuska</p>
+      <p class="footer-tagline">Eventorganisation · Zug · Luzern · Zürich</p>
+
+      <div class="footer-contact-items">
+        <a class="footer-contact-item" href="mailto:veronika.bobuska@gmail.com">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+          veronika.bobuska@gmail.com
+        </a>
+        <a class="footer-contact-item" href="tel:+41786858627">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 9.81a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 2.11 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L6.91 10.9a16 16 0 0 0 6 6l1.27-.89a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          078 685 86 27
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Veronika Bobuska · Hünenberg, Schweiz</p>
+      <p class="footer-made">Eventorganisation mit Herz und Präzision</p>
+    </div>
+  </footer>
+
+  <!-- ─── Scripts ────────────────────────────────────────────────── -->
+  <script>
+    /* ───────── Sticky nav ───────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ───────── Reveal animations ───────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+
+    /* ───────── Calculator ───────── */
+    const PACKAGES = {
+      silver:  { label: 'Silver',  price: 220,  includedChildren: 0,  includedHours: 0, chargesPerChild: false },
+      gold:    { label: 'Gold',    price: 690,  includedChildren: 10, includedHours: 3, chargesPerChild: true  },
+      diamond: { label: 'Diamond', price: 1290, includedChildren: 12, includedHours: 4, chargesPerChild: true  },
+    };
+    const DEFAULT_CHILDREN = { silver: 12, gold: 10, diamond: 12 };
+    const PER_CHILD_FEE = 25;
+    const PER_HOUR_FEE  = 120;
+
+    let pkgKey = 'gold';
+
+    const $ = (s) => document.querySelector(s);
+
+    function fmtCHF(n) {
+      // Swiss-style thousands separator: apostrophe
+      return 'CHF ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+    }
+
+    function getAddons() {
+      const items = [];
+      // checkboxes
+      document.querySelectorAll('.calc-addons input[type="checkbox"]').forEach(cb => {
+        if (cb.checked) {
+          const label = cb.closest('label').textContent.trim();
+          let price = parseFloat(cb.dataset.price) || 0;
+          if (cb.dataset.perChild === '1') {
+            const children = parseInt($('#calc-children').value) || 0;
+            price = price * children;
+          }
+          items.push({ key: cb.dataset.addon, label, price });
+        }
+      });
+      // premium deko (radio)
+      const dekoSel = document.querySelector('.calc-addons input[name="calc-deko"]:checked');
+      if (dekoSel && dekoSel.value !== '0') {
+        const lbl = dekoSel.closest('label').textContent.trim();
+        items.push({ key: 'premiumDeko_' + dekoSel.value, label: 'Premium-Dekoration ' + (dekoSel.value === 'basic' ? 'Basic' : 'Premium'), price: parseFloat(dekoSel.dataset.price) });
+      }
+      return items;
+    }
+
+    function calculate() {
+      const pkg = PACKAGES[pkgKey];
+      const children = Math.max(0, parseInt($('#calc-children').value) || 0);
+      const extraHours = Math.max(0, parseInt($('#calc-hours').value) || 0);
+
+      let total = pkg.price;
+
+      // base
+      $('#r-pkg').textContent = pkg.label;
+      $('#r-base').textContent = fmtCHF(pkg.price);
+
+      // extra children (only if package charges per extra child)
+      let extraChildren = 0;
+      if (pkg.chargesPerChild) {
+        extraChildren = Math.max(0, children - pkg.includedChildren);
+      }
+      const extraChildrenCost = extraChildren * PER_CHILD_FEE;
+      total += extraChildrenCost;
+      const ecLine = $('#r-extra-children-line');
+      if (extraChildrenCost > 0) {
+        ecLine.style.display = '';
+        $('#r-extra-children-n').textContent = extraChildren;
+        $('#r-extra-children').textContent = fmtCHF(extraChildrenCost);
+      } else {
+        ecLine.style.display = 'none';
+      }
+
+      // extra hours
+      const extraHoursCost = extraHours * PER_HOUR_FEE;
+      total += extraHoursCost;
+      const ehLine = $('#r-extra-hours-line');
+      if (extraHoursCost > 0) {
+        ehLine.style.display = '';
+        $('#r-extra-hours-n').textContent = extraHours;
+        $('#r-extra-hours').textContent = fmtCHF(extraHoursCost);
+      } else {
+        ehLine.style.display = 'none';
+      }
+
+      // add-ons
+      const addons = getAddons();
+      const addonsContainer = $('#r-addons');
+      addonsContainer.innerHTML = '';
+      addons.forEach(a => {
+        total += a.price;
+        const line = document.createElement('div');
+        line.className = 'calc-result-line addon';
+        line.innerHTML = '<span>+ ' + a.label + '</span><span>' + fmtCHF(a.price) + '</span>';
+        addonsContainer.appendChild(line);
+      });
+
+      // total
+      $('#r-total').textContent = fmtCHF(total);
+
+      // sync to form summary
+      syncSummary({ pkg, children, extraHours, extraChildren, addons, total });
+    }
+
+    function syncSummary({ pkg, children, extraHours, extraChildren, addons, total }) {
+      const lines = [];
+      lines.push('Paket: ' + pkg.label + ' (' + fmtCHF(pkg.price) + ')');
+      lines.push('Anzahl Kinder: ' + children);
+      if (extraChildren > 0) lines.push('  davon zusätzlich: ' + extraChildren + ' × CHF 25');
+      lines.push('Zusätzliche Stunden: ' + extraHours + (extraHours > 0 ? ' × CHF 120' : ''));
+      if (addons.length > 0) {
+        lines.push('Add-ons:');
+        addons.forEach(a => lines.push('  • ' + a.label + ' — ' + fmtCHF(a.price)));
+      } else {
+        lines.push('Add-ons: keine');
+      }
+      lines.push('');
+      lines.push('Geschätzter Gesamtpreis: ' + fmtCHF(total));
+      lines.push('(Unverbindlich – finales Angebot nach persönlicher Rücksprache.)');
+      $('#f-summary').value = lines.join('\n');
+
+      // also pre-fill form fields if user hasn't filled them yet
+      const numKids = $('#f-num-kids');
+      if (!numKids.value) numKids.placeholder = String(children);
+      const themeInp = $('#f-theme');
+      // (leave other fields untouched)
+    }
+
+    function selectPackage(key) {
+      pkgKey = key;
+      document.querySelectorAll('.pkg-option').forEach(el => {
+        const isSel = el.dataset.pkg === key;
+        el.classList.toggle('selected', isSel);
+        el.setAttribute('aria-checked', isSel ? 'true' : 'false');
+      });
+      // adjust default children to match the package's included
+      $('#calc-children').value = DEFAULT_CHILDREN[key];
+      calculate();
+    }
+
+    // wire up package buttons
+    document.querySelectorAll('.pkg-option').forEach(el => {
+      el.addEventListener('click', () => selectPackage(el.dataset.pkg));
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectPackage(el.dataset.pkg);
+        }
+      });
+    });
+
+    // wire up inputs
+    document.querySelectorAll('#calc-children, #calc-hours').forEach(el => el.addEventListener('input', calculate));
+    document.querySelectorAll('.calc-addons input').forEach(el => el.addEventListener('change', calculate));
+
+    // initial calc
+    calculate();
+
+    /* ───────── Form submission ───────── */
+    const form = document.getElementById('anfrage-form');
+    const successEl = document.getElementById('form-success');
+    const accessKeyInput = form.querySelector('input[name="access_key"]');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Honeypot check
+      if (form.botcheck && form.botcheck.checked) {
+        return; // bot — silently drop
+      }
+
+      const accessKey = accessKeyInput.value;
+      const isPlaceholder = accessKey === 'WEB3FORMS_ACCESS_KEY_HERE' || !accessKey;
+
+      // Build mailto fallback body from form data
+      function buildMailtoFallback() {
+        const fd = new FormData(form);
+        const lines = [];
+        const fields = {
+          name: 'Vor- und Nachname',
+          email: 'E-Mail',
+          phone: 'Telefon / WhatsApp',
+          region: 'Ort / Region',
+          child_name: 'Name des Kindes',
+          child_age: 'Alter des Kindes',
+          event_date: 'Datum',
+          event_time: 'Uhrzeit',
+          location_type: 'Location',
+          num_kids: 'Anzahl Kinder',
+          num_adults: 'Anzahl Erwachsene',
+          theme: 'Wunschthema',
+          theme_alt: 'Alternative Themen',
+          interests: 'Interessen des Kindes',
+          special_needs: 'Allergien / Hinweise',
+          extras_help: 'Zusatz-Unterstützung',
+          calculator_summary: 'Auswahl aus Preisrechner',
+          message: 'Nachricht',
+        };
+        Object.keys(fields).forEach(k => {
+          const v = fd.get(k);
+          if (v) lines.push(fields[k] + ':\n' + v + '\n');
+        });
+        const body = lines.join('\n');
+        const subject = 'Kindergeburtstag-Anfrage über Website';
+        return 'mailto:veronika.bobuska@gmail.com?subject=' + encodeURIComponent(subject) +
+               '&body=' + encodeURIComponent(body);
+      }
+
+      if (isPlaceholder) {
+        // fall back to mailto
+        window.location.href = buildMailtoFallback();
+        return;
+      }
+
+      // Submit via Web3Forms
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && (data.success === true || data.success === undefined)) {
+          form.style.display = 'none';
+          successEl.classList.add('visible');
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          // Submission failed — open mailto as fallback
+          window.location.href = buildMailtoFallback();
+        }
+      } catch (err) {
+        window.location.href = buildMailtoFallback();
+      }
+    });
+  </script>
+
+</body>
+</html>

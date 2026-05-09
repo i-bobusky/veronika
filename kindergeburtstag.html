@@ -27,7 +27,11 @@
       --charcoal-md: #2a2a3a;
       --charcoal-lt: #3d3d52;
       --gold:        #c9a96e;
+      --gold-deep:   #a98a4a;
       --gold-lt:     #dfc08e;
+      --forest:      #1f3d2e;
+      --forest-md:   #2e5641;
+      --forest-lt:   #d6e3da;
       --cream:       #faf8f4;
       --cream-deep:  #f3efe6;
       --warm-grey:   #b8b4ac;
@@ -37,6 +41,26 @@
       --white:       #ffffff;
       --line:        #e6e1d6;
     }
+
+    /* highlights for important keywords */
+    .hl { color: var(--forest); font-weight: 600; }
+    .hl-gold { color: var(--gold-deep); font-weight: 600; }
+    strong { font-weight: 600; color: var(--charcoal); }
+
+    /* decorative gold heart divider */
+    .gold-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1rem; margin: 2.5rem auto;
+      max-width: 240px;
+    }
+    .gold-divider::before,
+    .gold-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .gold-divider svg { width: 14px; height: 14px; color: var(--gold); flex-shrink: 0; }
 
     html { scroll-behavior: smooth; font-size: 16px; }
 
@@ -80,71 +104,217 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.25rem 5vw;
-      transition: background 0.4s ease, box-shadow 0.4s ease;
+      transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+      background: rgba(250, 248, 244, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
     }
     nav.scrolled {
       background: rgba(28, 28, 40, 0.97);
       box-shadow: 0 1px 0 rgba(201, 169, 110, 0.2);
+      border-bottom-color: transparent;
     }
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem; color: var(--charcoal); letter-spacing: 0.04em;
+      font-size: 1.25rem; color: var(--charcoal); letter-spacing: 0.04em;
+      font-weight: 600;
     }
     nav.scrolled .nav-logo { color: var(--white); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .nav-links a {
       font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(28,28,40,0.65); transition: color 0.25s;
+      color: var(--charcoal); transition: color 0.25s;
+      font-weight: 500;
     }
-    nav.scrolled .nav-links a { color: rgba(255,255,255,0.7); }
+    nav.scrolled .nav-links a { color: rgba(255,255,255,0.85); }
     .nav-links a:hover { color: var(--gold); }
     .nav-back-link {
       color: var(--gold) !important;
       letter-spacing: 0.12em !important;
     }
+    /* language switcher */
+    .lang-switcher {
+      display: inline-flex;
+      gap: 0.25rem;
+      align-items: center;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid rgba(28,28,40,0.18);
+      border-radius: 100px;
+    }
+    nav.scrolled .lang-switcher {
+      border-color: rgba(255,255,255,0.18);
+    }
+    .lang-btn {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.55rem;
+      border-radius: 100px;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+    nav.scrolled .lang-btn { color: rgba(255,255,255,0.55); }
+    .lang-btn:hover { color: var(--charcoal); }
+    nav.scrolled .lang-btn:hover { color: var(--white); }
+    .lang-btn.active {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+    nav.scrolled .lang-btn.active { color: var(--charcoal); }
 
     /* ─── Hero ──────────────────────────────────────────────────────── */
     #kg-hero {
-      min-height: 80vh;
+      min-height: 88vh;
       background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
-      padding: 12rem 8vw 6rem;
+      padding: 11rem 8vw 6rem;
       position: relative;
       overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
     #kg-hero::before {
       content: '';
       position: absolute;
       top: -200px; right: -150px;
-      width: 600px; height: 600px;
+      width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,169,110,0.10) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
-    .hero-inner { max-width: 920px; position: relative; z-index: 1; }
+    #kg-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31,61,46,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; }
     .hero-eyebrow {
       font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 1.5rem;
+      color: var(--gold-deep); margin-bottom: 1.25rem; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 24px; height: 1px; background: var(--gold);
     }
     #kg-hero h1 {
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      color: var(--charcoal);
-      margin-bottom: 0.6rem;
+      font-size: clamp(3rem, 6.5vw, 6rem);
+      color: var(--forest);
+      margin-bottom: 0.4rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
     }
-    #kg-hero h1 em { font-style: italic; color: var(--charcoal-lt); }
+    #kg-hero h1 em {
+      font-style: italic;
+      color: var(--gold-deep);
+      font-weight: 400;
+    }
     .hero-sub {
       font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      color: var(--text-muted); margin-bottom: 2.5rem;
+      font-size: clamp(1.3rem, 2.2vw, 1.85rem);
+      color: var(--charcoal); margin-bottom: 2rem;
+      font-weight: 400;
     }
     .hero-rule {
-      width: 60px; height: 1px; background: var(--gold);
-      margin: 0 0 2.5rem;
+      width: 80px; height: 2px; background: linear-gradient(to right, var(--gold), transparent);
+      margin: 0 0 2rem;
+      border-radius: 100px;
     }
     .hero-intro {
-      font-size: 1.05rem; color: var(--text-main);
-      max-width: 720px; line-height: 1.85; margin-bottom: 2.5rem;
+      font-size: 1.08rem; color: var(--text-main);
+      max-width: 620px; line-height: 1.8; margin-bottom: 2.5rem;
     }
     .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    /* hero illustration column */
+    .hero-illustration {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 4/5;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(31,61,46,0.18);
+    }
+    .hero-img-wrap img {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .hero-img-wrap:hover img { transform: scale(1.03); }
+    .hero-img-wrap .placeholder {
+      position: absolute; inset: 0;
+      z-index: 1;
+      background: linear-gradient(160deg, var(--forest) 0%, var(--forest-md) 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: var(--gold);
+      padding: 2rem;
+    }
+    .hero-img-wrap .placeholder svg {
+      width: 120px; height: 120px;
+      margin-bottom: 1.5rem;
+      opacity: 0.85;
+    }
+    .hero-img-wrap .placeholder span {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-lt);
+      text-align: center;
+    }
+
+    /* floating gold badge over hero image */
+    .hero-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      width: 130px; height: 130px;
+      background: var(--forest);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 16px 40px rgba(31,61,46,0.3);
+      border: 4px solid var(--cream);
+    }
+    .hero-badge-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .hero-badge-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      line-height: 1.2;
+      color: var(--gold-lt);
+    }
 
     /* ─── Buttons ───────────────────────────────────────────────────── */
     .btn {
@@ -536,6 +706,27 @@
       font-size: 0.88rem;
       flex-shrink: 0;
     }
+    .calc-addon-included {
+      color: var(--sage);
+      font-weight: 600;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      background: rgba(138, 158, 140, 0.14);
+      padding: 0.2rem 0.55rem;
+      border-radius: 100px;
+    }
+    .calc-addon-item.included label {
+      color: var(--sage);
+      font-weight: 500;
+    }
+    .calc-addon-item.included input[type="checkbox"] {
+      accent-color: var(--sage);
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+    [hidden] { display: none !important; }
 
     .calc-deko-group {
       padding: 0.5rem 0;
@@ -558,43 +749,51 @@
       font-weight: 400;
     }
 
-    /* result panel */
+    /* result panel — configuration summary */
     .calc-result {
       margin-top: 1.5rem;
-      padding: 1.5rem;
+      padding: 1.75rem 1.5rem;
       background: var(--charcoal);
       color: var(--white);
       border-radius: 3px;
+      border-top: 3px solid var(--gold);
     }
-    .calc-result-line {
-      display: flex; justify-content: space-between;
-      padding: 0.4rem 0;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    .calc-summary-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.85rem;
     }
-    .calc-result-line:last-of-type { border-bottom: 0; }
-    .calc-result-line.addon { font-size: 0.85rem; color: rgba(255,255,255,0.55); }
-    .calc-result-total {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 2px solid var(--gold);
-      display: flex; justify-content: space-between;
-      align-items: baseline;
+    .calc-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
-    .calc-result-total .label {
-      font-size: 0.7rem; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--gold);
+    .calc-summary-row {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      line-height: 1.55;
     }
-    .calc-result-total .value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
+    .calc-summary-row .label {
+      color: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+      min-width: 110px;
+      font-size: 0.82rem;
+    }
+    .calc-summary-row .value {
       color: var(--white);
+      font-weight: 500;
     }
+    .calc-summary-row .value strong { color: var(--gold-lt); font-weight: 600; }
     .calc-disclaimer {
-      margin-top: 1rem;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.55);
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed rgba(255,255,255,0.12);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
       font-style: italic;
       line-height: 1.6;
     }
@@ -713,9 +912,19 @@
 
     @media (max-width: 900px) {
       nav { padding: 1rem 4vw; background: rgba(250,248,244,0.95); }
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 0.65rem; letter-spacing: 0.1em; }
-      #kg-hero { padding: 9rem 6vw 4rem; min-height: auto; }
+      .nav-links { gap: 0.6rem; }
+      .nav-links a { font-size: 0.62rem; letter-spacing: 0.1em; }
+      .lang-switcher { padding: 0.2rem 0.3rem; }
+      .lang-btn { font-size: 0.6rem; padding: 0.25rem 0.4rem; letter-spacing: 0.08em; }
+      #kg-hero {
+        grid-template-columns: 1fr;
+        padding: 9rem 6vw 4rem;
+        min-height: auto;
+        gap: 2.5rem;
+      }
+      .hero-illustration { order: -1; max-width: 360px; margin: 0 auto; }
+      .hero-img-wrap { aspect-ratio: 4/4; max-width: 360px; }
+      .hero-badge { width: 100px; height: 100px; bottom: -0.5rem; right: -0.5rem; }
 
       section { padding: 4.5rem 6vw; }
 
@@ -747,32 +956,72 @@
 
   <!-- ─── Navigation ─────────────────────────────────────────────── -->
   <nav id="nav">
-    <a class="nav-logo" href="index.html">VB</a>
+    <a class="nav-logo" href="index.html">Veronika Bobuska</a>
     <ul class="nav-links">
-      <li><a href="index.html#ueber-mich">Über mich</a></li>
-      <li><a href="index.html#referenzen">Referenzen</a></li>
-      <li><a href="index.html#anlass">Anlass</a></li>
-      <li><a class="nav-back-link" href="index.html">← Zurück</a></li>
+      <li><a href="index.html#ueber-mich" data-i18n="nav.about">Über mich</a></li>
+      <li><a href="index.html#referenzen" data-i18n="nav.refs">Referenzen</a></li>
+      <li><a href="index.html#anlass" data-i18n="nav.event">Anlass</a></li>
+      <li><a class="nav-back-link" href="index.html" data-i18n="nav.back">← Zurück</a></li>
+      <li>
+        <div class="lang-switcher" role="group" aria-label="Sprache wählen">
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="cs">CS</button>
+          <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        </div>
+      </li>
     </ul>
   </nav>
 
   <!-- ─── Hero ───────────────────────────────────────────────────── -->
   <section id="kg-hero">
     <div class="hero-inner">
-      <p class="hero-eyebrow">Kindergeburtstag · Zentralschweiz</p>
-      <h1>Kindergeburtstag<br /><em>ohne Stress</em></h1>
-      <p class="hero-sub">Liebevoll geplant. Kreativ begleitet. Einfach gefeiert.</p>
+      <p class="hero-eyebrow" data-i18n="hero.eyebrow">Kindergeburtstag · Zug · Luzern · Zürich</p>
+      <h1 data-i18n-html="hero.title.html">Wir machen Geburtstage<br /><em>unvergesslich.</em></h1>
+      <p class="hero-sub" data-i18n="hero.sub">Ihr Kind feiert. Sie geniessen.</p>
       <div class="hero-rule"></div>
-      <p class="hero-intro">
-        Wir gestalten kreative, altersgerechte Kindergeburtstage nach dem Baukasten-Prinzip:
-        Sie wählen ein Grundpaket und ergänzen genau die Extras, die zu Ihrer Familie, Ihrem
-        Kind und Ihrer Feier passen. Ob zu Hause, im Garten, in einem gemieteten Raum oder
-        an einer passenden Location – ich bringe Struktur, Spielideen, kreative Stationen,
-        Dekoration und eine ruhige, persönliche Betreuung mit.
+      <p class="hero-intro" data-i18n-html="hero.intro.html">
+        Ich organisiere <strong>kreative, liebevoll gestaltete und stressfreie</strong>
+        Kindergeburtstage nach dem <span class="hl">Baukasten-Prinzip</span>: Sie wählen
+        ein Grundpaket und ergänzen genau die Extras, die zu Ihrer Familie passen –
+        zu Hause, im Garten oder an Ihrem Wunschort in <span class="hl-gold">Zug, Luzern &amp; Zürich</span>.
       </p>
       <div class="hero-cta-row">
-        <a class="btn btn-primary" href="#calculator-form">Preis berechnen</a>
-        <a class="btn btn-secondary" href="#anfrage">Unverbindlich anfragen</a>
+        <a class="btn btn-primary" href="#calculator-form" data-i18n="hero.cta.calc">Preis berechnen</a>
+        <a class="btn btn-secondary" href="#anfrage" data-i18n="hero.cta.contact">Unverbindlich anfragen</a>
+      </div>
+    </div>
+
+    <div class="hero-illustration">
+      <div class="hero-img-wrap">
+        <img src="images/kg-hero.jpg.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="placeholder" style="display:flex;">
+          <!-- decorative crown + cake illustration as fallback -->
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- crown -->
+            <path d="M30 50 L40 30 L50 45 L60 25 L70 45 L80 30 L90 50 Z" fill="currentColor" fill-opacity="0.15"/>
+            <circle cx="40" cy="30" r="3" fill="currentColor"/>
+            <circle cx="60" cy="25" r="3" fill="currentColor"/>
+            <circle cx="80" cy="30" r="3" fill="currentColor"/>
+            <line x1="28" y1="55" x2="92" y2="55"/>
+            <!-- cake -->
+            <rect x="35" y="75" width="50" height="22" rx="2" fill="currentColor" fill-opacity="0.12"/>
+            <line x1="35" y1="83" x2="85" y2="83"/>
+            <line x1="35" y1="91" x2="85" y2="91"/>
+            <!-- candle flames -->
+            <path d="M50 70 Q50 67 51 65 Q52 67 52 70" fill="currentColor"/>
+            <path d="M60 68 Q60 65 61 63 Q62 65 62 68" fill="currentColor"/>
+            <path d="M70 70 Q70 67 71 65 Q72 67 72 70" fill="currentColor"/>
+            <line x1="51" y1="70" x2="51" y2="76"/>
+            <line x1="61" y1="68" x2="61" y2="76"/>
+            <line x1="71" y1="70" x2="71" y2="76"/>
+          </svg>
+          <span>Veronika Bobuska<br />Kinder-Events &amp; Workshops</span>
+        </div>
+        <div class="hero-badge">
+          <span class="hero-badge-eyebrow" data-i18n="hero.badge.eyebrow">Eventorganisation</span>
+          <span class="hero-badge-text" data-i18n-html="hero.badge.text.html">mit Herz<br />&amp; Präzision</span>
+        </div>
       </div>
     </div>
   </section>
@@ -780,44 +1029,44 @@
   <!-- ─── Benefits ───────────────────────────────────────────────── -->
   <section id="benefits">
     <div class="section-head">
-      <span class="section-label">Warum Veronika</span>
-      <h2>Was Sie bei mir<br /><em>erwarten dürfen</em></h2>
+      <span class="section-label" data-i18n="benefits.label">Warum Veronika</span>
+      <h2 data-i18n-html="benefits.h2.html">Was Sie bei mir<br /><em>erwarten dürfen</em></h2>
     </div>
     <div class="benefits-grid">
       <div class="benefit-item reveal">
         <div class="benefit-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
-        <h4>Persönlich statt standardisiert</h4>
-        <p>Jede Feier wird auf das Kind, die Familie und den Anlass zugeschnitten.</p>
+        <h4 data-i18n="benefits.b1.title">Persönlich statt standardisiert</h4>
+        <p data-i18n="benefits.b1.text">Jede Feier wird auf das Kind, die Familie und den Anlass zugeschnitten.</p>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        <h4>Flexibel an Ihrer Wunschlocation</h4>
-        <p>Zu Hause, im Garten oder im gemieteten Raum – ich komme zu Ihnen.</p>
+        <h4 data-i18n="benefits.b2.title">Flexibel an Ihrer Wunschlocation</h4>
+        <p data-i18n="benefits.b2.text">Zu Hause, im Garten oder im gemieteten Raum – ich komme zu Ihnen.</p>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         </div>
-        <h4>Klare, transparente Preise</h4>
-        <p>Drei Pakete plus übersichtliche Add-ons – kein Versteckspiel mit Kosten.</p>
+        <h4 data-i18n="benefits.b3.title">Klare, transparente Preise</h4>
+        <p data-i18n="benefits.b3.text">Drei Pakete plus übersichtliche Add-ons – kein Versteckspiel mit Kosten.</p>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
         </div>
-        <h4>Kreativ statt reine Bespassung</h4>
-        <p>Aktivitäten, die Kinder fördern und gleichzeitig richtig Spass machen.</p>
+        <h4 data-i18n="benefits.b4.title">Kreativ statt reine Bespassung</h4>
+        <p data-i18n="benefits.b4.text">Aktivitäten, die Kinder fördern und gleichzeitig richtig Spass machen.</p>
       </div>
       <div class="benefit-item reveal">
         <div class="benefit-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <h4>Ruhe und Entspannung für Eltern</h4>
-        <p>Sie geniessen die Feier mit Ihrem Kind – ich kümmere mich um den Ablauf.</p>
+        <h4 data-i18n="benefits.b5.title">Ruhe und Entspannung für Eltern</h4>
+        <p data-i18n="benefits.b5.text">Sie geniessen die Feier mit Ihrem Kind – ich kümmere mich um den Ablauf.</p>
       </div>
     </div>
   </section>
@@ -825,9 +1074,9 @@
   <!-- ─── Themen ─────────────────────────────────────────────────── -->
   <section id="themen">
     <div class="section-head">
-      <span class="section-label">Mögliche Themen</span>
-      <h2>Welches Wunschthema<br /><em>wird es?</em></h2>
-      <p>Lassen Sie sich inspirieren – oder bringen Sie ein ganz eigenes Thema mit.</p>
+      <span class="section-label" data-i18n="themen.label">Mögliche Themen</span>
+      <h2 data-i18n-html="themen.h2.html">Welches Wunschthema<br /><em>wird es?</em></h2>
+      <p data-i18n="themen.p">Lassen Sie sich inspirieren – oder bringen Sie ein ganz eigenes Thema mit.</p>
     </div>
     <div class="themen-cloud">
       <span class="theme-pill">Tierwelt</span>
@@ -851,9 +1100,9 @@
   <!-- ─── Comparison Table ──────────────────────────────────────────── -->
   <section id="vergleich">
     <div class="section-head">
-      <span class="section-label">Pakete im Vergleich</span>
-      <h2>Drei Pakete,<br /><em>flexibel kombinierbar</em></h2>
-      <p>Wählen Sie die Tiefe, die zu Ihnen passt – von Konzept-Beratung bis Full-Care.</p>
+      <span class="section-label" data-i18n="compare.label">Pakete im Vergleich</span>
+      <h2 data-i18n-html="compare.h2.html">Drei Pakete,<br /><em>flexibel kombinierbar</em></h2>
+      <p data-i18n="compare.p">Wählen Sie die Tiefe, die zu Ihnen passt – von Konzept-Beratung bis Full-Care.</p>
     </div>
 
     <div class="compare-wrap">
@@ -862,152 +1111,149 @@
       <table class="compare-table" role="table">
         <thead>
           <tr>
-            <th class="feature-col">Leistung</th>
+            <th class="feature-col" data-i18n="compare.col.feature">Leistung</th>
             <th>
               <span class="compare-pkg-name">Silver</span>
-              <span class="compare-pkg-tag">Party Plan</span>
-              <span class="compare-pkg-price"><small>ab</small>CHF 220</span>
+              <span class="compare-pkg-tag" data-i18n="tag.silver">Party Plan</span>
             </th>
             <th>
               <span class="compare-pkg-name">Gold</span>
-              <span class="compare-pkg-tag">Setup &amp; Play</span>
-              <span class="compare-pkg-price"><small>ab</small>CHF 690</span>
+              <span class="compare-pkg-tag" data-i18n="tag.gold">Setup &amp; Play</span>
             </th>
             <th>
               <span class="compare-pkg-name">Diamond</span>
-              <span class="compare-pkg-tag">Full Party Care</span>
-              <span class="compare-pkg-price"><small>ab</small>CHF 1'290</span>
+              <span class="compare-pkg-tag" data-i18n="tag.diamond">Full Party Care</span>
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="feature">Ideal für</td>
-            <td>Eltern, die selbst umsetzen möchten – mit klarer Idee und Struktur</td>
-            <td>Eltern, die eine schöne Feier möchten und vor Ort Unterstützung wünschen</td>
-            <td>Eltern, die den Geburtstag geniessen, während der Ablauf betreut wird</td>
+            <td class="feature" data-i18n="compare.row.idealfor">Ideal für</td>
+            <td data-i18n="compare.row.idealfor.silver">Eltern, die selbst umsetzen möchten – mit klarer Idee und Struktur</td>
+            <td data-i18n="compare.row.idealfor.gold">Eltern, die eine schöne Feier möchten und vor Ort Unterstützung wünschen</td>
+            <td data-i18n="compare.row.idealfor.diamond">Eltern, die den Geburtstag geniessen, während der Ablauf betreut wird</td>
           </tr>
           <tr>
-            <td class="feature">Inklusive Kinder</td>
-            <td>Planung für bis zu 12 Kinder</td>
-            <td>Bis zu 10 Kinder</td>
-            <td>Bis zu 12 Kinder</td>
+            <td class="feature" data-i18n="compare.row.kids">Inklusive Kinder</td>
+            <td data-i18n="compare.row.kids.silver">Planung für bis zu 12 Kinder</td>
+            <td data-i18n="compare.row.kids.gold">Bis zu 10 Kinder</td>
+            <td data-i18n="compare.row.kids.diamond">Bis zu 12 Kinder</td>
           </tr>
           <tr>
-            <td class="feature">Inklusive Zeit</td>
-            <td>1 × 45 Min. Beratung</td>
-            <td>Bis zu 3 Std. vor Ort</td>
-            <td>Bis zu 4 Std. vor Ort</td>
+            <td class="feature" data-i18n="compare.row.time">Inklusive Zeit</td>
+            <td data-i18n="compare.row.time.silver">1 × 45 Min. Beratung</td>
+            <td data-i18n="compare.row.time.gold">Bis zu 3 Std. vor Ort</td>
+            <td data-i18n="compare.row.time.diamond">Bis zu 5 Std. vor Ort</td>
           </tr>
           <tr>
-            <td class="feature">Zusätzliches Kind</td>
-            <td><span class="dash">Nach Absprache</span></td>
-            <td>CHF 25 / Kind</td>
-            <td>CHF 25 / Kind</td>
+            <td class="feature" data-i18n="compare.row.extrachild">Zusätzliches Kind</td>
+            <td><span class="addon-tag" data-i18n="compare.onrequest">Auf Anfrage</span></td>
+            <td><span class="addon-tag" data-i18n="compare.onrequest">Auf Anfrage</span></td>
+            <td><span class="addon-tag" data-i18n="compare.onrequest">Auf Anfrage</span></td>
           </tr>
           <tr>
-            <td class="feature">Zusätzliche Stunde</td>
-            <td>Beratung: CHF 120 / Std.</td>
-            <td>CHF 120 / Std.</td>
-            <td>CHF 120 / Std.</td>
+            <td class="feature" data-i18n="compare.row.extrahour">Zusätzliche Stunde</td>
+            <td><span class="addon-tag" data-i18n="compare.onrequest">Auf Anfrage</span></td>
+            <td><span class="addon-tag" data-i18n="compare.onrequest">Auf Anfrage</span></td>
+            <td><span class="addon-tag" data-i18n="compare.onrequest">Auf Anfrage</span></td>
           </tr>
-          <tr><td class="feature">Beratungsgespräch</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td class="feature">Persönliches Geburtstagskonzept</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td class="feature">Ablaufplan für die Feier</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td class="feature">Spiel- und Aktivitätsideen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td class="feature">Einkaufs- und Materialliste</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td class="feature">Deko- und Raumideen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td class="feature">Empfehlungen für Zusatzleistungen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature" data-i18n="compare.row.consult">Beratungsgespräch</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature" data-i18n="compare.row.concept">Persönliches Geburtstagskonzept</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature" data-i18n="compare.row.timeline">Ablaufplan für die Feier</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature" data-i18n="compare.row.activities">Spiel- und Aktivitätsideen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature" data-i18n="compare.row.shopping">Einkaufs- und Materialliste</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature" data-i18n="compare.row.deco">Deko- und Raumideen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature" data-i18n="compare.row.recommendations">Empfehlungen für Zusatzleistungen</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
           <tr>
-            <td class="feature">Persönliches Wunschthema</td>
-            <td>Basic</td>
-            <td>Personalisiert</td>
-            <td>Voll ausgearbeitet</td>
+            <td class="feature" data-i18n="compare.row.theme">Persönliches Wunschthema</td>
+            <td data-i18n="compare.row.theme.silver">Basic</td>
+            <td data-i18n="compare.row.theme.gold">Personalisiert</td>
+            <td data-i18n="compare.row.theme.diamond">Voll ausgearbeitet</td>
           </tr>
-          <tr><td class="feature">Betreuung vor Ort</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td class="feature" data-i18n="compare.row.onsite">Betreuung vor Ort</td><td><span class="dash" data-i18n="compare.dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
           <tr>
-            <td class="feature">Basis-Dekoration des Partybereichs</td>
-            <td><span class="addon-tag">Add-on</span></td>
+            <td class="feature" data-i18n="compare.row.basicdeco">Basis-Dekoration des Partybereichs</td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td class="feature">Erweiterte Dekoration</td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td><span class="addon-tag">Add-on</span></td>
+            <td class="feature" data-i18n="compare.row.extdeco">Erweiterte Dekoration</td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td class="feature">Geführte Spiele und Mitmachaktionen</td>
-            <td>Plan only</td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="feature">Sensorik- oder Spielstation</td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td>1 inklusive</td>
-            <td>Inklusive</td>
-          </tr>
-          <tr>
-            <td class="feature">Kreative Bastelstation</td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td>1 inklusive</td>
-          </tr>
-          <tr>
-            <td class="feature">2–3 Aktivitätsstationen</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="feature">Materialien für inkludierte Aktivitäten</td>
-            <td>Materialliste</td>
+            <td class="feature" data-i18n="compare.row.guidedgames">Geführte Spiele und Mitmachaktionen</td>
+            <td data-i18n="compare.row.guidedgames.silver">Plan only</td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td class="feature">Musik-Playlist</td>
-            <td>Vorschläge</td>
-            <td>Kurze Playlist</td>
-            <td>Voller Party-Flow</td>
+            <td class="feature" data-i18n="compare.row.sensorik">Sensorik- oder Spielstation</td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
+            <td data-i18n="compare.row.sensorik.gold">1 inklusive</td>
+            <td data-i18n="compare.row.sensorik.diamond">Inklusive</td>
           </tr>
           <tr>
-            <td class="feature">Food &amp; Drink Handling</td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td><span class="addon-tag">Add-on</span></td>
+            <td class="feature" data-i18n="compare.row.bastel">Kreative Bastelstation</td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
+            <td data-i18n="compare.row.bastel.diamond">1 inklusive</td>
+          </tr>
+          <tr>
+            <td class="feature" data-i18n="compare.row.stations">2–3 Aktivitätsstationen</td>
+            <td><span class="dash" data-i18n="compare.dash">—</span></td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td class="feature">Kuchenkoordination</td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td><span class="addon-tag">Add-on</span></td>
+            <td class="feature" data-i18n="compare.row.materials">Materialien für inkludierte Aktivitäten</td>
+            <td data-i18n="compare.row.materials.silver">Materialliste</td>
+            <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td class="feature">Geschenke-Moment</td>
-            <td><span class="dash">—</span></td>
-            <td>Nach Absprache</td>
-            <td>Unterstützung inklusive</td>
+            <td class="feature" data-i18n="compare.row.music">Musik-Playlist</td>
+            <td data-i18n="compare.row.music.silver">Vorschläge</td>
+            <td data-i18n="compare.row.music.gold">Kurze Playlist</td>
+            <td data-i18n="compare.row.music.diamond">Voller Party-Flow</td>
           </tr>
           <tr>
-            <td class="feature">Kleine Ordnung während der Feier</td>
-            <td><span class="dash">—</span></td>
-            <td>Light tidy</td>
+            <td class="feature" data-i18n="compare.row.food">Food &amp; Drink Handling</td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td class="feature">Basis-Aufräumen nach der Feier</td>
-            <td><span class="dash">—</span></td>
-            <td><span class="dash">—</span></td>
+            <td class="feature" data-i18n="compare.row.cake">Kuchenkoordination</td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td class="feature">Komplettes Aufräumen</td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td><span class="addon-tag">Add-on</span></td>
-            <td><span class="addon-tag">Add-on</span></td>
+            <td class="feature" data-i18n="compare.row.gifts">Geschenke-Moment</td>
+            <td><span class="dash" data-i18n="compare.dash">—</span></td>
+            <td data-i18n="compare.row.gifts.gold">Nach Absprache</td>
+            <td data-i18n="compare.row.gifts.diamond">Unterstützung inklusive</td>
+          </tr>
+          <tr>
+            <td class="feature" data-i18n="compare.row.tidy">Kleine Ordnung während der Feier</td>
+            <td><span class="dash" data-i18n="compare.dash">—</span></td>
+            <td data-i18n="compare.row.tidy.gold">Light tidy</td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature" data-i18n="compare.row.cleanbasic">Basis-Aufräumen nach der Feier</td>
+            <td><span class="dash" data-i18n="compare.dash">—</span></td>
+            <td><span class="dash" data-i18n="compare.dash">—</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="feature" data-i18n="compare.row.cleanfull">Komplettes Aufräumen</td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
+            <td><span class="addon-tag" data-i18n="compare.addon">Add-on</span></td>
           </tr>
         </tbody>
       </table>
@@ -1017,63 +1263,50 @@
         <!-- Silver -->
         <div class="compare-card">
           <div class="compare-card-head">
-            <span class="compare-pkg-tag">Party Plan</span>
+            <span class="compare-pkg-tag" data-i18n="tag.silver">Party Plan</span>
             <span class="compare-pkg-name">Silver</span>
-            <span class="compare-pkg-price"><small>ab</small>CHF 220</span>
           </div>
-          <div class="compare-card-row"><span class="label">Ideal für</span><span class="value">Eltern, die selbst umsetzen</span></div>
-          <div class="compare-card-row"><span class="label">Inklusive Kinder</span><span class="value">Bis zu 12</span></div>
-          <div class="compare-card-row"><span class="label">Inklusive Zeit</span><span class="value">45 Min. Beratung</span></div>
-          <div class="compare-card-row"><span class="label">Zusätzliches Kind</span><span class="value">Nach Absprache</span></div>
-          <div class="compare-card-row"><span class="label">Zusätzliche Stunde</span><span class="value">CHF 120</span></div>
-          <div class="compare-card-row"><span class="label">Konzept &amp; Ablauf</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Spiel-, Deko-, Materialideen</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Wunschthema</span><span class="value">Basic</span></div>
-          <div class="compare-card-row"><span class="label">Betreuung vor Ort</span><span class="value dash">—</span></div>
-          <div class="compare-card-row"><span class="label">Basis-Deko</span><span class="value addon-tag">Add-on</span></div>
-          <div class="compare-card-row"><span class="label">Spielstation</span><span class="value addon-tag">Add-on</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.idealfor">Ideal für</span><span class="value" data-i18n="compare.row.idealfor.silver">Eltern, die selbst umsetzen möchten</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.kids">Inklusive Kinder</span><span class="value" data-i18n="compare.row.kids.silver">Bis zu 12</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.time">Inklusive Zeit</span><span class="value" data-i18n="compare.row.time.silver">45 Min. Beratung</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.theme">Wunschthema</span><span class="value" data-i18n="compare.row.theme.silver">Basic</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.onsite">Betreuung vor Ort</span><span class="value dash" data-i18n="compare.dash">—</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.basicdeco">Basis-Deko</span><span class="value addon-tag" data-i18n="compare.addon">Add-on</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.sensorik">Spielstation</span><span class="value addon-tag" data-i18n="compare.addon">Add-on</span></div>
         </div>
 
         <!-- Gold -->
         <div class="compare-card" style="border-color: rgba(201,169,110,0.5);">
           <div class="compare-card-head">
-            <span class="compare-pkg-tag">Setup &amp; Play</span>
+            <span class="compare-pkg-tag" data-i18n="tag.gold">Setup &amp; Play</span>
             <span class="compare-pkg-name">Gold</span>
-            <span class="compare-pkg-price"><small>ab</small>CHF 690</span>
           </div>
-          <div class="compare-card-row"><span class="label">Ideal für</span><span class="value">Eltern, die Unterstützung wünschen</span></div>
-          <div class="compare-card-row"><span class="label">Inklusive Kinder</span><span class="value">Bis zu 10</span></div>
-          <div class="compare-card-row"><span class="label">Inklusive Zeit</span><span class="value">Bis zu 3 Std.</span></div>
-          <div class="compare-card-row"><span class="label">Zusätzliches Kind</span><span class="value">CHF 25</span></div>
-          <div class="compare-card-row"><span class="label">Zusätzliche Stunde</span><span class="value">CHF 120</span></div>
-          <div class="compare-card-row"><span class="label">Wunschthema</span><span class="value">Personalisiert</span></div>
-          <div class="compare-card-row"><span class="label">Betreuung vor Ort</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Basis-Deko</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Geführte Spiele</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">1 Spielstation</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Bastelstation</span><span class="value addon-tag">Add-on</span></div>
-          <div class="compare-card-row"><span class="label">Kuchen / Food Handling</span><span class="value addon-tag">Add-on</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.idealfor">Ideal für</span><span class="value" data-i18n="compare.row.idealfor.gold">Eltern, die Unterstützung wünschen</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.kids">Inklusive Kinder</span><span class="value" data-i18n="compare.row.kids.gold">Bis zu 10</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.time">Inklusive Zeit</span><span class="value" data-i18n="compare.row.time.gold">Bis zu 3 Std.</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.theme">Wunschthema</span><span class="value" data-i18n="compare.row.theme.gold">Personalisiert</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.onsite">Betreuung vor Ort</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.basicdeco">Basis-Deko</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.guidedgames">Geführte Spiele</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.sensorik">1 Spielstation</span><span class="value check">✓</span></div>
         </div>
 
         <!-- Diamond -->
         <div class="compare-card">
           <div class="compare-card-head">
-            <span class="compare-pkg-tag">Full Party Care</span>
+            <span class="compare-pkg-tag" data-i18n="tag.diamond">Full Party Care</span>
             <span class="compare-pkg-name">Diamond</span>
-            <span class="compare-pkg-price"><small>ab</small>CHF 1'290</span>
           </div>
-          <div class="compare-card-row"><span class="label">Ideal für</span><span class="value">Eltern, die alles aus einer Hand</span></div>
-          <div class="compare-card-row"><span class="label">Inklusive Kinder</span><span class="value">Bis zu 12</span></div>
-          <div class="compare-card-row"><span class="label">Inklusive Zeit</span><span class="value">Bis zu 4 Std.</span></div>
-          <div class="compare-card-row"><span class="label">Zusätzliches Kind</span><span class="value">CHF 25</span></div>
-          <div class="compare-card-row"><span class="label">Zusätzliche Stunde</span><span class="value">CHF 120</span></div>
-          <div class="compare-card-row"><span class="label">Wunschthema</span><span class="value">Voll ausgearbeitet</span></div>
-          <div class="compare-card-row"><span class="label">Erweiterte Deko</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Bastelstation</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">2–3 Aktivitätsstationen</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Food &amp; Drink Handling</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Kuchenkoordination</span><span class="value check">✓</span></div>
-          <div class="compare-card-row"><span class="label">Basis-Aufräumen</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.idealfor">Ideal für</span><span class="value" data-i18n="compare.row.idealfor.diamond">Eltern, die alles aus einer Hand</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.kids">Inklusive Kinder</span><span class="value" data-i18n="compare.row.kids.diamond">Bis zu 12</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.time">Inklusive Zeit</span><span class="value" data-i18n="compare.row.time.diamond">Bis zu 5 Std.</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.theme">Wunschthema</span><span class="value" data-i18n="compare.row.theme.diamond">Voll ausgearbeitet</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.extdeco">Erweiterte Deko</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.bastel">Bastelstation</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.stations">2–3 Aktivitätsstationen</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.food">Food &amp; Drink Handling</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.cake">Kuchenkoordination</span><span class="value check">✓</span></div>
+          <div class="compare-card-row"><span class="label" data-i18n="compare.row.cleanbasic">Basis-Aufräumen</span><span class="value check">✓</span></div>
         </div>
       </div>
 
@@ -1083,62 +1316,62 @@
   <!-- ─── Add-ons ─────────────────────────────────────────────────── -->
   <section id="addons">
     <div class="section-head">
-      <span class="section-label">Add-ons</span>
-      <h2>Ergänzen Sie genau das,<br /><em>was Sie brauchen</em></h2>
-      <p>Beliebig zu jedem Paket buchbar – einzeln oder kombiniert.</p>
+      <span class="section-label" data-i18n="addons.label">Add-ons</span>
+      <h2 data-i18n-html="addons.h2.html">Ergänzen Sie genau das,<br /><em>was Sie brauchen</em></h2>
+      <p data-i18n="addons.p">Beliebig zu jedem Paket buchbar – einzeln oder kombiniert.</p>
     </div>
 
     <div class="addons-grid">
-      <div class="addon-card"><div class="addon-icon">+</div><div class="addon-body"><h4>Zusätzliches Kind</h4><p class="addon-price">CHF 25 / Kind</p></div></div>
-      <div class="addon-card"><div class="addon-icon">⏱</div><div class="addon-body"><h4>Zusätzliche Stunde</h4><p class="addon-price">CHF 120 / Stunde</p></div></div>
-      <div class="addon-card"><div class="addon-icon">★</div><div class="addon-body"><h4>Sensorik-Spielstation</h4><p class="addon-price">CHF 200</p></div></div>
-      <div class="addon-card"><div class="addon-icon">✄</div><div class="addon-body"><h4>Kreative Bastelstation</h4><p class="addon-price">CHF 250</p></div></div>
-      <div class="addon-card"><div class="addon-icon">❀</div><div class="addon-body"><h4>Premium-Dekoration</h4><p class="addon-price">CHF 300 – 600</p></div></div>
-      <div class="addon-card"><div class="addon-icon">♪</div><div class="addon-body"><h4>Mini-Disco</h4><p class="addon-price">CHF 150</p></div></div>
-      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4>Food &amp; Drink Handling</h4><p class="addon-price">CHF 200</p></div></div>
-      <div class="addon-card"><div class="addon-icon">🎂</div><div class="addon-body"><h4>Kuchenkoordination</h4><p class="addon-price">CHF 120</p></div></div>
-      <div class="addon-card"><div class="addon-icon">🎁</div><div class="addon-body"><h4>Goodie Bags</h4><p class="addon-price">CHF 10 / Kind</p></div></div>
-      <div class="addon-card"><div class="addon-icon">🎨</div><div class="addon-body"><h4>Kinderschminken</h4><p class="addon-price">CHF 150</p></div></div>
-      <div class="addon-card"><div class="addon-icon">✨</div><div class="addon-body"><h4>Glitzer-Tattoos</h4><p class="addon-price">CHF 120</p></div></div>
-      <div class="addon-card"><div class="addon-icon">🗺</div><div class="addon-body"><h4>Schatzsuche</h4><p class="addon-price">CHF 250</p></div></div>
-      <div class="addon-card"><div class="addon-icon">📸</div><div class="addon-body"><h4>Foto-Ecke</h4><p class="addon-price">CHF 200</p></div></div>
-      <div class="addon-card"><div class="addon-icon">⌂</div><div class="addon-body"><h4>Komplettes Aufräumen</h4><p class="addon-price">CHF 250</p></div></div>
-      <div class="addon-card"><div class="addon-icon">⌘</div><div class="addon-body"><h4>Location-Suche</h4><p class="addon-price">CHF 150</p></div></div>
-      <div class="addon-card"><div class="addon-icon">✉</div><div class="addon-body"><h4>Einladung designen &amp; versenden</h4><p class="addon-price">CHF 200</p></div></div>
-      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4>Eltern-Kaffeeecke</h4><p class="addon-price">CHF 100 + Konsumation</p></div></div>
+      <div class="addon-card"><div class="addon-icon">+</div><div class="addon-body"><h4 data-i18n="addons.extraChild">Zusätzliches Kind</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">⏱</div><div class="addon-body"><h4 data-i18n="addons.extraHour">Zusätzliche Stunde</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">★</div><div class="addon-body"><h4 data-i18n="addons.sensorik">Sensorik-Spielstation</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">✄</div><div class="addon-body"><h4 data-i18n="addons.bastel">Kreative Bastelstation</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">❀</div><div class="addon-body"><h4 data-i18n="addons.premiumDeko">Premium-Dekoration</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">♪</div><div class="addon-body"><h4 data-i18n="addons.miniDisco">Mini-Disco</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4 data-i18n="addons.foodDrink">Food &amp; Drink Handling</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">🎂</div><div class="addon-body"><h4 data-i18n="addons.kuchen">Kuchenkoordination</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">🎁</div><div class="addon-body"><h4 data-i18n="addons.goodieBags">Goodie Bags</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">🎨</div><div class="addon-body"><h4 data-i18n="addons.kinderschminken">Kinderschminken</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">✨</div><div class="addon-body"><h4 data-i18n="addons.glitzer">Glitzer-Tattoos</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">🗺</div><div class="addon-body"><h4 data-i18n="addons.schatzsuche">Schatzsuche</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">📸</div><div class="addon-body"><h4 data-i18n="addons.foto">Foto-Ecke</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">⌂</div><div class="addon-body"><h4 data-i18n="addons.aufraumen">Komplettes Aufräumen</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">⌘</div><div class="addon-body"><h4 data-i18n="addons.location">Location-Suche</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">✉</div><div class="addon-body"><h4 data-i18n="addons.einladung">Einladung designen &amp; versenden</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4 data-i18n="addons.kaffeeecke">Eltern-Kaffeeecke</h4></div></div>
     </div>
 
-    <div class="disclaimer">
+    <div class="disclaimer" data-i18n="addons.disclaimer">
       Location, Essen, Getränke, Kuchen, Spezialdekoration, Konsumation und externe Anbieter
       werden separat verrechnet, sofern sie nicht ausdrücklich im Angebot enthalten sind.
     </div>
   </section>
 
-  <!-- ─── Calculator + Form ───────────────────────────────────────── -->
+  <!-- ─── Configurator + Form ─────────────────────────────────────── -->
   <section id="calculator-form">
     <div class="section-head">
-      <span class="section-label">Preisrechner &amp; Anfrage</span>
-      <h2>Stellen Sie sich Ihre<br /><em>Wunschfeier zusammen</em></h2>
-      <p>Wählen Sie Paket und Extras – die Anfrage darunter füllt sich automatisch.</p>
+      <span class="section-label" data-i18n="cf.label">Konfigurator &amp; Anfrage</span>
+      <h2 data-i18n-html="cf.h2.html">Stellen Sie sich Ihre<br /><em>Wunschfeier zusammen</em></h2>
+      <p data-i18n="cf.p">Wählen Sie Paket und Extras – Veronika meldet sich persönlich mit einem passenden Angebot.</p>
     </div>
 
     <div class="cf-grid">
 
-      <!-- ===== Calculator panel ===== -->
+      <!-- ===== Configurator panel ===== -->
       <aside class="calc-panel" id="calculator">
-        <h3>Preis<em> berechnen</em></h3>
+        <h3 data-i18n-html="calc.title.html">Wunschfeier<em> konfigurieren</em></h3>
 
         <div class="calc-group">
-          <label>Paket</label>
+          <label data-i18n="calc.label.pkg">Paket</label>
           <div class="pkg-options" role="radiogroup" aria-label="Paket">
             <div class="pkg-option" data-pkg="silver" role="radio" aria-checked="false" tabindex="0">
-              Silver<small>CHF 220</small>
+              Silver<small data-i18n="tag.silver">Party Plan</small>
             </div>
             <div class="pkg-option selected" data-pkg="gold" role="radio" aria-checked="true" tabindex="0">
-              Gold<small>CHF 690</small>
+              Gold<small data-i18n="tag.gold">Setup &amp; Play</small>
             </div>
             <div class="pkg-option" data-pkg="diamond" role="radio" aria-checked="false" tabindex="0">
-              Diamond<small>CHF 1'290</small>
+              Diamond<small data-i18n="tag.diamond">Full Party Care</small>
             </div>
           </div>
         </div>
@@ -1146,65 +1379,50 @@
         <div class="calc-group">
           <div class="calc-num-row">
             <div class="calc-num">
-              <label for="calc-children">Anzahl Kinder</label>
+              <label for="calc-children" data-i18n="calc.label.children">Anzahl Kinder</label>
               <input type="number" id="calc-children" min="1" max="40" value="10" />
             </div>
             <div class="calc-num">
-              <label for="calc-hours">Zusätzliche Stunden</label>
+              <label for="calc-hours" data-i18n="calc.label.hours">Zusätzliche Stunden</label>
               <input type="number" id="calc-hours" min="0" max="8" value="0" />
             </div>
           </div>
         </div>
 
         <div class="calc-group">
-          <label>Add-ons</label>
+          <label data-i18n="calc.label.addons">Add-ons</label>
           <div class="calc-addons">
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="sensorik" data-price="200"> Sensorik-Spielstation</label><span class="calc-addon-price">CHF 200</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="bastel" data-price="250"> Kreative Bastelstation</label><span class="calc-addon-price">CHF 250</span></div>
-
-            <div class="calc-deko-group">
-              <div class="group-title">Premium-Dekoration</div>
-              <div class="calc-deko-options">
-                <label><input type="radio" name="calc-deko" value="0" data-price="0" checked> Keine</label>
-                <label><input type="radio" name="calc-deko" value="basic" data-price="300"> Basic — CHF 300</label>
-                <label><input type="radio" name="calc-deko" value="premium" data-price="600"> Premium — CHF 600</label>
-              </div>
-            </div>
-
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="miniDisco" data-price="150"> Mini-Disco</label><span class="calc-addon-price">CHF 150</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="foodDrink" data-price="200"> Food &amp; Drink Handling</label><span class="calc-addon-price">CHF 200</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="kuchen" data-price="120"> Kuchenkoordination</label><span class="calc-addon-price">CHF 120</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="goodieBags" data-price="10" data-per-child="1"> Goodie Bags</label><span class="calc-addon-price">CHF 10 / Kind</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="kinderschminken" data-price="150"> Kinderschminken</label><span class="calc-addon-price">CHF 150</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="glitzer" data-price="120"> Glitzer-Tattoos</label><span class="calc-addon-price">CHF 120</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="schatzsuche" data-price="250"> Schatzsuche</label><span class="calc-addon-price">CHF 250</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="foto" data-price="200"> Foto-Ecke</label><span class="calc-addon-price">CHF 200</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="aufraumen" data-price="250"> Komplettes Aufräumen</label><span class="calc-addon-price">CHF 250</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="location" data-price="150"> Location-Suche</label><span class="calc-addon-price">CHF 150</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="einladung" data-price="200"> Einladung designen &amp; versenden</label><span class="calc-addon-price">CHF 200</span></div>
-            <div class="calc-addon-item"><label><input type="checkbox" data-addon="kaffeeecke" data-price="100"> Eltern-Kaffeeecke</label><span class="calc-addon-price">CHF 100</span></div>
+            <div class="calc-addon-item" data-included-in="gold,diamond"><label><input type="checkbox" data-addon="sensorik"> <span data-i18n="calc.addon.sensorik">Sensorik-Spielstation</span></label><span class="calc-addon-included" data-i18n="calc.included">Inklusive</span></div>
+            <div class="calc-addon-item" data-included-in="diamond"><label><input type="checkbox" data-addon="bastel"> <span data-i18n="calc.addon.bastel">Kreative Bastelstation</span></label><span class="calc-addon-included" data-i18n="calc.included">Inklusive</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="premiumDeko"> <span data-i18n="calc.addon.premiumDeko">Premium-Dekoration</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="miniDisco"> <span data-i18n="calc.addon.miniDisco">Mini-Disco</span></label></div>
+            <div class="calc-addon-item" data-included-in="diamond"><label><input type="checkbox" data-addon="foodDrink"> <span data-i18n="calc.addon.foodDrink">Food &amp; Drink Handling</span></label><span class="calc-addon-included" data-i18n="calc.included">Inklusive</span></div>
+            <div class="calc-addon-item" data-included-in="diamond"><label><input type="checkbox" data-addon="kuchen"> <span data-i18n="calc.addon.kuchen">Kuchenkoordination</span></label><span class="calc-addon-included" data-i18n="calc.included">Inklusive</span></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="goodieBags"> <span data-i18n="calc.addon.goodieBags">Goodie Bags</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="kinderschminken"> <span data-i18n="calc.addon.kinderschminken">Kinderschminken</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="glitzer"> <span data-i18n="calc.addon.glitzer">Glitzer-Tattoos</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="schatzsuche"> <span data-i18n="calc.addon.schatzsuche">Schatzsuche</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="foto"> <span data-i18n="calc.addon.foto">Foto-Ecke</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="aufraumen"> <span data-i18n="calc.addon.aufraumen">Komplettes Aufräumen</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="location"> <span data-i18n="calc.addon.location">Location-Suche</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="einladung"> <span data-i18n="calc.addon.einladung">Einladung designen &amp; versenden</span></label></div>
+            <div class="calc-addon-item"><label><input type="checkbox" data-addon="kaffeeecke"> <span data-i18n="calc.addon.kaffeeecke">Eltern-Kaffeeecke</span></label></div>
           </div>
         </div>
 
         <div class="calc-result" aria-live="polite">
-          <div class="calc-result-line"><span>Grundpreis (<span id="r-pkg">Gold</span>)</span><span id="r-base">CHF 690</span></div>
-          <div class="calc-result-line" id="r-extra-children-line" style="display:none;"><span>Zusätzliche Kinder (<span id="r-extra-children-n">0</span>)</span><span id="r-extra-children">CHF 0</span></div>
-          <div class="calc-result-line" id="r-extra-hours-line" style="display:none;"><span>Zusätzliche Stunden (<span id="r-extra-hours-n">0</span>)</span><span id="r-extra-hours">CHF 0</span></div>
-          <div id="r-addons"></div>
-          <div class="calc-result-total">
-            <span class="label">Geschätzter Gesamtpreis</span>
-            <span class="value" id="r-total">CHF 690</span>
-          </div>
-          <p class="calc-disclaimer">
-            Dies ist eine unverbindliche Preisindikation. Das finale Angebot wird nach
-            persönlicher Rücksprache bestätigt.
+          <p class="calc-summary-title" data-i18n="calc.result.summaryTitle">Ihre Auswahl</p>
+          <div id="r-summary" class="calc-summary"></div>
+          <p class="calc-disclaimer" data-i18n="calc.result.disclaimer">
+            Senden Sie uns Ihre Konfiguration über das Formular – Veronika meldet sich
+            persönlich mit einem passenden Angebot.
           </p>
         </div>
       </aside>
 
       <!-- ===== Form panel ===== -->
       <div class="form-panel" id="anfrage">
-        <h3>Unverbindliche<em> Anfrage</em></h3>
+        <h3 data-i18n-html="form.title.html">Unverbindliche<em> Anfrage</em></h3>
 
         <!--
           ──────────────────────────────────────────────────────────────────
@@ -1226,127 +1444,127 @@
 
           <div class="form-row">
             <div class="form-field">
-              <label for="f-name">Vor- und Nachname *</label>
+              <label for="f-name"><span data-i18n="form.name">Vor- und Nachname</span> *</label>
               <input id="f-name" type="text" name="name" required autocomplete="name" />
             </div>
             <div class="form-field">
-              <label for="f-email">E-Mail *</label>
+              <label for="f-email"><span data-i18n="form.email">E-Mail</span> *</label>
               <input id="f-email" type="email" name="email" required autocomplete="email" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-field">
-              <label for="f-phone">Telefon / WhatsApp *</label>
+              <label for="f-phone"><span data-i18n="form.phone">Telefon / WhatsApp</span> *</label>
               <input id="f-phone" type="tel" name="phone" required autocomplete="tel" />
             </div>
             <div class="form-field">
-              <label for="f-region">Ort / Adresse / Region</label>
-              <input id="f-region" type="text" name="region" placeholder="Hünenberg, Zug, ..." />
+              <label for="f-region" data-i18n="form.region">Ort / Adresse / Region</label>
+              <input id="f-region" type="text" name="region" placeholder="Hünenberg, Zug, ..." data-i18n-attr="placeholder:form.region.ph" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-field">
-              <label for="f-child-name">Name des Kindes</label>
+              <label for="f-child-name" data-i18n="form.childName">Name des Kindes</label>
               <input id="f-child-name" type="text" name="child_name" />
             </div>
             <div class="form-field">
-              <label for="f-child-age">Alter des Kindes</label>
+              <label for="f-child-age" data-i18n="form.childAge">Alter des Kindes</label>
               <input id="f-child-age" type="number" min="1" max="18" name="child_age" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-field">
-              <label for="f-date">Gewünschtes Datum</label>
+              <label for="f-date" data-i18n="form.date">Gewünschtes Datum</label>
               <input id="f-date" type="date" name="event_date" />
             </div>
             <div class="form-field">
-              <label for="f-time">Gewünschte Uhrzeit</label>
+              <label for="f-time" data-i18n="form.time">Gewünschte Uhrzeit</label>
               <input id="f-time" type="time" name="event_time" />
             </div>
           </div>
 
           <div class="form-field">
-            <label for="f-location-type">Wo findet die Feier statt?</label>
+            <label for="f-location-type" data-i18n="form.location">Wo findet die Feier statt?</label>
             <select id="f-location-type" name="location_type">
-              <option value="">Bitte wählen ...</option>
-              <option>Zu Hause</option>
-              <option>Im Garten</option>
-              <option>In einem gemieteten Raum</option>
-              <option>An einer anderen Location</option>
-              <option>Noch unklar</option>
+              <option value="" data-i18n="form.location.choose">Bitte wählen ...</option>
+              <option data-i18n="form.location.home">Zu Hause</option>
+              <option data-i18n="form.location.garden">Im Garten</option>
+              <option data-i18n="form.location.rented">In einem gemieteten Raum</option>
+              <option data-i18n="form.location.other">An einer anderen Location</option>
+              <option data-i18n="form.location.unknown">Noch unklar</option>
             </select>
           </div>
 
           <div class="form-row">
             <div class="form-field">
-              <label for="f-num-kids">Anzahl Kinder</label>
+              <label for="f-num-kids" data-i18n="form.numKids">Anzahl Kinder</label>
               <input id="f-num-kids" type="number" min="1" max="40" name="num_kids" />
             </div>
             <div class="form-field">
-              <label for="f-num-adults">Anzahl Erwachsene (falls relevant)</label>
+              <label for="f-num-adults" data-i18n="form.numAdults">Anzahl Erwachsene (falls relevant)</label>
               <input id="f-num-adults" type="number" min="0" max="50" name="num_adults" />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-field">
-              <label for="f-theme">Wunschthema</label>
-              <input id="f-theme" type="text" name="theme" placeholder="z.B. Tierwelt, Piraten ..." />
+              <label for="f-theme" data-i18n="form.theme">Wunschthema</label>
+              <input id="f-theme" type="text" name="theme" placeholder="z.B. Tierwelt, Piraten ..." data-i18n-attr="placeholder:form.theme.ph" />
             </div>
             <div class="form-field">
-              <label for="f-theme-alt">Alternative Themenwünsche</label>
+              <label for="f-theme-alt" data-i18n="form.themeAlt">Alternative Themenwünsche</label>
               <input id="f-theme-alt" type="text" name="theme_alt" />
             </div>
           </div>
 
           <div class="form-field">
-            <label for="f-interests">Besondere Interessen des Kindes</label>
-            <input id="f-interests" type="text" name="interests" placeholder="z.B. Dinos, Basteln, Tanzen ..." />
+            <label for="f-interests" data-i18n="form.interests">Besondere Interessen des Kindes</label>
+            <input id="f-interests" type="text" name="interests" placeholder="z.B. Dinos, Basteln, Tanzen ..." data-i18n-attr="placeholder:form.interests.ph" />
           </div>
 
           <div class="form-field">
-            <label for="f-needs">Allergien, besondere Bedürfnisse oder wichtige Hinweise?</label>
+            <label for="f-needs" data-i18n="form.needs">Allergien, besondere Bedürfnisse oder wichtige Hinweise?</label>
             <textarea id="f-needs" name="special_needs"></textarea>
           </div>
 
           <div class="form-field">
-            <label for="f-extras">Soll Veronika bei Location, Essen, Kuchen oder Einladungen unterstützen?</label>
+            <label for="f-extras" data-i18n="form.extras">Soll Veronika bei Location, Essen, Kuchen oder Einladungen unterstützen?</label>
             <textarea id="f-extras" name="extras_help" rows="2"></textarea>
           </div>
 
           <div class="form-field">
-            <label for="f-summary">Ihre Auswahl aus dem Preisrechner</label>
+            <label for="f-summary" data-i18n="form.summary">Ihre Auswahl aus dem Preisrechner</label>
             <textarea id="f-summary" name="calculator_summary" readonly rows="6" class="form-summary"></textarea>
           </div>
 
           <div class="form-field">
-            <label for="f-message">Nachricht / weitere Wünsche</label>
+            <label for="f-message" data-i18n="form.message">Nachricht / weitere Wünsche</label>
             <textarea id="f-message" name="message" rows="3"></textarea>
           </div>
 
           <div class="form-checkbox-row">
             <input id="f-confirm" type="checkbox" name="confirm" required />
-            <label for="f-confirm">
+            <label for="f-confirm" data-i18n="form.confirm">
               Ich verstehe, dass die Anfrage unverbindlich ist und das finale Angebot
               persönlich bestätigt wird.
             </label>
           </div>
 
-          <button type="submit" class="btn btn-primary form-submit-btn">Unverbindliche Anfrage senden</button>
+          <button type="submit" class="btn btn-primary form-submit-btn" data-i18n="form.submit">Unverbindliche Anfrage senden</button>
 
           <p class="form-fallback">
-            Lieber per E-Mail oder WhatsApp? <br />
+            <span data-i18n="form.fallback">Lieber per E-Mail oder WhatsApp?</span> <br />
             <a href="mailto:veronika.bobuska@gmail.com">veronika.bobuska@gmail.com</a> ·
             <a href="tel:+41786858627">078 685 86 27</a>
           </p>
         </form>
 
         <div class="form-success" id="form-success" role="status" aria-live="polite">
-          <h4>Vielen Dank für Ihre Anfrage</h4>
-          <p>Ich melde mich persönlich bei Ihnen mit einem passenden Vorschlag.</p>
+          <h4 data-i18n="form.success.h4">Vielen Dank für Ihre Anfrage</h4>
+          <p data-i18n="form.success.p">Ich melde mich persönlich bei Ihnen mit einem passenden Vorschlag.</p>
         </div>
       </div>
 
@@ -1359,7 +1577,7 @@
   <footer>
     <div>
       <p class="footer-name">Veronika Bobuska</p>
-      <p class="footer-tagline">Eventorganisation · Zug · Luzern · Zürich</p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Eventorganisation · Zug · Luzern · Zürich</p>
 
       <div class="footer-contact-items">
         <a class="footer-contact-item" href="mailto:veronika.bobuska@gmail.com">
@@ -1379,13 +1597,19 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Veronika Bobuska · Hünenberg, Schweiz</p>
-      <p class="footer-made">Eventorganisation mit Herz und Präzision</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Veronika Bobuska · Hünenberg, Schweiz</p>
+      <p class="footer-made" data-i18n="footer.made">Eventorganisation mit Herz und Präzision</p>
     </div>
   </footer>
 
   <!-- ─── Scripts ────────────────────────────────────────────────── -->
+  <script src="assets/i18n.js"></script>
   <script>
+    /* re-render calculator result labels and form summary on language change */
+    document.addEventListener('vb:lang-change', () => {
+      try { calculate(); } catch (_) {}
+    });
+
     /* ───────── Sticky nav ───────── */
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
@@ -1404,128 +1628,107 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(el => io.observe(el));
 
-    /* ───────── Calculator ───────── */
-    const PACKAGES = {
-      silver:  { label: 'Silver',  price: 220,  includedChildren: 0,  includedHours: 0, chargesPerChild: false },
-      gold:    { label: 'Gold',    price: 690,  includedChildren: 10, includedHours: 3, chargesPerChild: true  },
-      diamond: { label: 'Diamond', price: 1290, includedChildren: 12, includedHours: 4, chargesPerChild: true  },
-    };
+    /* ───────── Configurator (no prices) ───────── */
+    const PACKAGES = { silver: 'Silver', gold: 'Gold', diamond: 'Diamond' };
     const DEFAULT_CHILDREN = { silver: 12, gold: 10, diamond: 12 };
-    const PER_CHILD_FEE = 25;
-    const PER_HOUR_FEE  = 120;
 
     let pkgKey = 'gold';
+    // remember user's manual add-on selections so they survive package switches
+    const userAddons = {};
 
     const $ = (s) => document.querySelector(s);
 
-    function fmtCHF(n) {
-      // Swiss-style thousands separator: apostrophe
-      return 'CHF ' + Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+    function isAddonIncluded(item) {
+      const includedIn = (item.dataset.includedIn || '').split(',').map(s => s.trim()).filter(Boolean);
+      return includedIn.includes(pkgKey);
     }
 
-    function getAddons() {
-      const items = [];
-      // checkboxes
-      document.querySelectorAll('.calc-addons input[type="checkbox"]').forEach(cb => {
-        if (cb.checked) {
-          const label = cb.closest('label').textContent.trim();
-          let price = parseFloat(cb.dataset.price) || 0;
-          if (cb.dataset.perChild === '1') {
-            const children = parseInt($('#calc-children').value) || 0;
-            price = price * children;
-          }
-          items.push({ key: cb.dataset.addon, label, price });
+    function applyAddonInclusionStates() {
+      document.querySelectorAll('.calc-addons .calc-addon-item').forEach(item => {
+        const cb = item.querySelector('input[type="checkbox"]');
+        if (!cb) return;
+        const incEl = item.querySelector('.calc-addon-included');
+        if (isAddonIncluded(item)) {
+          cb.checked = true;
+          cb.disabled = true;
+          item.classList.add('included');
+          if (incEl) incEl.hidden = false;
+        } else {
+          cb.disabled = false;
+          cb.checked = !!userAddons[cb.dataset.addon];
+          item.classList.remove('included');
+          if (incEl) incEl.hidden = true;
         }
       });
-      // premium deko (radio)
-      const dekoSel = document.querySelector('.calc-addons input[name="calc-deko"]:checked');
-      if (dekoSel && dekoSel.value !== '0') {
-        const lbl = dekoSel.closest('label').textContent.trim();
-        items.push({ key: 'premiumDeko_' + dekoSel.value, label: 'Premium-Dekoration ' + (dekoSel.value === 'basic' ? 'Basic' : 'Premium'), price: parseFloat(dekoSel.dataset.price) });
-      }
+    }
+
+    function getSelectedAddons() {
+      const items = [];
+      document.querySelectorAll('.calc-addons .calc-addon-item').forEach(item => {
+        const cb = item.querySelector('input[type="checkbox"]');
+        if (!cb || !cb.checked) return;
+        const labelEl = cb.closest('label').querySelector('span[data-i18n]');
+        const label = (labelEl ? labelEl.textContent : cb.closest('label').textContent).trim();
+        items.push({ key: cb.dataset.addon, label, included: isAddonIncluded(item) });
+      });
       return items;
     }
 
     function calculate() {
-      const pkg = PACKAGES[pkgKey];
+      const pkgLabel = PACKAGES[pkgKey];
       const children = Math.max(0, parseInt($('#calc-children').value) || 0);
       const extraHours = Math.max(0, parseInt($('#calc-hours').value) || 0);
+      const addons = getSelectedAddons();
+      const includedAddons = addons.filter(a => a.included);
+      const extraAddons = addons.filter(a => !a.included);
 
-      let total = pkg.price;
+      // labels via i18n with sensible German fallback
+      const T = (k, fb) => (window.t ? (window.t(k) || fb) : fb);
+      const lblPkg      = T('calc.summary.pkg',         'Paket');
+      const lblKids     = T('calc.summary.children',    'Anzahl Kinder');
+      const lblHours    = T('calc.summary.extraHours',  'Zusätzliche Stunden');
+      const lblIncluded = T('calc.summary.included',    'Im Paket enthalten');
+      const lblExtras   = T('calc.summary.extras',      'Zusätzlich gewählt');
+      const lblNone     = T('calc.summary.addons.none', 'keine');
 
-      // base
-      $('#r-pkg').textContent = pkg.label;
-      $('#r-base').textContent = fmtCHF(pkg.price);
-
-      // extra children (only if package charges per extra child)
-      let extraChildren = 0;
-      if (pkg.chargesPerChild) {
-        extraChildren = Math.max(0, children - pkg.includedChildren);
+      // ── render in-panel summary ─────────────────────────────────────
+      const summaryEl = $('#r-summary');
+      summaryEl.innerHTML = '';
+      const row = (label, value) => {
+        const r = document.createElement('div');
+        r.className = 'calc-summary-row';
+        r.innerHTML = '<span class="label">' + label + ':</span><span class="value">' + value + '</span>';
+        return r;
+      };
+      summaryEl.appendChild(row(lblPkg, '<strong>' + pkgLabel + '</strong>'));
+      summaryEl.appendChild(row(lblKids, String(children)));
+      if (extraHours > 0) summaryEl.appendChild(row(lblHours, String(extraHours)));
+      if (includedAddons.length > 0) {
+        summaryEl.appendChild(row(lblIncluded, includedAddons.map(a => a.label).join(' · ')));
       }
-      const extraChildrenCost = extraChildren * PER_CHILD_FEE;
-      total += extraChildrenCost;
-      const ecLine = $('#r-extra-children-line');
-      if (extraChildrenCost > 0) {
-        ecLine.style.display = '';
-        $('#r-extra-children-n').textContent = extraChildren;
-        $('#r-extra-children').textContent = fmtCHF(extraChildrenCost);
-      } else {
-        ecLine.style.display = 'none';
+      if (extraAddons.length > 0) {
+        summaryEl.appendChild(row(lblExtras, extraAddons.map(a => a.label).join(' · ')));
+      } else if (includedAddons.length === 0) {
+        summaryEl.appendChild(row(lblExtras, lblNone));
       }
 
-      // extra hours
-      const extraHoursCost = extraHours * PER_HOUR_FEE;
-      total += extraHoursCost;
-      const ehLine = $('#r-extra-hours-line');
-      if (extraHoursCost > 0) {
-        ehLine.style.display = '';
-        $('#r-extra-hours-n').textContent = extraHours;
-        $('#r-extra-hours').textContent = fmtCHF(extraHoursCost);
-      } else {
-        ehLine.style.display = 'none';
-      }
-
-      // add-ons
-      const addons = getAddons();
-      const addonsContainer = $('#r-addons');
-      addonsContainer.innerHTML = '';
-      addons.forEach(a => {
-        total += a.price;
-        const line = document.createElement('div');
-        line.className = 'calc-result-line addon';
-        line.innerHTML = '<span>+ ' + a.label + '</span><span>' + fmtCHF(a.price) + '</span>';
-        addonsContainer.appendChild(line);
-      });
-
-      // total
-      $('#r-total').textContent = fmtCHF(total);
-
-      // sync to form summary
-      syncSummary({ pkg, children, extraHours, extraChildren, addons, total });
-    }
-
-    function syncSummary({ pkg, children, extraHours, extraChildren, addons, total }) {
+      // ── sync to form summary textarea ──────────────────────────────
       const lines = [];
-      lines.push('Paket: ' + pkg.label + ' (' + fmtCHF(pkg.price) + ')');
-      lines.push('Anzahl Kinder: ' + children);
-      if (extraChildren > 0) lines.push('  davon zusätzlich: ' + extraChildren + ' × CHF 25');
-      lines.push('Zusätzliche Stunden: ' + extraHours + (extraHours > 0 ? ' × CHF 120' : ''));
-      if (addons.length > 0) {
-        lines.push('Add-ons:');
-        addons.forEach(a => lines.push('  • ' + a.label + ' — ' + fmtCHF(a.price)));
-      } else {
-        lines.push('Add-ons: keine');
+      lines.push(lblPkg + ': ' + pkgLabel);
+      lines.push(lblKids + ': ' + children);
+      if (extraHours > 0) lines.push(lblHours + ': ' + extraHours);
+      if (includedAddons.length > 0) {
+        lines.push(lblIncluded + ':');
+        includedAddons.forEach(a => lines.push('  • ' + a.label));
       }
-      lines.push('');
-      lines.push('Geschätzter Gesamtpreis: ' + fmtCHF(total));
-      lines.push('(Unverbindlich – finales Angebot nach persönlicher Rücksprache.)');
+      if (extraAddons.length > 0) {
+        lines.push(lblExtras + ':');
+        extraAddons.forEach(a => lines.push('  • ' + a.label));
+      }
       $('#f-summary').value = lines.join('\n');
 
-      // also pre-fill form fields if user hasn't filled them yet
       const numKids = $('#f-num-kids');
       if (!numKids.value) numKids.placeholder = String(children);
-      const themeInp = $('#f-theme');
-      // (leave other fields untouched)
     }
 
     function selectPackage(key) {
@@ -1537,6 +1740,7 @@
       });
       // adjust default children to match the package's included
       $('#calc-children').value = DEFAULT_CHILDREN[key];
+      applyAddonInclusionStates();
       calculate();
     }
 
@@ -1553,9 +1757,20 @@
 
     // wire up inputs
     document.querySelectorAll('#calc-children, #calc-hours').forEach(el => el.addEventListener('input', calculate));
-    document.querySelectorAll('.calc-addons input').forEach(el => el.addEventListener('change', calculate));
 
-    // initial calc
+    // checkbox changes: track user intent only for non-included items
+    document.querySelectorAll('.calc-addons input[type="checkbox"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const item = cb.closest('.calc-addon-item');
+        if (item && !isAddonIncluded(item)) {
+          userAddons[cb.dataset.addon] = cb.checked;
+        }
+        calculate();
+      });
+    });
+
+    // initial setup
+    applyAddonInclusionStates();
     calculate();
 
     /* ───────── Form submission ───────── */

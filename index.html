@@ -79,12 +79,26 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.25rem 5vw;
-      transition: background 0.4s ease, box-shadow 0.4s ease;
+      transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+      /* default: subtle dark gradient so nav stays readable over any hero image */
+      background: linear-gradient(to bottom, rgba(28,28,40,0.65) 0%, rgba(28,28,40,0.25) 70%, rgba(28,28,40,0) 100%);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
 
     nav.scrolled {
       background: rgba(28, 28, 40, 0.97);
       box-shadow: 0 1px 0 rgba(201, 169, 110, 0.2);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    /* stronger contrast for nav text on initial state */
+    .nav-logo, .nav-links a {
+      text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    }
+    nav.scrolled .nav-logo, nav.scrolled .nav-links a {
+      text-shadow: none;
     }
 
     .nav-logo {
@@ -113,6 +127,33 @@
     .nav-links a:hover { color: var(--gold); }
     .nav-links .nav-highlight a { color: var(--gold); border: 1px solid rgba(201,169,110,0.4); padding: 0.4rem 0.9rem; border-radius: 1px; transition: background 0.25s, color 0.25s; }
     .nav-links .nav-highlight a:hover { background: var(--gold); color: var(--charcoal); }
+
+    /* Language switcher */
+    .nav-links { align-items: center; }
+    .lang-switcher {
+      display: inline-flex;
+      gap: 0.2rem;
+      align-items: center;
+      padding: 0.2rem 0.4rem;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 100px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.5rem;
+      border-radius: 100px;
+      color: rgba(255,255,255,0.6);
+      transition: all 0.2s ease;
+    }
+    .lang-btn:hover { color: var(--white); }
+    .lang-btn.active { background: var(--gold); color: var(--charcoal); }
 
     /* ─── Hero ──────────────────────────────────────────────────────── */
     #hero {
@@ -407,7 +448,7 @@
 
     .gallery-duo {
       display: grid;
-      grid-template-columns: 3fr 2fr;
+      grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
 
@@ -422,7 +463,9 @@
     .gallery-item .img-placeholder {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
+      background: #1c1c28;
       transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       display: block;
     }
@@ -437,7 +480,7 @@
     }
 
     .gallery-item:first-child { aspect-ratio: 4 / 3; }
-    .gallery-item:last-child  { aspect-ratio: 3 / 4; }
+    .gallery-item:last-child  { aspect-ratio: 4 / 3; }
 
     .gallery-item:first-child .img-placeholder {
       background: linear-gradient(160deg, #2a2a3a 0%, #1c1c28 100%);
@@ -696,17 +739,58 @@
       justify-content: center;
     }
 
-    .geburtstag-note {
-      margin-top: 1.75rem;
+    .geburtstag-details-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 4rem auto 0;
+      padding: 2.5rem 2rem;
+      max-width: 760px;
+      background: linear-gradient(135deg, rgba(201,169,110,0.10) 0%, rgba(201,169,110,0.04) 100%);
+      border: 1px solid rgba(201,169,110,0.35);
+      border-radius: 4px;
       text-align: center;
+    }
+    .geburtstag-details-cta .lead {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 620px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
     }
+    .geburtstag-details-cta .lead strong {
+      color: var(--charcoal);
+      font-weight: 600;
+      font-style: normal;
+    }
+    .geburtstag-details-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 2.5rem;
+      background: var(--charcoal);
+      color: var(--gold);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: 1px;
+      border: 1px solid var(--charcoal);
+      transition: all 0.3s ease;
+    }
+    .geburtstag-details-link:hover {
+      background: var(--gold);
+      color: var(--charcoal);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(28,28,40,0.18);
+    }
+    .geburtstag-details-link::after {
+      content: '→';
+      transition: transform 0.3s ease;
+    }
+    .geburtstag-details-link:hover::after { transform: translateX(4px); }
 
     /* ─── Aktueller Anlass ──────────────────────────────────────────── */
     #anlass {
@@ -1028,23 +1112,31 @@
   <nav id="nav">
     <a class="nav-logo" href="#">VB</a>
     <ul class="nav-links">
-      <li><a href="#ueber-mich">Über mich</a></li>
-      <li><a href="#referenzen">Referenzen</a></li>
-      <li><a href="#kindergeburtstag">Kindergeburtstag</a></li>
-      <li><a href="#anlass">Anlass</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-      <li><a href="https://i-bobusky.github.io/tierwelt/" target="_blank" rel="noopener" class="nav-highlight">Tierwelt →</a></li>
+      <li><a href="#ueber-mich" data-i18n="nav.about">Über mich</a></li>
+      <li><a href="#referenzen" data-i18n="nav.refs">Referenzen</a></li>
+      <li><a href="#kindergeburtstag" data-i18n="nav.kg">Kindergeburtstag</a></li>
+      <li><a href="#anlass" data-i18n="nav.event">Anlass</a></li>
+      <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+      <li><a href="https://i-bobusky.github.io/tierwelt/" target="_blank" rel="noopener" class="nav-highlight" data-i18n="nav.tierwelt">Tierwelt →</a></li>
+      <li>
+        <div class="lang-switcher" role="group" aria-label="Sprache wählen">
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="cs">CS</button>
+          <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        </div>
+      </li>
     </ul>
   </nav>
 
   <!-- ─── Hero ───────────────────────────────────────────────────── -->
   <section id="hero">
     <div class="hero-text-col">
-      <p class="hero-eyebrow">Eventorganisation · Zentralschweiz</p>
+      <p class="hero-eyebrow" data-i18n="home.hero.eyebrow">Eventorganisation · Zentralschweiz</p>
       <h1 class="hero-name serif">Veronika<br /><em>Bobuska</em></h1>
       <div class="hero-rule"></div>
-      <p class="hero-tagline">Eventorganisation mit Herz und Präzision</p>
-      <a class="hero-cta" href="#ueber-mich">Mehr erfahren</a>
+      <p class="hero-tagline" data-i18n="home.hero.tagline">Eventorganisation mit Herz und Präzision</p>
+      <a class="hero-cta" href="#ueber-mich" data-i18n="home.hero.cta">Mehr erfahren</a>
     </div>
 
     <div class="hero-img-col">
@@ -1053,7 +1145,7 @@
 
     <div class="hero-deco-line">
       <span></span>
-      <p>Familien · Kinder · Erlebnisse</p>
+      <p data-i18n="home.hero.deco">Familien · Kinder · Erlebnisse</p>
     </div>
   </section>
 
@@ -1061,30 +1153,29 @@
   <section id="ueber-mich">
     <div class="ueber-grid">
       <div class="ueber-left">
-        <span class="section-label reveal">Über mich</span>
-        <h2 class="reveal reveal-delay-1">Mit Leidenschaft<br /><em>für besondere Momente</em></h2>
-        <p class="reveal reveal-delay-2">
-          Ich lebe mit meiner Familie in Hünenberg und organisiere seit mehreren Jahren mit viel Herz und
-          Organisationstalent Familien- und Kinderanlässe. Mein Ziel ist es, Kindern schöne und kreative
-          Erlebnisse zu ermöglichen und gleichzeitig Familien aus der Umgebung zusammenzubringen.
+        <span class="section-label reveal" data-i18n="home.about.label">Über mich</span>
+        <h2 class="reveal reveal-delay-1" data-i18n-html="home.about.h2.html">Mit Leidenschaft<br /><em>für besondere Momente</em></h2>
+        <p class="reveal reveal-delay-2" data-i18n-html="home.about.p1.html">
+          Ich lebe mit meiner Familie in <strong>Hünenberg</strong> und organisiere seit mehreren Jahren mit viel Herz und
+          Organisationstalent <strong>Familien- und Kinderanlässe</strong>. Mein Ziel: Kindern schöne und kreative
+          Erlebnisse ermöglichen und gleichzeitig Familien aus der Umgebung zusammenbringen.
         </p>
-        <p class="reveal reveal-delay-2">
+        <p class="reveal reveal-delay-2" data-i18n-html="home.about.p2.html">
           Ich liebe es, Anlässe zu gestalten, bei denen Kinder spielen, entdecken und lachen können –
-          und Eltern Raum für Begegnung und Austausch haben. Mit dem Familien Spielnachmittag
-          „Tierwelt" möchte ich genau so einen Ort schaffen – für Familien aus Hünenberg, Cham und Umgebung.
+          und Eltern Raum für Begegnung und Austausch haben.
         </p>
         <div class="values-row reveal reveal-delay-3">
           <div class="value-item">
             <div class="value-dot"></div>
-            <span>Mehrere Jahre Erfahrung</span>
+            <span data-i18n="home.about.value1">Mehrere Jahre Erfahrung</span>
           </div>
           <div class="value-item">
             <div class="value-dot"></div>
-            <span>Familien- &amp; Kinderanlässe</span>
+            <span data-i18n="home.about.value2">Familien- &amp; Kinderanlässe</span>
           </div>
           <div class="value-item">
             <div class="value-dot"></div>
-            <span>Region Zentralschweiz</span>
+            <span data-i18n="home.about.value3">Region Zentralschweiz</span>
           </div>
         </div>
       </div>
@@ -1094,7 +1185,7 @@
           <img class="portrait-img" src="images/veronika.jpg" alt="Veronika Bobuska" />
           <div class="portrait-accent"></div>
         </div>
-        <p class="portrait-caption">Veronika Bobuska · Hünenberg</p>
+        <p class="portrait-caption" data-i18n="home.about.caption">Veronika Bobuska · Hünenberg</p>
       </div>
     </div>
   </section>
@@ -1103,10 +1194,10 @@
   <section id="referenzen">
     <div class="referenzen-header">
       <div>
-        <span class="section-label reveal">Referenzen &amp; Eindrücke</span>
-        <h2 class="reveal reveal-delay-1">Anlässe, die<br /><em>in Erinnerung bleiben</em></h2>
+        <span class="section-label reveal" data-i18n="home.refs.label">Referenzen &amp; Eindrücke</span>
+        <h2 class="reveal reveal-delay-1" data-i18n-html="home.refs.h2.html">Anlässe, die<br /><em>in Erinnerung bleiben</em></h2>
       </div>
-      <p class="reveal reveal-delay-2">
+      <p class="reveal reveal-delay-2" data-i18n="home.refs.p">
         Jeder Anlass ist eine Einladung zum Staunen, Lachen und Entdecken.
         Mit Liebe zum Detail und einem Gespür für unvergessliche Augenblicke
         entstehen Erlebnisse, über die Kinder noch lange sprechen.
@@ -1117,7 +1208,7 @@
       <div class="gallery-item reveal">
         <img src="images/halloween.JPG" alt="Halloween-Anlass 2024" />
         <div class="gallery-overlay">
-          <p class="gallery-caption">Halloween-Anlass</p>
+          <p class="gallery-caption" data-i18n="home.refs.halloween">Halloween-Anlass</p>
           <p class="gallery-caption-sub">2024</p>
         </div>
       </div>
@@ -1125,7 +1216,7 @@
       <div class="gallery-item reveal reveal-delay-2">
         <img src="images/ostern.JPG" alt="Oster-Anlass 2025" />
         <div class="gallery-overlay">
-          <p class="gallery-caption">Oster-Anlass</p>
+          <p class="gallery-caption" data-i18n="home.refs.ostern">Oster-Anlass</p>
           <p class="gallery-caption-sub">2025</p>
         </div>
       </div>
@@ -1136,13 +1227,13 @@
   <section id="kindergeburtstag">
     <div class="geburtstag-header">
       <div>
-        <span class="section-label reveal">Kindergeburtstag</span>
-        <h2 class="reveal reveal-delay-1">Kindergeburtstag<br /><em>ohne Stress</em></h2>
-        <p class="reveal reveal-delay-1" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--text-muted); margin-top: 0.5rem;">
+        <span class="section-label reveal" data-i18n="home.kg.label">Kindergeburtstag</span>
+        <h2 class="reveal reveal-delay-1" data-i18n-html="home.kg.h2.html">Kindergeburtstag<br /><em>ohne Stress</em></h2>
+        <p class="reveal reveal-delay-1" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; color: var(--text-muted); margin-top: 0.5rem;" data-i18n="home.kg.sub">
           Liebevoll geplant. Kreativ begleitet. Einfach gefeiert.
         </p>
       </div>
-      <p class="reveal reveal-delay-2">
+      <p class="reveal reveal-delay-2" data-i18n="home.kg.p">
         Wir gestalten kreative, altersgerechte Kindergeburtstage nach dem Baukasten-Prinzip:
         Sie wählen ein Grundpaket und ergänzen genau die Extras, die zu Ihrer Familie und
         Ihrem Kind passen – ob zu Hause, im Garten oder an Ihrer Wunschlocation.
@@ -1152,106 +1243,99 @@
     <div class="geburtstag-grid">
       <!-- Silver -->
       <div class="geburtstag-card reveal">
-        <p class="geburtstag-tier">Silver</p>
-        <h3>Party Plan<br /><em>Silver</em></h3>
-        <p class="geburtstag-duration">Beratung &amp; Konzept · planen Sie selbst</p>
+        <p class="geburtstag-tier" data-i18n="pkg.silver.tier">Silver</p>
+        <h3 data-i18n-html="pkg.silver.title.html">Party Plan<br /><em>Silver</em></h3>
+        <p class="geburtstag-duration" data-i18n="pkg.silver.duration">Beratung &amp; Konzept · planen Sie selbst</p>
         <div class="geburtstag-rule"></div>
         <ul class="geburtstag-features">
-          <li>Persönliches Beratungsgespräch</li>
-          <li>Geburtstagskonzept &amp; Ablaufplan</li>
-          <li>Spiel-, Deko- und Materialideen</li>
-          <li>Einkaufs- und Materialliste</li>
+          <li data-i18n="pkg.silver.feat1">Persönliches Beratungsgespräch</li>
+          <li data-i18n="pkg.silver.feat2">Geburtstagskonzept &amp; Ablaufplan</li>
+          <li data-i18n="pkg.silver.feat3">Spiel-, Deko- und Materialideen</li>
+          <li data-i18n="pkg.silver.feat4">Einkaufs- und Materialliste</li>
         </ul>
-        <div class="geburtstag-price">
-          <span class="geburtstag-price-prefix">ab</span>
-          <span class="geburtstag-price-value">CHF 220</span>
-        </div>
       </div>
 
       <!-- Gold (featured) -->
       <div class="geburtstag-card featured reveal reveal-delay-1">
-        <p class="geburtstag-tier">Gold</p>
-        <h3>Setup &amp; Play<br /><em>Gold</em></h3>
-        <p class="geburtstag-duration">Bis zu 3 Stunden · Betreuung vor Ort</p>
+        <p class="geburtstag-tier" data-i18n="pkg.gold.tier">Gold</p>
+        <h3 data-i18n-html="pkg.gold.title.html">Setup &amp; Play<br /><em>Gold</em></h3>
+        <p class="geburtstag-duration" data-i18n="pkg.gold.duration">Bis zu 3 Stunden · Betreuung vor Ort</p>
         <div class="geburtstag-rule"></div>
         <ul class="geburtstag-features">
-          <li>Alles aus Silver inklusive</li>
-          <li>Basis-Dekoration des Partybereichs</li>
-          <li>Geführte Spiele &amp; Mitmachaktionen</li>
-          <li>1 Sensorik- oder Spielstation</li>
-          <li>Persönliche Betreuung vor Ort</li>
+          <li data-i18n="pkg.gold.feat1">Alles aus Silver inklusive</li>
+          <li data-i18n="pkg.gold.feat2">Basis-Dekoration des Partybereichs</li>
+          <li data-i18n="pkg.gold.feat3">Geführte Spiele &amp; Mitmachaktionen</li>
+          <li data-i18n="pkg.gold.feat4">1 Sensorik- oder Spielstation</li>
+          <li data-i18n="pkg.gold.feat5">Persönliche Betreuung vor Ort</li>
         </ul>
-        <div class="geburtstag-price">
-          <span class="geburtstag-price-prefix">ab</span>
-          <span class="geburtstag-price-value">CHF 690</span>
-        </div>
       </div>
 
       <!-- Diamond -->
       <div class="geburtstag-card reveal reveal-delay-2">
-        <p class="geburtstag-tier">Diamond</p>
-        <h3>Full Party Care<br /><em>Diamond</em></h3>
-        <p class="geburtstag-duration">Bis zu 4 Stunden · alles aus einer Hand</p>
+        <p class="geburtstag-tier" data-i18n="pkg.diamond.tier">Diamond</p>
+        <h3 data-i18n-html="pkg.diamond.title.html">Full Party Care<br /><em>Diamond</em></h3>
+        <p class="geburtstag-duration" data-i18n="pkg.diamond.duration">Bis zu 5 Stunden · alles aus einer Hand</p>
         <div class="geburtstag-rule"></div>
         <ul class="geburtstag-features">
-          <li>Alles aus Gold inklusive</li>
-          <li>Voll ausgearbeitetes Wunschthema</li>
-          <li>Erweiterte Dekoration</li>
-          <li>Bastelstation &amp; 2–3 Aktivitätsstationen</li>
-          <li>Food &amp; Drink Handling, Kuchenkoordination</li>
-          <li>Basis-Aufräumen nach der Feier</li>
+          <li data-i18n="pkg.diamond.feat1">Alles aus Gold inklusive</li>
+          <li data-i18n="pkg.diamond.feat2">Voll ausgearbeitetes Wunschthema</li>
+          <li data-i18n="pkg.diamond.feat3">Erweiterte Dekoration</li>
+          <li data-i18n="pkg.diamond.feat4">Bastelstation &amp; 2–3 Aktivitätsstationen</li>
+          <li data-i18n="pkg.diamond.feat5">Food &amp; Drink Handling, Kuchenkoordination</li>
+          <li data-i18n="pkg.diamond.feat6">Basis-Aufräumen nach der Feier</li>
         </ul>
-        <div class="geburtstag-price">
-          <span class="geburtstag-price-prefix">ab</span>
-          <span class="geburtstag-price-value">CHF 1'290</span>
-        </div>
       </div>
     </div>
 
     <div class="geburtstag-cta-row reveal reveal-delay-3">
-      <a class="btn btn-gold-light" href="kindergeburtstag.html#calculator">Preis berechnen →</a>
-      <a class="btn btn-outline-dark" href="kindergeburtstag.html#anfrage">Unverbindlich anfragen →</a>
+      <a class="btn btn-gold-light" href="kindergeburtstag.html#calculator" data-i18n="home.kg.cta.calc">Wunschfeier konfigurieren →</a>
+      <a class="btn btn-outline-dark" href="kindergeburtstag.html#anfrage" data-i18n="home.kg.cta.contact">Unverbindlich anfragen →</a>
     </div>
 
-    <p class="geburtstag-note reveal reveal-delay-3">
-      <a href="kindergeburtstag.html" style="color: var(--gold); border-bottom: 1px solid rgba(201,169,110,0.4);">Alle Pakete, Add-ons und Details ansehen</a>
-    </p>
+    <div class="geburtstag-details-cta reveal reveal-delay-3">
+      <p class="lead" data-i18n-html="home.kg.detailsLead.html">
+        Möchten Sie <strong>alle Pakete, Add-ons und Details</strong> in Ruhe ansehen?
+      </p>
+      <a class="geburtstag-details-link" href="kindergeburtstag.html" data-i18n="home.kg.cta.details">
+        Alle Pakete &amp; Details ansehen
+      </a>
+    </div>
   </section>
 
   <!-- ─── Aktueller Anlass ───────────────────────────────────────── -->
   <section id="anlass">
     <div class="anlass-inner">
-      <span class="section-label reveal">Aktueller Anlass</span>
-      <h2 class="reveal reveal-delay-1">Tierwelt<br /><em>Familien Spielnachmittag</em></h2>
+      <span class="section-label reveal" data-i18n="home.event.label">Aktueller Anlass</span>
+      <h2 class="reveal reveal-delay-1" data-i18n-html="home.event.h2.html">Tierwelt<br /><em>Familien Spielnachmittag</em></h2>
 
       <div class="anlass-meta reveal reveal-delay-2">
         <div class="anlass-meta-item">
           <span class="dot"></span>
-          <span>31. Mai 2026</span>
+          <span data-i18n="home.event.date">31. Mai 2026</span>
         </div>
         <div class="anlass-meta-item">
           <span class="dot"></span>
-          <span>14:00 – 17:00 Uhr</span>
+          <span data-i18n="home.event.time">14:00 – 17:00 Uhr</span>
         </div>
         <div class="anlass-meta-item">
           <span class="dot"></span>
-          <span>Festwiese Maihölzli, Hünenberg</span>
+          <span data-i18n="home.event.place">Festwiese Maihölzli, Hünenberg</span>
         </div>
       </div>
 
       <div class="anlass-rule reveal reveal-delay-2"></div>
 
-      <p class="anlass-teaser reveal reveal-delay-3">
+      <p class="anlass-teaser reveal reveal-delay-3" data-i18n="home.event.teaser">
         Ein Nachmittag voller Abenteuer, Spielstationen und tierischer Begegnungen –
         gemeinsam mit dem König der Tiere auf eine Reise durch die Tierwelt,
         mit einer kleinen Belohnung am Ende für alle tapferen Entdecker.
       </p>
 
       <div class="btn-row reveal reveal-delay-4">
-        <a class="btn btn-gold" href="https://i-bobusky.github.io/tierwelt/" target="_blank" rel="noopener">
+        <a class="btn btn-gold" href="https://i-bobusky.github.io/tierwelt/" target="_blank" rel="noopener" data-i18n="home.event.cta1">
           Mehr erfahren →
         </a>
-        <a class="btn btn-outline" href="https://docs.google.com/forms/d/e/1FAIpQLSf3Y4YO3nBZqt5NnRoRAzHLiLCD6EKWa1GRbqSk9khlZH9h7Q/viewform" target="_blank" rel="noopener">
+        <a class="btn btn-outline" href="https://docs.google.com/forms/d/e/1FAIpQLSf3Y4YO3nBZqt5NnRoRAzHLiLCD6EKWa1GRbqSk9khlZH9h7Q/viewform" target="_blank" rel="noopener" data-i18n="home.event.cta2">
           Jetzt anmelden →
         </a>
       </div>
@@ -1263,7 +1347,7 @@
     <div class="footer-grid">
       <div>
         <p class="footer-name">Veronika Bobuska</p>
-        <p class="footer-tagline">Eventorganisation · Zentralschweiz</p>
+        <p class="footer-tagline" data-i18n="footer.tagline">Eventorganisation · Zentralschweiz</p>
 
         <div class="footer-contact-items">
           <a class="footer-contact-item" href="mailto:veronika.bobuska@gmail.com">
@@ -1285,12 +1369,13 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Veronika Bobuska · Hünenberg, Schweiz</p>
-      <p class="footer-made">Eventorganisation mit Herz und Präzision</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Veronika Bobuska · Hünenberg, Schweiz</p>
+      <p class="footer-made" data-i18n="footer.made">Eventorganisation mit Herz und Präzision</p>
     </div>
   </footer>
 
   <!-- ─── Scripts ────────────────────────────────────────────────── -->
+  <script src="assets/i18n.js"></script>
   <script>
     // Sticky nav
     const nav = document.getElementById('nav');

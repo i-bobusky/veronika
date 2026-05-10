@@ -391,13 +391,16 @@
     /* ─── Benefits ──────────────────────────────────────────────────── */
     #benefits { background: var(--white); }
     .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
     .benefit-item {
+      flex: 0 1 200px;
+      max-width: 220px;
       text-align: center;
       padding: 1.5rem 1rem;
     }
@@ -610,22 +613,177 @@
       background: var(--white);
       padding: 6rem 8vw;
     }
-    .cf-grid {
+
+    /* 3-step indicator */
+    .cf-steps {
       display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 3rem;
-      max-width: 1200px;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 1rem;
+      max-width: 880px;
+      margin: 0 auto 4rem;
+    }
+    .cf-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.85rem;
+    }
+    .cf-step-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--gold);
+      color: var(--gold-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .cf-step.active .cf-step-circle {
+      background: var(--gold);
+      color: var(--charcoal);
+      box-shadow: 0 8px 24px rgba(201,169,110,0.35);
+    }
+    .cf-step-info { max-width: 200px; }
+    .cf-step-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+    .cf-step-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .cf-step-arrow {
+      color: var(--gold);
+      opacity: 0.5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 2.5rem;
+    }
+
+    /* Stacked layout */
+    .cf-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 880px;
       margin: 0 auto;
-      align-items: start;
     }
     .calc-panel, .form-panel {
       background: var(--cream);
       border: 1px solid var(--line);
       border-radius: 4px;
-      padding: 2.5rem;
+      padding: 2.75rem 2.5rem;
       box-shadow: 0 18px 40px rgba(28,28,40,0.05);
     }
-    .calc-panel { position: sticky; top: 6rem; }
+
+    /* Visual flow connector between configurator and form */
+    .cf-flow-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+    .cf-flow-arrow::before {
+      content: '';
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    }
+    .cf-flow-arrow-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 18px rgba(201,169,110,0.3);
+      animation: pulseDown 2.4s ease-in-out infinite;
+    }
+    @keyframes pulseDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+    .cf-flow-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      max-width: 520px;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .cf-flow-text strong {
+      color: var(--gold-deep);
+      font-style: normal;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Form pre-filled summary callout (at the top of the form) */
+    .form-config-callout {
+      background: linear-gradient(135deg, rgba(201,169,110,0.10) 0%, rgba(201,169,110,0.04) 100%);
+      border: 1px solid rgba(201,169,110,0.35);
+      border-radius: 4px;
+      padding: 1.5rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-config-callout .callout-head {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .form-config-callout .callout-icon {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .form-config-callout .callout-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+    .form-config-callout .callout-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 0.85rem;
+    }
 
     .calc-panel h3, .form-panel h3 {
       font-size: 1.8rem;
@@ -700,6 +858,95 @@
     .form-panel textarea:focus {
       outline: none;
       border-color: var(--gold);
+    }
+
+    /* Included-features card */
+    .calc-included-card {
+      background: linear-gradient(160deg, rgba(31,61,46,0.07) 0%, rgba(31,61,46,0.03) 100%);
+      border: 1px solid rgba(31,61,46,0.18);
+      border-radius: 4px;
+      padding: 1.1rem 1.4rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .calc-included-title {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.95rem;
+      flex-wrap: wrap;
+    }
+    .calc-included-pkg-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.85rem;
+      background: var(--forest);
+      color: var(--gold-lt);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 100px;
+      letter-spacing: 0.18em;
+    }
+    .calc-included-heading-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--forest);
+      font-weight: 600;
+    }
+    .calc-included-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .calc-included-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+    .calc-included-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--sage);
+      box-shadow: 0 0 0 3px rgba(138,158,140,0.18);
+    }
+
+    /* "Sie können ergänzen" heading */
+    .calc-canadd-label {
+      display: flex !important;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      color: var(--gold-deep) !important;
+      font-weight: 600 !important;
+      margin-bottom: 0.6rem !important;
+    }
+    .canadd-plus {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--charcoal);
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      letter-spacing: 0;
     }
 
     .calc-addons {
@@ -1009,6 +1256,18 @@
       #calculator-form { padding: 4.5rem 6vw; }
 
       .pkg-options { grid-template-columns: 1fr; }
+
+      /* steps indicator: stack vertically on mobile */
+      .cf-steps {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+      .cf-step { flex-direction: row; gap: 1rem; text-align: left; align-items: flex-start; }
+      .cf-step-info { max-width: none; flex: 1; }
+      .cf-step-circle { width: 50px; height: 50px; font-size: 1.3rem; flex-shrink: 0; }
+      .cf-step-arrow { transform: rotate(90deg); padding: 0; }
+      .cf-step-arrow svg { width: 24px; height: 12px; }
     }
 
     @media (max-width: 560px) {
@@ -1424,6 +1683,37 @@
       <p data-i18n="cf.p">Wählen Sie Paket und Extras – Veronika meldet sich persönlich mit einem passenden Angebot.</p>
     </div>
 
+    <!-- ── 3-step flow indicator ── -->
+    <div class="cf-steps" aria-hidden="true">
+      <div class="cf-step">
+        <div class="cf-step-circle">1</div>
+        <div class="cf-step-info">
+          <p class="cf-step-title" data-i18n="cf.step1.title">Paket wählen</p>
+          <p class="cf-step-desc" data-i18n="cf.step1.desc">Silver, Gold oder Diamond</p>
+        </div>
+      </div>
+      <div class="cf-step-arrow">
+        <svg width="32" height="14" viewBox="0 0 32 14" fill="none"><path d="M0 7h28M22 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cf-step">
+        <div class="cf-step-circle">2</div>
+        <div class="cf-step-info">
+          <p class="cf-step-title" data-i18n="cf.step2.title">Extras hinzufügen</p>
+          <p class="cf-step-desc" data-i18n="cf.step2.desc">Kinder, Stunden, Add-ons</p>
+        </div>
+      </div>
+      <div class="cf-step-arrow">
+        <svg width="32" height="14" viewBox="0 0 32 14" fill="none"><path d="M0 7h28M22 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cf-step">
+        <div class="cf-step-circle">3</div>
+        <div class="cf-step-info">
+          <p class="cf-step-title" data-i18n="cf.step3.title">Anfrage senden</p>
+          <p class="cf-step-desc" data-i18n="cf.step3.desc">Wir melden uns persönlich</p>
+        </div>
+      </div>
+    </div>
+
     <div class="cf-grid">
 
       <!-- ===== Configurator panel ===== -->
@@ -1445,6 +1735,15 @@
           </div>
         </div>
 
+        <!-- Included-features card: refreshes whenever package changes -->
+        <div class="calc-included-card" id="calc-included-card" aria-live="polite">
+          <p class="calc-included-title">
+            <span class="calc-included-pkg-chip" id="r-included-pkg">Gold</span>
+            <span class="calc-included-heading-text" data-i18n="calc.included.heading">Im Paket enthalten</span>
+          </p>
+          <ul class="calc-included-list" id="r-included-list"></ul>
+        </div>
+
         <div class="calc-group">
           <div class="calc-num-row">
             <div class="calc-num">
@@ -1459,7 +1758,10 @@
         </div>
 
         <div class="calc-group">
-          <label data-i18n="calc.label.addons">Add-ons</label>
+          <label class="calc-canadd-label">
+            <span class="canadd-plus">+</span>
+            <span data-i18n="calc.canadd.heading">Sie können zusätzlich wählen</span>
+          </label>
           <div class="calc-addons">
             <div class="calc-addon-item" data-included-in="gold,diamond"><label><input type="checkbox" data-addon="sensorik"> <span data-i18n="calc.addon.sensorik">Sensorik-Spielstation</span></label><span class="calc-addon-included" data-i18n="calc.included">Inklusive</span></div>
             <div class="calc-addon-item" data-included-in="diamond"><label><input type="checkbox" data-addon="bastel"> <span data-i18n="calc.addon.bastel">Kreative Bastelstation</span></label><span class="calc-addon-included" data-i18n="calc.included">Inklusive</span></div>
@@ -1489,6 +1791,17 @@
         </div>
       </aside>
 
+      <!-- Flow connector: shows that the configuration carries into the form below -->
+      <div class="cf-flow-arrow" aria-hidden="true">
+        <div class="cf-flow-arrow-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </div>
+        <p class="cf-flow-text">
+          <strong data-i18n="cf.flow.label">Schritt 3</strong>
+          <span data-i18n="cf.flow.text">Ihre Auswahl wird automatisch in die Anfrage unten übernommen.</span>
+        </p>
+      </div>
+
       <!-- ===== Form panel ===== -->
       <div class="form-panel" id="anfrage">
         <h3 data-i18n-html="form.title.html">Unverbindliche<em> Anfrage</em></h3>
@@ -1515,6 +1828,16 @@
 
           <!-- Honeypot anti-spam (hidden field) -->
           <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" />
+
+          <!-- Selection callout: configuration is automatically populated here -->
+          <div class="form-config-callout">
+            <div class="callout-head">
+              <span class="callout-icon">✓</span>
+              <span class="callout-title" data-i18n="form.callout.title">Ihre Auswahl wurde übernommen</span>
+            </div>
+            <p class="callout-desc" data-i18n="form.callout.desc">Aus dem Konfigurator oben automatisch eingetragen — Sie können den Inhalt unten prüfen und ergänzen.</p>
+            <textarea id="f-summary" name="calculator_summary" readonly rows="6" class="form-summary"></textarea>
+          </div>
 
           <div class="form-row">
             <div class="form-field">
@@ -1607,11 +1930,6 @@
           <div class="form-field">
             <label for="f-extras" data-i18n="form.extras">Soll Veronika bei Location, Essen, Kuchen oder Einladungen unterstützen?</label>
             <textarea id="f-extras" name="extras_help" rows="2"></textarea>
-          </div>
-
-          <div class="form-field">
-            <label for="f-summary" data-i18n="form.summary">Ihre Auswahl aus dem Preisrechner</label>
-            <textarea id="f-summary" name="calculator_summary" readonly rows="6" class="form-summary"></textarea>
           </div>
 
           <div class="form-field">
@@ -1728,6 +2046,40 @@
     const PACKAGES = { silver: 'Silver', gold: 'Gold', diamond: 'Diamond' };
     const DEFAULT_CHILDREN = { silver: 12, gold: 10, diamond: 12 };
 
+    // What's included in each package — list of i18n keys, rendered as a list
+    const INCLUDED_FEATURES = {
+      silver: [
+        'compare.row.consult',
+        'compare.row.concept',
+        'compare.row.timeline',
+        'compare.row.activities',
+        'compare.row.shopping',
+        'compare.row.deco',
+        'compare.row.recommendations',
+        'compare.row.kids.silver',
+        'compare.row.time.silver',
+      ],
+      gold: [
+        'pkg.gold.feat1',          // "Alles aus Silver inklusive"
+        'compare.row.onsite',
+        'compare.row.basicdeco',
+        'compare.row.guidedgames',
+        'pkg.gold.feat4',          // "1 Sensorik- oder Spielstation"
+        'compare.row.kids.gold',
+        'compare.row.time.gold',
+      ],
+      diamond: [
+        'pkg.diamond.feat1',       // "Alles aus Gold inklusive"
+        'pkg.diamond.feat2',       // "Voll ausgearbeitetes Wunschthema"
+        'pkg.diamond.feat3',       // "Erweiterte Dekoration"
+        'pkg.diamond.feat4',       // "Bastelstation & 2–3 Aktivitätsstationen"
+        'pkg.diamond.feat5',       // "Food & Drink Handling, Kuchenkoordination"
+        'pkg.diamond.feat6',       // "Basis-Aufräumen nach der Feier"
+        'compare.row.kids.diamond',
+        'compare.row.time.diamond',
+      ],
+    };
+
     let pkgKey = 'gold';
     // remember user's manual add-on selections so they survive package switches
     const userAddons = {};
@@ -1739,33 +2091,48 @@
       return includedIn.includes(pkgKey);
     }
 
+    /* Show the chosen package's contents, and hide any add-on that's already
+       part of that package (so it isn't shown twice). */
     function applyAddonInclusionStates() {
       document.querySelectorAll('.calc-addons .calc-addon-item').forEach(item => {
         const cb = item.querySelector('input[type="checkbox"]');
         if (!cb) return;
-        const incEl = item.querySelector('.calc-addon-included');
         if (isAddonIncluded(item)) {
-          cb.checked = true;
-          cb.disabled = true;
-          item.classList.add('included');
-          if (incEl) incEl.hidden = false;
+          // hide; the feature is already shown in the "included" card
+          item.hidden = true;
+          cb.checked = false;
+          cb.disabled = false;
         } else {
+          item.hidden = false;
           cb.disabled = false;
           cb.checked = !!userAddons[cb.dataset.addon];
-          item.classList.remove('included');
-          if (incEl) incEl.hidden = true;
         }
       });
+    }
+
+    function renderIncludedFeatures() {
+      const list = $('#r-included-list');
+      const pkgNameEl = $('#r-included-pkg');
+      if (!list) return;
+      const T = (k) => (window.t ? window.t(k) : null) || '';
+      list.innerHTML = '';
+      (INCLUDED_FEATURES[pkgKey] || []).forEach(key => {
+        const li = document.createElement('li');
+        li.textContent = T(key);
+        list.appendChild(li);
+      });
+      if (pkgNameEl) pkgNameEl.textContent = PACKAGES[pkgKey] || '';
     }
 
     function getSelectedAddons() {
       const items = [];
       document.querySelectorAll('.calc-addons .calc-addon-item').forEach(item => {
+        if (item.hidden) return; // skip package-included items (they're shown above)
         const cb = item.querySelector('input[type="checkbox"]');
         if (!cb || !cb.checked) return;
         const labelEl = cb.closest('label').querySelector('span[data-i18n]');
         const label = (labelEl ? labelEl.textContent : cb.closest('label').textContent).trim();
-        items.push({ key: cb.dataset.addon, label, included: isAddonIncluded(item) });
+        items.push({ key: cb.dataset.addon, label, included: false });
       });
       return items;
     }
@@ -1774,18 +2141,18 @@
       const pkgLabel = PACKAGES[pkgKey];
       const children = Math.max(0, parseInt($('#calc-children').value) || 0);
       const extraHours = Math.max(0, parseInt($('#calc-hours').value) || 0);
-      const addons = getSelectedAddons();
-      const includedAddons = addons.filter(a => a.included);
-      const extraAddons = addons.filter(a => !a.included);
+      const extraAddons = getSelectedAddons(); // already only the user-chosen extras
 
       // labels via i18n with sensible German fallback
       const T = (k, fb) => (window.t ? (window.t(k) || fb) : fb);
-      const lblPkg      = T('calc.summary.pkg',         'Paket');
-      const lblKids     = T('calc.summary.children',    'Anzahl Kinder');
-      const lblHours    = T('calc.summary.extraHours',  'Zusätzliche Stunden');
-      const lblIncluded = T('calc.summary.included',    'Im Paket enthalten');
-      const lblExtras   = T('calc.summary.extras',      'Zusätzlich gewählt');
-      const lblNone     = T('calc.summary.addons.none', 'keine');
+      const lblPkg    = T('calc.summary.pkg',         'Paket');
+      const lblKids   = T('calc.summary.children',    'Anzahl Kinder');
+      const lblHours  = T('calc.summary.extraHours',  'Zusätzliche Stunden');
+      const lblExtras = T('calc.summary.extras',      'Zusätzlich gewählt');
+      const lblNone   = T('calc.summary.addons.none', 'keine');
+
+      // ── re-render the included-features card for the chosen package ─
+      renderIncludedFeatures();
 
       // ── render in-panel summary ─────────────────────────────────────
       const summaryEl = $('#r-summary');
@@ -1799,27 +2166,19 @@
       summaryEl.appendChild(row(lblPkg, '<strong>' + pkgLabel + '</strong>'));
       summaryEl.appendChild(row(lblKids, String(children)));
       if (extraHours > 0) summaryEl.appendChild(row(lblHours, String(extraHours)));
-      if (includedAddons.length > 0) {
-        summaryEl.appendChild(row(lblIncluded, includedAddons.map(a => a.label).join(' · ')));
-      }
-      if (extraAddons.length > 0) {
-        summaryEl.appendChild(row(lblExtras, extraAddons.map(a => a.label).join(' · ')));
-      } else if (includedAddons.length === 0) {
-        summaryEl.appendChild(row(lblExtras, lblNone));
-      }
+      summaryEl.appendChild(row(lblExtras,
+        extraAddons.length > 0 ? extraAddons.map(a => a.label).join(' · ') : lblNone));
 
       // ── sync to form summary textarea ──────────────────────────────
       const lines = [];
       lines.push(lblPkg + ': ' + pkgLabel);
       lines.push(lblKids + ': ' + children);
       if (extraHours > 0) lines.push(lblHours + ': ' + extraHours);
-      if (includedAddons.length > 0) {
-        lines.push(lblIncluded + ':');
-        includedAddons.forEach(a => lines.push('  • ' + a.label));
-      }
       if (extraAddons.length > 0) {
         lines.push(lblExtras + ':');
         extraAddons.forEach(a => lines.push('  • ' + a.label));
+      } else {
+        lines.push(lblExtras + ': ' + lblNone);
       }
       $('#f-summary').value = lines.join('\n');
 

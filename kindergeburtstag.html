@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kindergeburtstag ohne Stress — Veronika Bobuska</title>
-  <meta name="description" content="Kreative, altersgerechte Kindergeburtstage nach dem Baukasten-Prinzip. Pakete, Add-ons, Preisrechner und unverbindliche Anfrage." />
+  <title>Kindergeburtstag ohne Stress — Atelier Glanz</title>
+  <meta name="description" content="Atelier Glanz — Kreative, altersgerechte Kindergeburtstage nach dem Baukasten-Prinzip. Pakete, Add-ons und unverbindliche Anfrage. Zug · Luzern · Zürich." />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Kindergeburtstag ohne Stress — Veronika Bobuska" />
+  <meta property="og:title" content="Kindergeburtstag ohne Stress — Atelier Glanz" />
   <meta property="og:description" content="Liebevoll geplant. Kreativ begleitet. Einfach gefeiert." />
-  <meta property="og:image" content="https://i-bobusky.github.io/veronika/images/veronika.jpg" />
-  <meta property="og:url" content="https://i-bobusky.github.io/veronika/kindergeburtstag.html" />
+  <meta property="og:image" content="https://atelier-glanz.ch/images/kg-hero.jpg.jpg" />
+  <meta property="og:url" content="https://atelier-glanz.ch/kindergeburtstag.html" />
   <meta property="og:type" content="website" />
 
   <!-- Google Fonts -->
@@ -117,10 +117,39 @@
     }
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem; color: var(--charcoal); letter-spacing: 0.04em;
-      font-weight: 600;
+      font-size: 1.4rem; color: var(--charcoal); letter-spacing: 0.04em;
+      font-weight: 500;
+    }
+    .nav-logo em {
+      font-style: italic;
+      color: var(--gold-deep);
+      margin-left: 0.15em;
     }
     nav.scrolled .nav-logo { color: var(--white); }
+    nav.scrolled .nav-logo em { color: var(--gold); }
+
+    /* Hamburger toggle */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid rgba(28,28,40,0.25);
+      border-radius: 3px;
+      width: 38px; height: 38px;
+      padding: 0; cursor: pointer;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 4px;
+    }
+    nav.scrolled .nav-toggle { border-color: rgba(255,255,255,0.3); }
+    .nav-toggle span {
+      width: 18px; height: 1.5px;
+      background: var(--charcoal);
+      transition: transform 0.3s, opacity 0.3s, background 0.3s;
+    }
+    nav.scrolled .nav-toggle span { background: var(--white); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
     .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .nav-links a {
       font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
@@ -911,11 +940,48 @@
     }
 
     @media (max-width: 900px) {
-      nav { padding: 1rem 4vw; background: rgba(250,248,244,0.95); }
-      .nav-links { gap: 0.6rem; }
-      .nav-links a { font-size: 0.62rem; letter-spacing: 0.1em; }
-      .lang-switcher { padding: 0.2rem 0.3rem; }
-      .lang-btn { font-size: 0.6rem; padding: 0.25rem 0.4rem; letter-spacing: 0.08em; }
+      nav { padding: 1rem 5vw; background: rgba(250,248,244,0.95); }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: 0; right: 0; bottom: 0;
+        width: min(80vw, 320px);
+        background: rgba(28, 28, 40, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0;
+        padding: 5rem 2rem 2rem;
+        transform: translateX(100%);
+        transition: transform 0.35s ease;
+        align-items: flex-start;
+        border-left: 1px solid rgba(201,169,110,0.2);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+        list-style: none;
+        margin: 0;
+      }
+      .nav-links.open { transform: translateX(0); }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 0.85rem 0;
+        font-size: 0.85rem;
+        letter-spacing: 0.15em;
+        color: rgba(255,255,255,0.85) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        width: 100%;
+      }
+      .nav-links a:hover { color: var(--gold) !important; }
+      .nav-back-link { color: var(--gold) !important; }
+      .lang-switcher {
+        margin-top: 1.5rem;
+        align-self: stretch;
+        justify-content: space-between;
+        border-color: rgba(255,255,255,0.18);
+      }
+      .lang-btn {
+        color: rgba(255,255,255,0.55);
+        font-size: 0.66rem;
+      }
       #kg-hero {
         grid-template-columns: 1fr;
         padding: 9rem 6vw 4rem;
@@ -956,7 +1022,10 @@
 
   <!-- ─── Navigation ─────────────────────────────────────────────── -->
   <nav id="nav">
-    <a class="nav-logo" href="index.html">Veronika Bobuska</a>
+    <a class="nav-logo" href="index.html">Atelier <em>Glanz</em></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="index.html#ueber-mich" data-i18n="nav.about">Über mich</a></li>
       <li><a href="index.html#referenzen" data-i18n="nav.refs">Referenzen</a></li>
@@ -1427,16 +1496,21 @@
         <!--
           ──────────────────────────────────────────────────────────────────
           FORM SUBMISSION (Web3Forms)
-          - Replace WEB3FORMS_ACCESS_KEY_HERE with your real Web3Forms key.
-          - Free key signup: https://web3forms.com/
-          - If the key is left as the placeholder, the JS handler below
-            falls back to opening a mailto: draft to veronika.bobuska@gmail.com.
+          1. Sign up at https://web3forms.com/ using events@atelier-glanz.ch
+             as the destination address (the access key is bound to that
+             email; that's where the primary copy is delivered).
+          2. Replace WEB3FORMS_ACCESS_KEY_HERE below with your access key.
+          3. The hidden cc field below also delivers a copy to
+             veronika.bobuska@gmail.com and igor.bobusky@gmail.com.
+          4. If the access key is still the placeholder, the JS handler
+             falls back to opening a mailto: draft to events@atelier-glanz.ch.
           ──────────────────────────────────────────────────────────────────
         -->
         <form id="anfrage-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
           <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE" />
-          <input type="hidden" name="subject" value="Neue Kindergeburtstag-Anfrage über die Website" />
-          <input type="hidden" name="from_name" value="Kindergeburtstag Anfrage" />
+          <input type="hidden" name="subject" value="Neue Kindergeburtstag-Anfrage — Atelier Glanz" />
+          <input type="hidden" name="from_name" value="Atelier Glanz · Anfrage" />
+          <input type="hidden" name="cc" value="veronika.bobuska@gmail.com,igor.bobusky@gmail.com" />
           <input type="hidden" name="redirect" value="false" />
 
           <!-- Honeypot anti-spam (hidden field) -->
@@ -1557,7 +1631,7 @@
 
           <p class="form-fallback">
             <span data-i18n="form.fallback">Lieber per E-Mail oder WhatsApp?</span> <br />
-            <a href="mailto:veronika.bobuska@gmail.com">veronika.bobuska@gmail.com</a> ·
+            <a href="mailto:events@atelier-glanz.ch">events@atelier-glanz.ch</a> ·
             <a href="tel:+41786858627">078 685 86 27</a>
           </p>
         </form>
@@ -1576,16 +1650,24 @@
   <!-- ─── Footer ─────────────────────────────────────────────────── -->
   <footer>
     <div>
-      <p class="footer-name">Veronika Bobuska</p>
-      <p class="footer-tagline" data-i18n="footer.tagline">Eventorganisation · Zug · Luzern · Zürich</p>
+      <p class="footer-name">Atelier <em style="color:var(--gold);font-style:italic;">Glanz</em></p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Veronika Bobuska · Zug · Luzern · Zürich</p>
 
       <div class="footer-contact-items">
-        <a class="footer-contact-item" href="mailto:veronika.bobuska@gmail.com">
+        <a class="footer-contact-item" href="mailto:events@atelier-glanz.ch">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
             <rect x="2" y="4" width="20" height="16" rx="2"/>
             <polyline points="2,4 12,13 22,4"/>
           </svg>
-          veronika.bobuska@gmail.com
+          events@atelier-glanz.ch
+        </a>
+        <a class="footer-contact-item" href="https://atelier-glanz.ch" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          atelier-glanz.ch
         </a>
         <a class="footer-contact-item" href="tel:+41786858627">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1597,7 +1679,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p class="footer-copy" data-i18n="footer.copy">© 2026 Veronika Bobuska · Hünenberg, Schweiz</p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Schweiz</p>
       <p class="footer-made" data-i18n="footer.made">Eventorganisation mit Herz und Präzision</p>
     </div>
   </footer>
@@ -1615,6 +1697,20 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
+
+    /* ───────── Hamburger menu (mobile) ───────── */
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }));
+    }
 
     /* ───────── Reveal animations ───────── */
     const revealEls = document.querySelectorAll('.reveal');
@@ -1818,9 +1914,9 @@
           if (v) lines.push(fields[k] + ':\n' + v + '\n');
         });
         const body = lines.join('\n');
-        const subject = 'Kindergeburtstag-Anfrage über Website';
-        return 'mailto:veronika.bobuska@gmail.com?subject=' + encodeURIComponent(subject) +
-               '&body=' + encodeURIComponent(body);
+        const subject = 'Kindergeburtstag-Anfrage — Atelier Glanz';
+        return 'mailto:events@atelier-glanz.ch?cc=veronika.bobuska@gmail.com,igor.bobusky@gmail.com&subject=' +
+               encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       }
 
       if (isPlaceholder) {

@@ -20,7 +20,7 @@
       'nav.tierwelt': 'Tierwelt →',
 
       // ── Home Hero ───────────────────────────────────────────────────
-      'home.hero.eyebrow': 'Eventorganisation · Zentralschweiz',
+      'home.hero.eyebrow': 'Eventorganisation · Zug · Luzern · Zürich',
       'home.hero.tagline': 'Eventorganisation mit Herz und Präzision',
       'home.hero.cta': 'Mehr erfahren',
       'home.hero.deco': 'Familien · Kinder · Erlebnisse',
@@ -93,8 +93,8 @@
       'home.event.cta2': 'Jetzt anmelden →',
 
       // ── Footer ─────────────────────────────────────────────────────
-      'footer.tagline': 'Eventorganisation · Zug · Luzern · Zürich',
-      'footer.copy': '© 2026 Veronika Bobuska · Hünenberg, Schweiz',
+      'footer.tagline': 'Veronika Bobuska · Zug · Luzern · Zürich',
+      'footer.copy': '© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Schweiz',
       'footer.made': 'Eventorganisation mit Herz und Präzision',
 
       // ── KG page Hero ───────────────────────────────────────────────
@@ -314,7 +314,7 @@
       'nav.back': '← Back',
       'nav.tierwelt': 'Tierwelt →',
 
-      'home.hero.eyebrow': 'Event Organisation · Central Switzerland',
+      'home.hero.eyebrow': 'Event Organisation · Zug · Lucerne · Zurich',
       'home.hero.tagline': 'Event organisation with heart and precision',
       'home.hero.cta': 'Learn more',
       'home.hero.deco': 'Families · Children · Experiences',
@@ -382,8 +382,8 @@
       'home.event.cta1': 'Learn more →',
       'home.event.cta2': 'Register now →',
 
-      'footer.tagline': 'Event Organisation · Zug · Lucerne · Zurich',
-      'footer.copy': '© 2026 Veronika Bobuska · Hünenberg, Switzerland',
+      'footer.tagline': 'Veronika Bobuska · Zug · Lucerne · Zurich',
+      'footer.copy': '© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Switzerland',
       'footer.made': 'Event organisation with heart and precision',
 
       'hero.eyebrow': "Children's Birthdays · Zug · Lucerne · Zurich",
@@ -596,7 +596,7 @@
       'nav.back': '← Zpět',
       'nav.tierwelt': 'Tierwelt →',
 
-      'home.hero.eyebrow': 'Organizace akcí · Centrální Švýcarsko',
+      'home.hero.eyebrow': 'Organizace akcí · Zug · Lucern · Curych',
       'home.hero.tagline': 'Organizace akcí se srdcem a precizností',
       'home.hero.cta': 'Více informací',
       'home.hero.deco': 'Rodiny · Děti · Zážitky',
@@ -664,8 +664,8 @@
       'home.event.cta1': 'Více informací →',
       'home.event.cta2': 'Přihlásit se →',
 
-      'footer.tagline': 'Organizace akcí · Zug · Lucern · Curych',
-      'footer.copy': '© 2026 Veronika Bobuská · Hünenberg, Švýcarsko',
+      'footer.tagline': 'Veronika Bobuská · Zug · Lucern · Curych',
+      'footer.copy': '© 2026 Atelier Glanz · Veronika Bobuská · Hünenberg, Švýcarsko',
       'footer.made': 'Organizace akcí se srdcem a precizností',
 
       'hero.eyebrow': 'Dětské oslavy · Zug · Lucern · Curych',
@@ -878,7 +878,7 @@
       'nav.back': '← Retour',
       'nav.tierwelt': 'Tierwelt →',
 
-      'home.hero.eyebrow': "Organisation d'événements · Suisse centrale",
+      'home.hero.eyebrow': "Organisation d'événements · Zoug · Lucerne · Zurich",
       'home.hero.tagline': "Organisation d'événements avec cœur et précision",
       'home.hero.cta': 'En savoir plus',
       'home.hero.deco': 'Familles · Enfants · Expériences',
@@ -946,8 +946,8 @@
       'home.event.cta1': 'En savoir plus →',
       'home.event.cta2': "S'inscrire →",
 
-      'footer.tagline': "Organisation d'événements · Zoug · Lucerne · Zurich",
-      'footer.copy': '© 2026 Veronika Bobuska · Hünenberg, Suisse',
+      'footer.tagline': 'Veronika Bobuska · Zoug · Lucerne · Zurich',
+      'footer.copy': '© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Suisse',
       'footer.made': "Organisation d'événements avec cœur et précision",
 
       'hero.eyebrow': "Anniversaires d'enfants · Zoug · Lucerne · Zurich",

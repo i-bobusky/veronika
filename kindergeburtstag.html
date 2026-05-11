@@ -584,9 +584,15 @@
     .addon-body h4 {
       font-size: 1.05rem;
       color: var(--charcoal);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
       font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
+      font-weight: 600;
+    }
+    .addon-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
     }
     .addon-price {
       font-size: 0.9rem;
@@ -838,6 +844,19 @@
     }
     .pkg-option.selected small { color: var(--gold-lt); }
 
+    .pkg-idealfor {
+      margin-top: 1rem;
+      padding: 0.85rem 1rem;
+      background: rgba(201,169,110,0.1);
+      border-left: 3px solid var(--gold);
+      border-radius: 1px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
     .calc-num-row {
       display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
     }
@@ -985,22 +1004,20 @@
     .calc-addon-included {
       color: var(--sage);
       font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       flex-shrink: 0;
-      background: rgba(138, 158, 140, 0.14);
-      padding: 0.2rem 0.55rem;
+      background: rgba(138, 158, 140, 0.16);
+      border: 1px solid rgba(138, 158, 140, 0.3);
+      padding: 0.18rem 0.55rem;
       border-radius: 100px;
     }
     .calc-addon-item.included label {
-      color: var(--sage);
-      font-weight: 500;
+      color: var(--charcoal);
     }
     .calc-addon-item.included input[type="checkbox"] {
       accent-color: var(--sage);
-      cursor: not-allowed;
-      opacity: 0.85;
     }
     [hidden] { display: none !important; }
 
@@ -1097,15 +1114,24 @@
     }
 
     .form-summary {
-      padding: 1rem;
-      background: rgba(201,169,110,0.08);
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1rem 1.1rem;
+      margin: 0;
+      background: var(--white);
+      border: 1px solid rgba(201,169,110,0.3);
       border-radius: 3px;
-      border-left: 3px solid var(--gold);
-      font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.65;
       white-space: pre-line;
+      resize: none;
+      min-height: 180px;
+      overflow: auto;
     }
+    .form-summary:focus { outline: none; border-color: var(--gold); }
 
     .form-checkbox-row {
       display: flex; gap: 0.7rem; align-items: flex-start;
@@ -1309,7 +1335,7 @@
       <p class="hero-sub" data-i18n="hero.sub">Ihr Kind feiert. Sie geniessen.</p>
       <div class="hero-rule"></div>
       <p class="hero-intro" data-i18n-html="hero.intro.html">
-        Ich organisiere <strong>kreative, liebevoll gestaltete und stressfreie</strong>
+        Wir organisieren <strong>kreative, liebevoll gestaltete und stressfreie</strong>
         Kindergeburtstage nach dem <span class="hl">Baukasten-Prinzip</span>: Sie wählen
         ein Grundpaket und ergänzen genau die Extras, die zu Ihrer Familie passen –
         zu Hause, im Garten oder an Ihrem Wunschort in <span class="hl-gold">Zug, Luzern &amp; Zürich</span>.
@@ -1407,12 +1433,12 @@
       <p data-i18n="themen.p">Lassen Sie sich inspirieren – oder bringen Sie ein ganz eigenes Thema mit.</p>
     </div>
     <div class="themen-cloud">
-      <span class="theme-pill">Tierwelt</span>
-      <span class="theme-pill">Prinzessinnen</span>
-      <span class="theme-pill">Piraten</span>
-      <span class="theme-pill">Regenbogen</span>
-      <span class="theme-pill">Dschungel</span>
-      <span class="theme-pill">Weltall</span>
+      <span class="theme-pill" data-i18n="theme.animals">Tierwelt</span>
+      <span class="theme-pill" data-i18n="theme.princess">Prinzessinnen</span>
+      <span class="theme-pill" data-i18n="theme.pirates">Piraten</span>
+      <span class="theme-pill" data-i18n="theme.rainbow">Regenbogen</span>
+      <span class="theme-pill" data-i18n="theme.jungle">Dschungel</span>
+      <span class="theme-pill" data-i18n="theme.space">Weltall</span>
       <span class="theme-pill">Little Explorers</span>
       <span class="theme-pill">Rainbow Atelier</span>
       <span class="theme-pill">Mini Builders</span>
@@ -1425,8 +1451,8 @@
   <!-- ─── Stack: order swaps on mobile ────────────────────────────── -->
   <div class="kg-stack">
 
-  <!-- ─── Comparison Table ──────────────────────────────────────────── -->
-  <section id="vergleich">
+  <!-- ─── Comparison Table (REMOVED — configurator covers this) ──── -->
+  <section id="vergleich" hidden style="display:none;">
     <div class="section-head">
       <span class="section-label" data-i18n="compare.label">Pakete im Vergleich</span>
       <h2 data-i18n-html="compare.h2.html">Drei Pakete,<br /><em>flexibel kombinierbar</em></h2>
@@ -1650,23 +1676,23 @@
     </div>
 
     <div class="addons-grid">
-      <div class="addon-card"><div class="addon-icon">+</div><div class="addon-body"><h4 data-i18n="addons.extraChild">Zusätzliches Kind</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">⏱</div><div class="addon-body"><h4 data-i18n="addons.extraHour">Zusätzliche Stunde</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">★</div><div class="addon-body"><h4 data-i18n="addons.sensorik">Sensorik-Spielstation</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">✄</div><div class="addon-body"><h4 data-i18n="addons.bastel">Kreative Bastelstation</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">❀</div><div class="addon-body"><h4 data-i18n="addons.premiumDeko">Premium-Dekoration</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">♪</div><div class="addon-body"><h4 data-i18n="addons.miniDisco">Mini-Disco</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4 data-i18n="addons.foodDrink">Food &amp; Drink Handling</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">🎂</div><div class="addon-body"><h4 data-i18n="addons.kuchen">Kuchenkoordination</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">🎁</div><div class="addon-body"><h4 data-i18n="addons.goodieBags">Goodie Bags</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">🎨</div><div class="addon-body"><h4 data-i18n="addons.kinderschminken">Kinderschminken</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">✨</div><div class="addon-body"><h4 data-i18n="addons.glitzer">Glitzer-Tattoos</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">🗺</div><div class="addon-body"><h4 data-i18n="addons.schatzsuche">Schatzsuche</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">📸</div><div class="addon-body"><h4 data-i18n="addons.foto">Foto-Ecke</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">⌂</div><div class="addon-body"><h4 data-i18n="addons.aufraumen">Komplettes Aufräumen</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">⌘</div><div class="addon-body"><h4 data-i18n="addons.location">Location-Suche</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">✉</div><div class="addon-body"><h4 data-i18n="addons.einladung">Einladung designen &amp; versenden</h4></div></div>
-      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4 data-i18n="addons.kaffeeecke">Eltern-Kaffeeecke</h4></div></div>
+      <div class="addon-card"><div class="addon-icon">+</div><div class="addon-body"><h4 data-i18n="addons.extraChild">Zusätzliches Kind</h4><p class="addon-desc" data-i18n="addons.extraChild.desc">Pro Kind über das Paket-Maximum hinaus.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">⏱</div><div class="addon-body"><h4 data-i18n="addons.extraHour">Zusätzliche Stunde</h4><p class="addon-desc" data-i18n="addons.extraHour.desc">Verlängerung der Begleitung am Geburtstag.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">★</div><div class="addon-body"><h4 data-i18n="addons.sensorik">Sensorik-Spielstation</h4><p class="addon-desc" data-i18n="addons.sensorik.desc">Materialien zum Anfassen und Entdecken – z.B. Kinetic Sand, Slime, Murmelbahn, Wassertisch.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">✄</div><div class="addon-body"><h4 data-i18n="addons.bastel">Kreative Bastelstation</h4><p class="addon-desc" data-i18n="addons.bastel.desc">Geführtes Basteln passend zum Thema – z.B. Kronen, Masken, Mini-Geschenke.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">❀</div><div class="addon-body"><h4 data-i18n="addons.premiumDeko">Premium-Dekoration</h4><p class="addon-desc" data-i18n="addons.premiumDeko.desc">Stimmungsvolle Themen-Dekoration – Ballonbögen, Wimpelketten, Tischdeko.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">♪</div><div class="addon-body"><h4 data-i18n="addons.miniDisco">Mini-Disco</h4><p class="addon-desc" data-i18n="addons.miniDisco.desc">Kindgerechte Lichteffekte und Musik zum Tanzen.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4 data-i18n="addons.foodDrink">Food &amp; Drink Handling</h4><p class="addon-desc" data-i18n="addons.foodDrink.desc">Snacks und Getränke werden bereitgestellt und während der Feier nachgefüllt.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">🎂</div><div class="addon-body"><h4 data-i18n="addons.kuchen">Kuchenkoordination</h4><p class="addon-desc" data-i18n="addons.kuchen.desc">Kuchen, Kerzen, Geburtstagslied – wir kümmern uns um den Geburtstagsmoment.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">🎁</div><div class="addon-body"><h4 data-i18n="addons.goodieBags">Goodie Bags</h4><p class="addon-desc" data-i18n="addons.goodieBags.desc">Schöne Mitgebsel-Tüten für jedes Kind, mit kleinen Spielsachen und Süssigkeiten.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">🎨</div><div class="addon-body"><h4 data-i18n="addons.kinderschminken">Kinderschminken</h4><p class="addon-desc" data-i18n="addons.kinderschminken.desc">Tier-, Helden- oder Fantasiegesichter – jedes Kind wird zum Wunschwesen.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">✨</div><div class="addon-body"><h4 data-i18n="addons.glitzer">Glitzer-Tattoos</h4><p class="addon-desc" data-i18n="addons.glitzer.desc">Funkelnde temporäre Tattoos zum Aufpinseln – glitzern den ganzen Tag.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">🗺</div><div class="addon-body"><h4 data-i18n="addons.schatzsuche">Schatzsuche</h4><p class="addon-desc" data-i18n="addons.schatzsuche.desc">Themenbezogene Schnitzeljagd mit Hinweisen und einem kleinen Schatz am Ende.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">📸</div><div class="addon-body"><h4 data-i18n="addons.foto">Foto-Ecke</h4><p class="addon-desc" data-i18n="addons.foto.desc">Mit Themen-Hintergrund und Requisiten – schöne Erinnerungen für die Eltern.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">⌂</div><div class="addon-body"><h4 data-i18n="addons.aufraumen">Komplettes Aufräumen</h4><p class="addon-desc" data-i18n="addons.aufraumen.desc">Komplettes Aufräumen und Reinigen nach der Feier.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">⌘</div><div class="addon-body"><h4 data-i18n="addons.location">Location-Suche</h4><p class="addon-desc" data-i18n="addons.location.desc">Empfehlung passender Räume oder Locations in Ihrer Nähe.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">✉</div><div class="addon-body"><h4 data-i18n="addons.einladung">Einladung designen &amp; versenden</h4><p class="addon-desc" data-i18n="addons.einladung.desc">Individuell gestaltete Einladungen, gedruckt oder digital zum Versenden.</p></div></div>
+      <div class="addon-card"><div class="addon-icon">☕</div><div class="addon-body"><h4 data-i18n="addons.kaffeeecke">Eltern-Kaffeeecke</h4><p class="addon-desc" data-i18n="addons.kaffeeecke.desc">Kaffee, Tee und kleine Snacks für die Eltern während der Feier.</p></div></div>
     </div>
 
     <div class="disclaimer" data-i18n="addons.disclaimer">
@@ -1733,6 +1759,7 @@
               Diamond<small data-i18n="tag.diamond">Full Party Care</small>
             </div>
           </div>
+          <p class="pkg-idealfor" id="r-pkg-idealfor" aria-live="polite">Für Eltern, die eine schöne Feier möchten und vor Ort Unterstützung wünschen.</p>
         </div>
 
         <!-- Included-features card: refreshes whenever package changes -->
@@ -2046,7 +2073,9 @@
     const PACKAGES = { silver: 'Silver', gold: 'Gold', diamond: 'Diamond' };
     const DEFAULT_CHILDREN = { silver: 12, gold: 10, diamond: 12 };
 
-    // What's included in each package — list of i18n keys, rendered as a list
+    // Fixed package contents — rendered in the "Im Paket enthalten" card
+    // (consultation, structure, kids count, duration). Add-ons go in their
+    // own toggleable section below so the user can keep or drop them.
     const INCLUDED_FEATURES = {
       silver: [
         'compare.row.consult',
@@ -2060,21 +2089,30 @@
         'compare.row.time.silver',
       ],
       gold: [
-        'pkg.gold.feat1',          // "Alles aus Silver inklusive"
+        'compare.row.consult',
+        'compare.row.concept',
+        'compare.row.timeline',
+        'compare.row.activities',
+        'compare.row.shopping',
+        'compare.row.deco',
         'compare.row.onsite',
         'compare.row.basicdeco',
         'compare.row.guidedgames',
-        'pkg.gold.feat4',          // "1 Sensorik- oder Spielstation"
         'compare.row.kids.gold',
         'compare.row.time.gold',
       ],
       diamond: [
-        'pkg.diamond.feat1',       // "Alles aus Gold inklusive"
-        'pkg.diamond.feat2',       // "Voll ausgearbeitetes Wunschthema"
-        'pkg.diamond.feat3',       // "Erweiterte Dekoration"
-        'pkg.diamond.feat4',       // "Bastelstation & 2–3 Aktivitätsstationen"
-        'pkg.diamond.feat5',       // "Food & Drink Handling, Kuchenkoordination"
-        'pkg.diamond.feat6',       // "Basis-Aufräumen nach der Feier"
+        'compare.row.consult',
+        'compare.row.concept',
+        'compare.row.timeline',
+        'compare.row.activities',
+        'compare.row.shopping',
+        'compare.row.deco',
+        'compare.row.onsite',
+        'pkg.diamond.feat2',       // Voll ausgearbeitetes Wunschthema
+        'compare.row.extdeco',
+        'compare.row.guidedgames',
+        'compare.row.cleanbasic',
         'compare.row.kids.diamond',
         'compare.row.time.diamond',
       ],
@@ -2091,28 +2129,30 @@
       return includedIn.includes(pkgKey);
     }
 
-    /* Show the chosen package's contents, and hide any add-on that's already
-       part of that package (so it isn't shown twice). */
+    /* For the chosen package, pre-check (but don't hide or disable) the
+       add-ons that the package suggests. The user can still untick them. */
     function applyAddonInclusionStates() {
       document.querySelectorAll('.calc-addons .calc-addon-item').forEach(item => {
         const cb = item.querySelector('input[type="checkbox"]');
         if (!cb) return;
-        if (isAddonIncluded(item)) {
-          // hide; the feature is already shown in the "included" card
-          item.hidden = true;
-          cb.checked = false;
-          cb.disabled = false;
-        } else {
-          item.hidden = false;
-          cb.disabled = false;
-          cb.checked = !!userAddons[cb.dataset.addon];
-        }
+        item.hidden = false;
+        cb.disabled = false;
+        const incBadge = item.querySelector('.calc-addon-included');
+        const isDefaultIncluded = isAddonIncluded(item);
+        // Show the "im Paket" badge when this addon is part of the package
+        if (incBadge) incBadge.hidden = !isDefaultIncluded;
+        item.classList.toggle('included', isDefaultIncluded);
+        // Effective state: user's explicit choice if recorded, otherwise
+        // the package default (true for included, false otherwise).
+        const userChoice = userAddons[cb.dataset.addon];
+        cb.checked = (userChoice === undefined) ? isDefaultIncluded : userChoice;
       });
     }
 
     function renderIncludedFeatures() {
       const list = $('#r-included-list');
       const pkgNameEl = $('#r-included-pkg');
+      const idealForEl = $('#r-pkg-idealfor');
       if (!list) return;
       const T = (k) => (window.t ? window.t(k) : null) || '';
       list.innerHTML = '';
@@ -2122,17 +2162,20 @@
         list.appendChild(li);
       });
       if (pkgNameEl) pkgNameEl.textContent = PACKAGES[pkgKey] || '';
+      if (idealForEl) {
+        const v = T('pkg.' + pkgKey + '.idealfor');
+        if (v) idealForEl.textContent = v;
+      }
     }
 
     function getSelectedAddons() {
       const items = [];
       document.querySelectorAll('.calc-addons .calc-addon-item').forEach(item => {
-        if (item.hidden) return; // skip package-included items (they're shown above)
         const cb = item.querySelector('input[type="checkbox"]');
         if (!cb || !cb.checked) return;
         const labelEl = cb.closest('label').querySelector('span[data-i18n]');
         const label = (labelEl ? labelEl.textContent : cb.closest('label').textContent).trim();
-        items.push({ key: cb.dataset.addon, label, included: false });
+        items.push({ key: cb.dataset.addon, label, included: isAddonIncluded(item) });
       });
       return items;
     }
@@ -2141,15 +2184,18 @@
       const pkgLabel = PACKAGES[pkgKey];
       const children = Math.max(0, parseInt($('#calc-children').value) || 0);
       const extraHours = Math.max(0, parseInt($('#calc-hours').value) || 0);
-      const extraAddons = getSelectedAddons(); // already only the user-chosen extras
+      const allSelected = getSelectedAddons();
+      const includedSel = allSelected.filter(a => a.included);
+      const extraSel    = allSelected.filter(a => !a.included);
 
       // labels via i18n with sensible German fallback
       const T = (k, fb) => (window.t ? (window.t(k) || fb) : fb);
-      const lblPkg    = T('calc.summary.pkg',         'Paket');
-      const lblKids   = T('calc.summary.children',    'Anzahl Kinder');
-      const lblHours  = T('calc.summary.extraHours',  'Zusätzliche Stunden');
-      const lblExtras = T('calc.summary.extras',      'Zusätzlich gewählt');
-      const lblNone   = T('calc.summary.addons.none', 'keine');
+      const lblPkg      = T('calc.summary.pkg',         'Paket');
+      const lblKids     = T('calc.summary.children',    'Anzahl Kinder');
+      const lblHours    = T('calc.summary.extraHours',  'Zusätzliche Stunden');
+      const lblIncluded = T('calc.summary.included',    'Im Paket dabei');
+      const lblExtras   = T('calc.summary.extras',      'Zusätzlich gewählt');
+      const lblNone     = T('calc.summary.addons.none', 'keine');
 
       // ── re-render the included-features card for the chosen package ─
       renderIncludedFeatures();
@@ -2166,21 +2212,32 @@
       summaryEl.appendChild(row(lblPkg, '<strong>' + pkgLabel + '</strong>'));
       summaryEl.appendChild(row(lblKids, String(children)));
       if (extraHours > 0) summaryEl.appendChild(row(lblHours, String(extraHours)));
+      if (includedSel.length > 0) {
+        summaryEl.appendChild(row(lblIncluded, includedSel.map(a => a.label).join(' · ')));
+      }
       summaryEl.appendChild(row(lblExtras,
-        extraAddons.length > 0 ? extraAddons.map(a => a.label).join(' · ') : lblNone));
+        extraSel.length > 0 ? extraSel.map(a => a.label).join(' · ') : lblNone));
 
       // ── sync to form summary textarea ──────────────────────────────
       const lines = [];
       lines.push(lblPkg + ': ' + pkgLabel);
       lines.push(lblKids + ': ' + children);
       if (extraHours > 0) lines.push(lblHours + ': ' + extraHours);
-      if (extraAddons.length > 0) {
+      if (includedSel.length > 0) {
+        lines.push(lblIncluded + ':');
+        includedSel.forEach(a => lines.push('  • ' + a.label));
+      }
+      if (extraSel.length > 0) {
         lines.push(lblExtras + ':');
-        extraAddons.forEach(a => lines.push('  • ' + a.label));
-      } else {
+        extraSel.forEach(a => lines.push('  • ' + a.label));
+      } else if (includedSel.length === 0) {
         lines.push(lblExtras + ': ' + lblNone);
       }
-      $('#f-summary').value = lines.join('\n');
+      const summaryArea = $('#f-summary');
+      summaryArea.value = lines.join('\n');
+      // auto-grow to fit content (no inner scroll, no manual resize)
+      summaryArea.style.height = 'auto';
+      summaryArea.style.height = summaryArea.scrollHeight + 'px';
 
       const numKids = $('#f-num-kids');
       if (!numKids.value) numKids.placeholder = String(children);
@@ -2213,13 +2270,11 @@
     // wire up inputs
     document.querySelectorAll('#calc-children, #calc-hours').forEach(el => el.addEventListener('input', calculate));
 
-    // checkbox changes: track user intent only for non-included items
+    // checkbox changes: record user's explicit choice for any addon
+    // (default-included items can also be toggled off)
     document.querySelectorAll('.calc-addons input[type="checkbox"]').forEach(cb => {
       cb.addEventListener('change', () => {
-        const item = cb.closest('.calc-addon-item');
-        if (item && !isAddonIncluded(item)) {
-          userAddons[cb.dataset.addon] = cb.checked;
-        }
+        userAddons[cb.dataset.addon] = cb.checked;
         calculate();
       });
     });

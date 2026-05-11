@@ -682,12 +682,28 @@
       font-style: italic;
       font-size: 1.05rem;
       color: var(--text-muted);
-      margin-bottom: 2rem;
+      margin-bottom: 0.6rem;
     }
 
     .geburtstag-card.gold .geburtstag-duration,
     .geburtstag-card.featured .geburtstag-duration {
       color: rgba(255,255,255,0.55);
+    }
+
+    .geburtstag-idealfor {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      line-height: 1.55;
+      margin-bottom: 1.75rem;
+      padding: 0.75rem 0.9rem;
+      background: rgba(201,169,110,0.08);
+      border-left: 2px solid var(--gold);
+      border-radius: 1px;
+    }
+    .geburtstag-card.gold .geburtstag-idealfor,
+    .geburtstag-card.featured .geburtstag-idealfor {
+      color: rgba(255,255,255,0.85);
+      background: rgba(201,169,110,0.10);
     }
 
     .geburtstag-rule {
@@ -1329,6 +1345,7 @@
         <p class="geburtstag-tier" data-i18n="pkg.silver.tier">Silver</p>
         <h3 data-i18n-html="pkg.silver.title.html">Party Plan<br /><em>Silver</em></h3>
         <p class="geburtstag-duration" data-i18n="pkg.silver.duration">Beratung &amp; Konzept · planen Sie selbst</p>
+        <p class="geburtstag-idealfor" data-i18n="pkg.silver.idealfor">Für Eltern, die selbst umsetzen möchten – mit klarer Idee und Struktur.</p>
         <div class="geburtstag-rule"></div>
         <ul class="geburtstag-features">
           <li data-i18n="pkg.silver.feat1">Persönliches Beratungsgespräch</li>
@@ -1342,7 +1359,8 @@
       <div class="geburtstag-card featured reveal reveal-delay-1">
         <p class="geburtstag-tier" data-i18n="pkg.gold.tier">Gold</p>
         <h3 data-i18n-html="pkg.gold.title.html">Setup &amp; Play<br /><em>Gold</em></h3>
-        <p class="geburtstag-duration" data-i18n="pkg.gold.duration">Bis zu 3 Stunden · Betreuung vor Ort</p>
+        <p class="geburtstag-duration" data-i18n="pkg.gold.duration">Bis zu 3 Stunden · ich bin am Geburtstag dabei</p>
+        <p class="geburtstag-idealfor" data-i18n="pkg.gold.idealfor">Für Eltern, die eine schöne Feier möchten und vor Ort Unterstützung wünschen.</p>
         <div class="geburtstag-rule"></div>
         <ul class="geburtstag-features">
           <li data-i18n="pkg.gold.feat1">Alles aus Silver inklusive</li>
@@ -1358,6 +1376,7 @@
         <p class="geburtstag-tier" data-i18n="pkg.diamond.tier">Diamond</p>
         <h3 data-i18n-html="pkg.diamond.title.html">Full Party Care<br /><em>Diamond</em></h3>
         <p class="geburtstag-duration" data-i18n="pkg.diamond.duration">Bis zu 5 Stunden · alles aus einer Hand</p>
+        <p class="geburtstag-idealfor" data-i18n="pkg.diamond.idealfor">Für Eltern, die den Geburtstag geniessen möchten, während der Ablauf betreut wird.</p>
         <div class="geburtstag-rule"></div>
         <ul class="geburtstag-features">
           <li data-i18n="pkg.diamond.feat1">Alles aus Gold inklusive</li>

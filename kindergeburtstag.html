@@ -1214,14 +1214,30 @@
 
     @media (max-width: 900px) {
       nav { padding: 1rem 5vw; background: rgba(250,248,244,0.95); }
-      .nav-toggle { display: flex; }
-      .nav-links {
+      nav.menu-open {
+        background: #1c1c28 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 1px 0 rgba(201,169,110,0.2);
+      }
+      nav.menu-open .nav-logo { color: #ffffff; }
+      nav.menu-open .nav-logo em { color: var(--gold); }
+      nav.menu-open .nav-toggle { border-color: rgba(255,255,255,0.3); }
+      nav.menu-open .nav-toggle span { background: #ffffff; }
+      .nav-toggle {
+        display: flex;
+        position: relative;
+        z-index: 210;
+      }
+      nav .nav-links {
         position: fixed;
         top: 0; right: 0; bottom: 0;
         width: min(82vw, 340px);
+        height: 100vh;
+        height: 100dvh;
+        z-index: 200;
         /* Solid background — always readable, even without backdrop-filter support */
-        background: #1c1c28;
-        background: var(--charcoal, #1c1c28);
+        background: #1c1c28 !important;
         flex-direction: column;
         gap: 0;
         padding: 5rem 2rem 2rem;
@@ -1232,8 +1248,9 @@
         box-shadow: -16px 0 50px rgba(0,0,0,0.45);
         list-style: none;
         margin: 0;
+        overflow-y: auto;
       }
-      .nav-links.open { transform: translateX(0); }
+      nav .nav-links.open { transform: translateX(0) !important; }
       .nav-links li { width: 100%; }
       .nav-links a {
         display: block;
@@ -1314,8 +1331,9 @@
     </button>
     <ul class="nav-links">
       <li><a href="index.html#ueber-mich" data-i18n="nav.about">Über mich</a></li>
+      <li><a href="kinderprogramm.html" data-i18n="nav.kinderprogramm">Kinderprogramm</a></li>
+      <li><a href="vorlagen.html" data-i18n="nav.vorlagen">Vorlagen</a></li>
       <li><a href="index.html#referenzen" data-i18n="nav.refs">Referenzen</a></li>
-      <li><a href="index.html#anlass" data-i18n="nav.event">Anlass</a></li>
       <li><a class="nav-back-link" href="index.html" data-i18n="nav.back">← Zurück</a></li>
       <li>
         <div class="lang-switcher" role="group" aria-label="Choose language">
@@ -2051,10 +2069,12 @@
     if (navToggle && navLinks) {
       navToggle.addEventListener('click', () => {
         const open = navLinks.classList.toggle('open');
+        nav.classList.toggle('menu-open', open);
         navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
       navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
         navLinks.classList.remove('open');
+        nav.classList.remove('menu-open');
         navToggle.setAttribute('aria-expanded', 'false');
       }));
     }

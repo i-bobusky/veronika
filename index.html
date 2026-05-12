@@ -851,6 +851,114 @@
     }
     .geburtstag-details-link:hover::after { transform: translateX(4px); }
 
+    /* ─── Weitere Angebote (Kinderprogramm + Vorlagen) ─────────────── */
+    #weitere-angebote {
+      padding: 9rem 8vw;
+      background: var(--cream-deep, #f3efe6);
+    }
+    .weitere-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 4rem;
+    }
+    .weitere-head h2 {
+      font-size: clamp(2.4rem, 3.5vw, 3.5rem);
+      margin-bottom: 0.75rem;
+      font-weight: 300;
+    }
+    .weitere-head h2 em { font-style: italic; color: var(--charcoal-lt); }
+    .weitere-head p {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+    .weitere-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .weitere-card {
+      background: #ffffff;
+      border: 1px solid rgba(201,169,110,0.2);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .weitere-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(28,28,40,0.10);
+      border-color: rgba(201,169,110,0.5);
+    }
+    .weitere-card-visual {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #dfc08e;
+    }
+    .visual-kp {
+      background: linear-gradient(135deg, #1f3d2e 0%, #2e5641 100%);
+    }
+    .visual-vl {
+      background: linear-gradient(135deg, #a98a4a 0%, #c9a96e 100%);
+      color: #fff;
+    }
+    .weitere-card-visual svg {
+      width: 90px; height: 90px; opacity: 0.95;
+    }
+    .weitere-card-body {
+      padding: 2rem 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .weitere-tag {
+      font-size: 0.66rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #a98a4a;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .weitere-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text-main, #2d2b28);
+      margin-bottom: 0.7rem;
+    }
+    .weitere-card-body > p {
+      font-size: 0.95rem;
+      color: var(--text-muted, #7a7670);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .weitere-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap 0.25s ease, color 0.25s ease;
+    }
+    .weitere-card:hover .weitere-cta { gap: 0.7rem; color: var(--gold-deep, #a98a4a); }
+
+    @media (max-width: 760px) {
+      #weitere-angebote { padding: 6rem 6vw; }
+      .weitere-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .weitere-card-visual { height: 150px; }
+      .weitere-card-body { padding: 1.75rem 1.5rem; }
+    }
+
     /* ─── Aktueller Anlass ──────────────────────────────────────────── */
     #anlass {
       background: var(--charcoal);
@@ -1152,17 +1260,35 @@
 
 
       nav { padding: 1rem 5vw; }
-      .nav-toggle { display: flex; }
-      .nav-links {
+      /* When the mobile drawer is open, force the nav header to a solid dark
+         background so there's no see-through strip behind the drawer. */
+      nav.menu-open {
+        background: #1c1c28 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 1px 0 rgba(201,169,110,0.2);
+      }
+      nav.menu-open .nav-logo { color: #ffffff; }
+      nav.menu-open .nav-logo em { color: var(--gold); }
+      nav.menu-open .nav-toggle { border-color: rgba(255,255,255,0.3); }
+      nav.menu-open .nav-toggle span { background: #ffffff; }
+      .nav-toggle {
+        display: flex;
+        position: relative;
+        z-index: 210;
+      }
+      nav .nav-links {
         position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
         width: min(82vw, 340px);
+        height: 100vh;
+        height: 100dvh;
+        z-index: 200;
         /* Solid background so the drawer is always readable, even when
            backdrop-filter isn't supported (older Safari / Firefox). */
-        background: #1c1c28;
-        background: var(--charcoal, #1c1c28);
+        background: #1c1c28 !important;
         flex-direction: column;
         gap: 0;
         padding: 5rem 2rem 2rem;
@@ -1171,8 +1297,9 @@
         align-items: flex-start;
         border-left: 1px solid rgba(201,169,110,0.25);
         box-shadow: -16px 0 50px rgba(0,0,0,0.45);
+        overflow-y: auto;
       }
-      .nav-links.open { transform: translateX(0); }
+      nav .nav-links.open { transform: translateX(0) !important; }
       .nav-links li { width: 100%; }
       .nav-links a {
         display: block;
@@ -1213,8 +1340,10 @@
     </button>
     <ul class="nav-links">
       <li><a href="#ueber-mich" data-i18n="nav.about">Über mich</a></li>
-      <li><a href="#referenzen" data-i18n="nav.refs">Referenzen</a></li>
       <li><a href="kindergeburtstag.html" data-i18n="nav.kg">Kindergeburtstag</a></li>
+      <li><a href="kinderprogramm.html" data-i18n="nav.kinderprogramm">Kinderprogramm</a></li>
+      <li><a href="vorlagen.html" data-i18n="nav.vorlagen">Vorlagen</a></li>
+      <li><a href="#referenzen" data-i18n="nav.refs">Referenzen</a></li>
       <li><a href="#anlass" data-i18n="nav.event">Anlass</a></li>
       <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
       <li><a href="https://i-bobusky.github.io/tierwelt/" target="_blank" rel="noopener" class="nav-highlight" data-i18n="nav.tierwelt">Tierwelt →</a></li>
@@ -1405,6 +1534,55 @@
     </div>
   </section>
 
+  <!-- ─── More Offerings (Kinderprogramm + Vorlagen) ─────────────── -->
+  <section id="weitere-angebote">
+    <div class="weitere-head">
+      <span class="section-label reveal" data-i18n="home.more.label">Weitere Angebote</span>
+      <h2 class="reveal reveal-delay-1" data-i18n-html="home.more.h2.html">Auch wenn es kein<br /><em>Kindergeburtstag ist</em></h2>
+      <p class="reveal reveal-delay-2" data-i18n="home.more.p">
+        Wir gestalten auch das Programm für Kinder an Ihren Anlässen — oder liefern Ihnen
+        Vorlagen, damit Sie selbst eine wunderschöne Feier zaubern können.
+      </p>
+    </div>
+
+    <div class="weitere-grid">
+      <a class="weitere-card reveal reveal-delay-1" href="kinderprogramm.html">
+        <div class="weitere-card-visual visual-kp">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="20" cy="20" r="9" fill="currentColor" fill-opacity="0.16"/>
+            <circle cx="44" cy="20" r="9" fill="currentColor" fill-opacity="0.16"/>
+            <path d="M8 50 Q8 36 20 36 Q32 36 32 50 Z" fill="currentColor" fill-opacity="0.16"/>
+            <path d="M32 50 Q32 36 44 36 Q56 36 56 50 Z" fill="currentColor" fill-opacity="0.16"/>
+          </svg>
+        </div>
+        <div class="weitere-card-body">
+          <p class="weitere-tag" data-i18n="home.more.kp.tag">Hochzeiten · Firmenevents · Festivals</p>
+          <h3 data-i18n="home.more.kp.title">Kinderprogramm für Ihre Anlässe</h3>
+          <p data-i18n="home.more.kp.desc">Damit die kleinen Gäste glücklich sind und Sie sich auf Ihre grossen Gäste konzentrieren können. Spielecken, Bastelstationen und liebevolle Betreuung.</p>
+          <span class="weitere-cta" data-i18n="home.more.kp.cta">Programm ansehen →</span>
+        </div>
+      </a>
+
+      <a class="weitere-card reveal reveal-delay-2" href="vorlagen.html">
+        <div class="weitere-card-visual visual-vl">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="12" y="10" width="34" height="46" rx="2" fill="currentColor" fill-opacity="0.16"/>
+            <rect x="18" y="6" width="34" height="46" rx="2" fill="currentColor" fill-opacity="0.10"/>
+            <line x1="22" y1="18" x2="42" y2="18"/>
+            <line x1="22" y1="26" x2="42" y2="26"/>
+            <line x1="22" y1="34" x2="36" y2="34"/>
+          </svg>
+        </div>
+        <div class="weitere-card-body">
+          <p class="weitere-tag" data-i18n="home.more.vl.tag">DIY · sofort zum Download</p>
+          <h3 data-i18n="home.more.vl.title">Vorlagen &amp; Bundles zum Selber-Feiern</h3>
+          <p data-i18n="home.more.vl.desc">Sie organisieren selbst, wir liefern die Magie. Themenpakete, Einladungs-Designs, Spiele und Einkaufslisten — als digitale Bundles ab CHF 19.</p>
+          <span class="weitere-cta" data-i18n="home.more.vl.cta">Vorlagen entdecken →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
   <!-- ─── Aktueller Anlass ───────────────────────────────────────── -->
   <section id="anlass">
     <div class="anlass-inner">
@@ -1500,11 +1678,14 @@
     if (navToggle && navLinks) {
       navToggle.addEventListener('click', () => {
         const open = navLinks.classList.toggle('open');
+        // Make the nav header solid dark when drawer is open
+        nav.classList.toggle('menu-open', open);
         navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
       // Close drawer when a nav link is clicked
       navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
         navLinks.classList.remove('open');
+        nav.classList.remove('menu-open');
         navToggle.setAttribute('aria-expanded', 'false');
       }));
     }

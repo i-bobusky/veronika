@@ -331,18 +331,35 @@
     /* ─── Mobile ───────────────────────────────────────────────── */
     @media (max-width: 900px) {
       nav { padding: 1rem 5vw; }
-      .nav-toggle { display: flex; }
-      .nav-links {
+      nav.menu-open {
+        background: #1c1c28 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 1px 0 rgba(201,169,110,0.2);
+      }
+      nav.menu-open .nav-logo { color: #ffffff; }
+      nav.menu-open .nav-logo em { color: var(--gold); }
+      nav.menu-open .nav-toggle { border-color: rgba(255,255,255,0.3); }
+      nav.menu-open .nav-toggle span { background: #ffffff; }
+      .nav-toggle {
+        display: flex;
+        position: relative;
+        z-index: 210;
+      }
+      nav .nav-links {
         position: fixed; top: 0; right: 0; bottom: 0;
-        width: min(80vw, 320px);
-        background: rgba(28, 28, 40, 0.98); backdrop-filter: blur(12px);
+        width: min(82vw, 340px);
+        height: 100vh; height: 100dvh;
+        z-index: 200;
+        background: #1c1c28 !important;
         flex-direction: column; gap: 0; padding: 5rem 2rem 2rem;
         transform: translateX(100%); transition: transform 0.35s ease;
         align-items: flex-start; list-style: none;
-        border-left: 1px solid rgba(201,169,110,0.2);
-        box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+        border-left: 1px solid rgba(201,169,110,0.25);
+        box-shadow: -16px 0 50px rgba(0,0,0,0.45);
+        overflow-y: auto;
       }
-      .nav-links.open { transform: translateX(0); }
+      nav .nav-links.open { transform: translateX(0) !important; }
       .nav-links li { width: 100%; }
       .nav-links a {
         display: block; padding: 0.85rem 0;
@@ -656,10 +673,12 @@
     if (t && l) {
       t.addEventListener('click', () => {
         const open = l.classList.toggle('open');
+        nav.classList.toggle('menu-open', open);
         t.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
       l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
         l.classList.remove('open');
+        nav.classList.remove('menu-open');
         t.setAttribute('aria-expanded', 'false');
       }));
     }

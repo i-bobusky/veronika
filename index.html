@@ -78,19 +78,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.25rem 5vw;
-      transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
-      /* default: subtle dark gradient so nav stays readable over any hero image */
-      background: linear-gradient(to bottom, rgba(28,28,40,0.65) 0%, rgba(28,28,40,0.25) 70%, rgba(28,28,40,0) 100%);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
+      padding: 1rem 4vw;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+      /* Solid dark background so every nav item stays readable on any hero. */
+      background: rgba(28, 28, 40, 0.94);
+      box-shadow: 0 1px 0 rgba(201, 169, 110, 0.18);
     }
 
     nav.scrolled {
-      background: rgba(28, 28, 40, 0.97);
-      box-shadow: 0 1px 0 rgba(201, 169, 110, 0.2);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(28, 28, 40, 0.98);
+      box-shadow: 0 1px 0 rgba(201, 169, 110, 0.25);
     }
 
     /* stronger contrast for nav text on initial state */
@@ -141,18 +138,28 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 1.4rem;
       list-style: none;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-links a {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.85);
       transition: color 0.25s;
+      white-space: nowrap;
+    }
+
+    /* Tighter at 1100-1280px laptop widths so all items fit on one row */
+    @media (min-width: 901px) and (max-width: 1280px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.66rem; letter-spacing: 0.1em; }
+      .nav-logo { font-size: 1.15rem; }
     }
 
     .nav-links a:hover { color: var(--gold); }

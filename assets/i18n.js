@@ -1312,7 +1312,11 @@
   };
 
   // ── apply / runtime ──────────────────────────────────────────────
-  const SUPPORTED = ['de', 'en', 'cs', 'fr'];
+  // NOTE: Czech ('cs') was removed from the public language list in May 2026.
+  // The translations stay in this file (harmless) but the UI no longer
+  // exposes the CS button and CS is never picked as default. English is
+  // now the default for new visitors with no saved preference.
+  const SUPPORTED = ['en', 'de', 'fr'];
   const STORAGE_KEY = 'vb.lang';
 
   function detectLang() {
@@ -1320,13 +1324,17 @@
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved && SUPPORTED.includes(saved)) return saved;
     } catch (_) {}
-    const nav = (navigator.language || 'de').slice(0,2).toLowerCase();
-    return SUPPORTED.includes(nav) ? nav : 'de';
+    const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    return SUPPORTED.includes(nav) ? nav : 'en';
   }
 
   function t(key, lang) {
     lang = lang || window.VB_LANG || detectLang();
-    return (I18N[lang] && I18N[lang][key]) || (I18N.de && I18N.de[key]);
+    // Look up the requested language, then fall back to EN (new default),
+    // then DE (which has the most complete legacy coverage).
+    return (I18N[lang] && I18N[lang][key]) ||
+           (I18N.en && I18N.en[key]) ||
+           (I18N.de && I18N.de[key]);
   }
 
   function applyLang(lang) {

@@ -1158,17 +1158,19 @@
         top: 0;
         right: 0;
         bottom: 0;
-        width: min(80vw, 320px);
-        background: rgba(28, 28, 40, 0.98);
-        backdrop-filter: blur(12px);
+        width: min(82vw, 340px);
+        /* Solid background so the drawer is always readable, even when
+           backdrop-filter isn't supported (older Safari / Firefox). */
+        background: #1c1c28;
+        background: var(--charcoal, #1c1c28);
         flex-direction: column;
         gap: 0;
         padding: 5rem 2rem 2rem;
         transform: translateX(100%);
         transition: transform 0.35s ease;
         align-items: flex-start;
-        border-left: 1px solid rgba(201,169,110,0.2);
-        box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+        border-left: 1px solid rgba(201,169,110,0.25);
+        box-shadow: -16px 0 50px rgba(0,0,0,0.45);
       }
       .nav-links.open { transform: translateX(0); }
       .nav-links li { width: 100%; }
@@ -1217,10 +1219,9 @@
       <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
       <li><a href="https://i-bobusky.github.io/tierwelt/" target="_blank" rel="noopener" class="nav-highlight" data-i18n="nav.tierwelt">Tierwelt →</a></li>
       <li>
-        <div class="lang-switcher" role="group" aria-label="Sprache wählen">
-          <button type="button" class="lang-btn" data-lang="de">DE</button>
+        <div class="lang-switcher" role="group" aria-label="Choose language">
           <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="cs">CS</button>
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
           <button type="button" class="lang-btn" data-lang="fr">FR</button>
         </div>
       </li>

@@ -1218,17 +1218,18 @@
       .nav-links {
         position: fixed;
         top: 0; right: 0; bottom: 0;
-        width: min(80vw, 320px);
-        background: rgba(28, 28, 40, 0.98);
-        backdrop-filter: blur(12px);
+        width: min(82vw, 340px);
+        /* Solid background — always readable, even without backdrop-filter support */
+        background: #1c1c28;
+        background: var(--charcoal, #1c1c28);
         flex-direction: column;
         gap: 0;
         padding: 5rem 2rem 2rem;
         transform: translateX(100%);
         transition: transform 0.35s ease;
         align-items: flex-start;
-        border-left: 1px solid rgba(201,169,110,0.2);
-        box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+        border-left: 1px solid rgba(201,169,110,0.25);
+        box-shadow: -16px 0 50px rgba(0,0,0,0.45);
         list-style: none;
         margin: 0;
       }
@@ -1317,10 +1318,9 @@
       <li><a href="index.html#anlass" data-i18n="nav.event">Anlass</a></li>
       <li><a class="nav-back-link" href="index.html" data-i18n="nav.back">← Zurück</a></li>
       <li>
-        <div class="lang-switcher" role="group" aria-label="Sprache wählen">
-          <button type="button" class="lang-btn" data-lang="de">DE</button>
+        <div class="lang-switcher" role="group" aria-label="Choose language">
           <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <button type="button" class="lang-btn" data-lang="cs">CS</button>
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
           <button type="button" class="lang-btn" data-lang="fr">FR</button>
         </div>
       </li>
@@ -2031,6 +2031,8 @@
 
   <!-- ─── Scripts ────────────────────────────────────────────────── -->
   <script src="assets/i18n.js"></script>
+  <!-- A/B v2 overlay — activates only when URL has ?v=2 or path ends in -v2.html -->
+  <script src="assets/v2-overlay.js"></script>
   <script>
     /* re-render calculator result labels and form summary on language change */
     document.addEventListener('vb:lang-change', () => {

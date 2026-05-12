@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinderbetreuung für Ihre Anlässe — Atelier Glanz</title>
+  <meta name="description" content="Atelier Glanz — Kinderbetreuung und kreatives Programm für Hochzeiten, Firmenevents, Familienfeiern und mehr. So sind die kleinen Gäste glücklich — und Sie auch." />
+
+  <meta property="og:title" content="Kinderbetreuung für Ihre Anlässe — Atelier Glanz" />
+  <meta property="og:description" content="Kreatives Programm und liebevolle Betreuung, damit die kleinen Gäste an Ihrem Anlass strahlen." />
+  <meta property="og:image" content="https://atelier-glanz.ch/images/kg-hero.jpg.jpg" />
+  <meta property="og:url" content="https://atelier-glanz.ch/kinderprogramm.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal:#1c1c28; --charcoal-md:#2a2a3a; --charcoal-lt:#3d3d52;
+      --gold:#c9a96e; --gold-deep:#a98a4a; --gold-lt:#dfc08e;
+      --forest:#1f3d2e; --forest-md:#2e5641; --forest-lt:#d6e3da;
+      --cream:#faf8f4; --cream-deep:#f3efe6;
+      --warm-grey:#b8b4ac; --text-main:#2d2b28; --text-muted:#7a7670;
+      --sage:#8a9e8c; --white:#ffffff; --line:#e6e1d6;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      color: var(--text-main);
+      background: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.2; }
+
+    .section-label {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); display: block; margin-bottom: 1.5rem;
+    }
+
+    /* ─── Nav (matches kindergeburtstag.html) ─────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 5vw;
+      transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+      background: rgba(250, 248, 244, 0.85);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+    nav.scrolled {
+      background: rgba(28, 28, 40, 0.97);
+      box-shadow: 0 1px 0 rgba(201, 169, 110, 0.2);
+      border-bottom-color: transparent;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; color: var(--charcoal);
+      letter-spacing: 0.04em; font-weight: 500;
+    }
+    .nav-logo em { font-style: italic; color: var(--gold-deep); margin-left: 0.15em; }
+    nav.scrolled .nav-logo { color: var(--white); }
+    nav.scrolled .nav-logo em { color: var(--gold); }
+    .nav-toggle {
+      display: none; background: transparent;
+      border: 1px solid rgba(28,28,40,0.25); border-radius: 3px;
+      width: 38px; height: 38px; padding: 0; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    nav.scrolled .nav-toggle { border-color: rgba(255,255,255,0.3); }
+    .nav-toggle span { width: 18px; height: 1.5px; background: var(--charcoal); transition: transform 0.3s, opacity 0.3s, background 0.3s; }
+    nav.scrolled .nav-toggle span { background: var(--white); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--charcoal); transition: color 0.25s; font-weight: 500;
+    }
+    nav.scrolled .nav-links a { color: rgba(255,255,255,0.85); }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-back-link { color: var(--gold) !important; letter-spacing: 0.12em !important; }
+    .lang-switcher {
+      display: inline-flex; gap: 0.25rem; align-items: center;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid rgba(28,28,40,0.18); border-radius: 100px;
+    }
+    nav.scrolled .lang-switcher { border-color: rgba(255,255,255,0.18); }
+    .lang-btn {
+      background: transparent; border: 0; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.66rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.3rem 0.55rem; border-radius: 100px;
+      color: var(--text-muted); transition: all 0.2s ease;
+    }
+    nav.scrolled .lang-btn { color: rgba(255,255,255,0.55); }
+    .lang-btn:hover { color: var(--charcoal); }
+    nav.scrolled .lang-btn:hover { color: var(--white); }
+    .lang-btn.active { background: var(--gold); color: var(--charcoal); }
+
+    /* ─── Hero ──────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 80vh;
+      padding: 11rem 8vw 5rem;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 3rem;
+      align-items: center;
+    }
+    #hero::before {
+      content: ''; position: absolute;
+      top: -200px; right: -150px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(31,61,46,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-deep); margin-bottom: 1.25rem; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 24px; height: 1px; background: var(--gold);
+    }
+    #hero h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+      color: var(--forest);
+      margin-bottom: 0.4rem; font-weight: 400; letter-spacing: -0.01em;
+    }
+    #hero h1 em { font-style: italic; color: var(--gold-deep); }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.2rem, 2vw, 1.7rem);
+      color: var(--charcoal); margin-bottom: 1.75rem;
+    }
+    .hero-rule { width: 80px; height: 2px; background: linear-gradient(to right, var(--gold), transparent); margin: 0 0 2rem; border-radius: 100px; }
+    .hero-intro { font-size: 1.05rem; color: var(--text-main); max-width: 620px; line-height: 1.8; margin-bottom: 2.5rem; }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    .hero-illustration { position: relative; display: flex; justify-content: center; align-items: center; }
+    .hero-img-wrap {
+      position: relative; width: 100%; max-width: 480px;
+      aspect-ratio: 4/5; border-radius: 8px; overflow: hidden;
+      box-shadow: 0 30px 80px rgba(31,61,46,0.18);
+      background: linear-gradient(160deg, var(--forest) 0%, var(--forest-md) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold-lt); padding: 2rem; text-align: center;
+    }
+    .hero-img-wrap svg { width: 110px; height: 110px; opacity: 0.85; margin-bottom: 1.25rem; }
+    .hero-img-wrap span {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.05rem; color: var(--gold-lt);
+    }
+
+    /* ─── Buttons ───────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.95rem 2.2rem;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.3s ease;
+      border-radius: 1px; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--gold); color: var(--charcoal); border-color: var(--gold); }
+    .btn-primary:hover { background: var(--gold-lt); border-color: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,169,110,0.25); }
+    .btn-secondary { background: transparent; color: var(--charcoal); border-color: rgba(28,28,40,0.35); }
+    .btn-secondary:hover { border-color: var(--charcoal); background: rgba(28,28,40,0.04); transform: translateY(-2px); }
+
+    /* ─── Sections base ────────────────────────────────────────────── */
+    section { padding: 6rem 8vw; }
+    .section-head { text-align: center; max-width: 740px; margin: 0 auto 4rem; }
+    .section-head h2 { font-size: clamp(2.4rem, 3.5vw, 3.5rem); margin-bottom: 0.75rem; }
+    .section-head h2 em { font-style: italic; color: var(--charcoal-lt); }
+    .section-head p { color: var(--text-muted); font-size: 1.02rem; }
+
+    /* ─── Use Cases (Wer profitiert) ──────────────────────────────── */
+    #wer { background: var(--white); }
+    .wer-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      max-width: 1200px; margin: 0 auto;
+    }
+    .wer-card {
+      background: var(--cream); border: 1px solid var(--line);
+      border-radius: 4px; padding: 2rem 1.75rem;
+      transition: all 0.3s ease;
+    }
+    .wer-card:hover { transform: translateY(-3px); border-color: rgba(201,169,110,0.4); box-shadow: 0 12px 30px rgba(28,28,40,0.06); }
+    .wer-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%; background: rgba(201,169,110,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold-deep); font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .wer-card h4 {
+      font-size: 1.3rem; color: var(--charcoal); margin-bottom: 0.5rem;
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    }
+    .wer-card p { font-size: 0.94rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ─── Programm (Was wir anbieten) ─────────────────────────────── */
+    #programm { background: var(--cream); }
+    .programm-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      max-width: 1200px; margin: 0 auto;
+    }
+    .programm-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 6px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: all 0.3s ease;
+    }
+    .programm-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(28,28,40,0.08); border-color: rgba(201,169,110,0.4); }
+    .programm-card-head {
+      background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 100%);
+      padding: 1.75rem 1.5rem; color: var(--gold-lt);
+    }
+    .programm-card-tag {
+      font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;
+    }
+    .programm-card-head h3 {
+      font-size: 1.5rem; color: var(--white);
+      font-family: 'Cormorant Garamond', serif; font-weight: 500;
+    }
+    .programm-card-body { padding: 1.5rem 1.5rem 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .programm-card-body p { font-size: 0.94rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+    .programm-card ul { list-style: none; flex: 1; }
+    .programm-card li {
+      position: relative; padding-left: 1.25rem;
+      font-size: 0.9rem; color: var(--text-main); line-height: 1.55;
+      margin-bottom: 0.5rem;
+    }
+    .programm-card li::before { content: '✓'; position: absolute; left: 0; color: var(--sage); font-weight: 600; }
+
+    /* ─── Why us ─────────────────────────────────────────────────── */
+    #warum { background: var(--forest); color: var(--cream); }
+    #warum .section-label { color: var(--gold-lt); }
+    #warum h2 { color: var(--cream); }
+    #warum h2 em { color: var(--gold-lt); }
+    #warum .section-head p { color: var(--forest-lt); }
+    .warum-grid {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      max-width: 1100px; margin: 0 auto;
+    }
+    .warum-item { text-align: center; padding: 1.4rem 1rem; }
+    .warum-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(201,169,110,0.15); color: var(--gold-lt);
+      margin-bottom: 1rem;
+    }
+    .warum-icon svg { width: 22px; height: 22px; }
+    .warum-item h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.2rem; color: var(--cream); margin-bottom: 0.5rem; }
+    .warum-item p { color: var(--forest-lt); font-size: 0.95rem; line-height: 1.6; }
+
+    /* ─── Contact callout ─────────────────────────────────────────── */
+    #anfrage {
+      background: var(--white);
+      padding: 5rem 8vw;
+    }
+    .anfrage-box {
+      max-width: 760px; margin: 0 auto;
+      background: var(--cream); border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 3rem 2.5rem; text-align: center;
+      box-shadow: 0 18px 40px rgba(28,28,40,0.05);
+    }
+    .anfrage-box h2 { font-size: clamp(2rem, 3.2vw, 2.8rem); margin-bottom: 0.5rem; }
+    .anfrage-box h2 em { font-style: italic; color: var(--gold-deep); }
+    .anfrage-box p { color: var(--text-muted); margin-bottom: 1.75rem; font-size: 1.02rem; line-height: 1.7; }
+    .anfrage-contacts {
+      display: flex; gap: 1.5rem; justify-content: center;
+      flex-wrap: wrap; padding-top: 1.5rem;
+      border-top: 1px dashed var(--line);
+    }
+    .anfrage-contact {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.95rem; color: var(--text-main);
+    }
+    .anfrage-contact svg { width: 18px; height: 18px; color: var(--gold-deep); }
+    .anfrage-contact:hover { color: var(--gold-deep); }
+
+    /* ─── Footer ────────────────────────────────────────────────── */
+    footer {
+      background: var(--charcoal-md); padding: 5rem 8vw 3rem;
+      border-top: 1px solid rgba(201,169,110,0.25);
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; color: var(--white); margin-bottom: 0.3rem;
+    }
+    .footer-tagline {
+      font-size: 0.78rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+    .footer-contact-items { display: flex; flex-direction: column; gap: 0.9rem; }
+    .footer-contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.6);
+      transition: color 0.25s;
+    }
+    .footer-contact-item:hover { color: var(--gold); }
+    .footer-contact-item .icon { width: 18px; height: 18px; opacity: 0.5; flex-shrink: 0; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 2rem; margin-top: 4rem;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .footer-made { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+    /* ─── Mobile ───────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 5vw; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: fixed; top: 0; right: 0; bottom: 0;
+        width: min(80vw, 320px);
+        background: rgba(28, 28, 40, 0.98); backdrop-filter: blur(12px);
+        flex-direction: column; gap: 0; padding: 5rem 2rem 2rem;
+        transform: translateX(100%); transition: transform 0.35s ease;
+        align-items: flex-start; list-style: none;
+        border-left: 1px solid rgba(201,169,110,0.2);
+        box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+      }
+      .nav-links.open { transform: translateX(0); }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block; padding: 0.85rem 0;
+        font-size: 0.85rem; letter-spacing: 0.15em;
+        color: rgba(255,255,255,0.85) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06); width: 100%;
+      }
+      .lang-switcher {
+        margin-top: 1.5rem; align-self: stretch; justify-content: space-between;
+        border-color: rgba(255,255,255,0.18);
+      }
+      .lang-btn { color: rgba(255,255,255,0.55); font-size: 0.66rem; }
+
+      #hero { grid-template-columns: 1fr; padding: 9rem 6vw 4rem; min-height: auto; gap: 2.5rem; }
+      .hero-illustration { order: -1; max-width: 340px; margin: 0 auto; }
+      .hero-img-wrap { aspect-ratio: 4/4; }
+      section { padding: 4.5rem 6vw; }
+      .anfrage-box { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─────────────────────────────────────────────── -->
+  <nav id="nav">
+    <a class="nav-logo" href="index.html">Atelier <em>Glanz</em></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html#ueber-mich" data-i18n="nav.about">Über mich</a></li>
+      <li><a href="kindergeburtstag.html" data-i18n="nav.kg">Kindergeburtstag</a></li>
+      <li><a href="kinderprogramm.html" data-i18n="nav.kinderprogramm">Kinderprogramm</a></li>
+      <li><a href="vorlagen.html" data-i18n="nav.vorlagen">Vorlagen</a></li>
+      <li><a class="nav-back-link" href="index.html" data-i18n="nav.back">← Zurück</a></li>
+      <li>
+        <div class="lang-switcher" role="group" aria-label="Choose language">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
+          <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ───────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow" data-i18n="kp.hero.eyebrow">Kinderbetreuung · Zug · Luzern · Zürich</p>
+      <h1 data-i18n-html="kp.hero.title.html">Damit auch die kleinen Gäste<br /><em>strahlen.</em></h1>
+      <p class="hero-sub" data-i18n="kp.hero.sub">Kreatives Programm und liebevolle Betreuung für Ihren Anlass.</p>
+      <div class="hero-rule"></div>
+      <p class="hero-intro" data-i18n="kp.hero.intro">
+        Sie planen eine Hochzeit, ein Firmenevent oder eine Familienfeier — und wissen, dass auch
+        Kinder dabei sein werden? Wir kümmern uns um die kleinen Gäste, damit Sie sich auf Ihre
+        grossen Gäste konzentrieren können. Spielecken, Bastelstationen, geführte Aktivitäten —
+        massgeschneidert auf Ihren Anlass.
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn btn-primary" href="#anfrage" data-i18n="kp.hero.cta1">Unverbindlich anfragen</a>
+        <a class="btn btn-secondary" href="#programm" data-i18n="kp.hero.cta2">Programm ansehen</a>
+      </div>
+    </div>
+
+    <div class="hero-illustration">
+      <div class="hero-img-wrap">
+        <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <!-- balloons + children silhouette -->
+          <circle cx="35" cy="25" r="12" fill="currentColor" fill-opacity="0.18"/>
+          <circle cx="60" cy="18" r="14" fill="currentColor" fill-opacity="0.22"/>
+          <circle cx="85" cy="28" r="11" fill="currentColor" fill-opacity="0.16"/>
+          <line x1="35" y1="37" x2="35" y2="60"/>
+          <line x1="60" y1="32" x2="60" y2="60"/>
+          <line x1="85" y1="39" x2="85" y2="60"/>
+          <!-- kid -->
+          <circle cx="60" cy="78" r="7" fill="currentColor" fill-opacity="0.18"/>
+          <path d="M50 105 Q50 88 60 88 Q70 88 70 105 Z" fill="currentColor" fill-opacity="0.18"/>
+        </svg>
+        <span>Atelier Glanz<br />Kinderprogramm</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Wer profitiert ─────────────────────────────────────────── -->
+  <section id="wer">
+    <div class="section-head">
+      <span class="section-label" data-i18n="kp.wer.label">Für welche Anlässe</span>
+      <h2 data-i18n-html="kp.wer.h2.html">Überall, wo Kinder<br /><em>auch dabei sind</em></h2>
+      <p data-i18n="kp.wer.p">Wir kommen zu Ihrer Veranstaltung und machen den Tag für alle Generationen schön.</p>
+    </div>
+    <div class="wer-grid">
+      <div class="wer-card">
+        <div class="wer-icon">💍</div>
+        <h4 data-i18n="kp.wer.c1.h">Hochzeiten</h4>
+        <p data-i18n="kp.wer.c1.p">Damit die Brautfamilie tanzen kann und die kleinen Gäste eine eigene Themenwelt erleben.</p>
+      </div>
+      <div class="wer-card">
+        <div class="wer-icon">🏢</div>
+        <h4 data-i18n="kp.wer.c2.h">Firmenevents &amp; Family Days</h4>
+        <p data-i18n="kp.wer.c2.p">Mitarbeitende kommen mit Familie – wir kümmern uns um die Kinder, Sie ums Networking.</p>
+      </div>
+      <div class="wer-card">
+        <div class="wer-icon">🎉</div>
+        <h4 data-i18n="kp.wer.c3.h">Familienfeiern</h4>
+        <p data-i18n="kp.wer.c3.p">Taufen, Konfirmationen, runde Geburtstage – die Erwachsenen plaudern, die Kinder erleben.</p>
+      </div>
+      <div class="wer-card">
+        <div class="wer-icon">🎪</div>
+        <h4 data-i18n="kp.wer.c4.h">Vereins- &amp; Quartierfeste</h4>
+        <p data-i18n="kp.wer.c4.p">Eine fixe Kinderecke mit Programm – damit Eltern bleiben und der Anlass länger lebt.</p>
+      </div>
+      <div class="wer-card">
+        <div class="wer-icon">🎬</div>
+        <h4 data-i18n="kp.wer.c5.h">Marken- &amp; PR-Events</h4>
+        <p data-i18n="kp.wer.c5.p">Sie laden Familien ein? Wir gestalten die Kinderzone in Ihrer Markenwelt – durchdacht und sicher.</p>
+      </div>
+      <div class="wer-card">
+        <div class="wer-icon">🌳</div>
+        <h4 data-i18n="kp.wer.c6.h">Open-Air &amp; Sommerfeste</h4>
+        <p data-i18n="kp.wer.c6.p">Spielstation auf der Wiese, Schminkecke unter dem Pavillon – wetterfest geplant.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Programm ──────────────────────────────────────────────── -->
+  <section id="programm">
+    <div class="section-head">
+      <span class="section-label" data-i18n="kp.programm.label">Was wir anbieten</span>
+      <h2 data-i18n-html="kp.programm.h2.html">Module, die Sie<br /><em>frei kombinieren</em></h2>
+      <p data-i18n="kp.programm.p">Wählen Sie einzelne Module oder ein Komplett-Paket — wir bauen das Programm um Ihren Anlass herum.</p>
+    </div>
+
+    <div class="programm-grid">
+      <div class="programm-card">
+        <div class="programm-card-head">
+          <p class="programm-card-tag" data-i18n="kp.programm.m1.tag">Modul 1</p>
+          <h3 data-i18n="kp.programm.m1.title">Spielstation mit Betreuung</h3>
+        </div>
+        <div class="programm-card-body">
+          <p data-i18n="kp.programm.m1.desc">Liebevoll gestaltete Spielecke mit Brett- und Bewegungsspielen — eine geprüfte Betreuerin ist die ganze Zeit für die Kinder da.</p>
+          <ul>
+            <li data-i18n="kp.programm.m1.l1">Altersgerechte Spielauswahl</li>
+            <li data-i18n="kp.programm.m1.l2">Material &amp; Setup inklusive</li>
+            <li data-i18n="kp.programm.m1.l3">Bis zu 15 Kinder gleichzeitig</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="programm-card">
+        <div class="programm-card-head">
+          <p class="programm-card-tag" data-i18n="kp.programm.m2.tag">Modul 2</p>
+          <h3 data-i18n="kp.programm.m2.title">Kreative Bastelstation</h3>
+        </div>
+        <div class="programm-card-body">
+          <p data-i18n="kp.programm.m2.desc">Geführtes Basteln mit Bezug zu Ihrem Anlass — z. B. Hochzeits-Konfetti, Mini-Kostüme oder Firmen-Souvenirs.</p>
+          <ul>
+            <li data-i18n="kp.programm.m2.l1">Auf das Event-Thema abgestimmt</li>
+            <li data-i18n="kp.programm.m2.l2">Alle Materialien vorbereitet</li>
+            <li data-i18n="kp.programm.m2.l3">Jedes Kind nimmt etwas nach Hause</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="programm-card">
+        <div class="programm-card-head">
+          <p class="programm-card-tag" data-i18n="kp.programm.m3.tag">Modul 3</p>
+          <h3 data-i18n="kp.programm.m3.title">Themen-Erlebniswelt</h3>
+        </div>
+        <div class="programm-card-body">
+          <p data-i18n="kp.programm.m3.desc">Eine kleine Themenwelt vor Ort — Piraten, Tierwelt, Weltall, Prinzessinnen — mit Stationen, Verkleidung und Geschichten.</p>
+          <ul>
+            <li data-i18n="kp.programm.m3.l1">Vollständig dekorierte Themenzone</li>
+            <li data-i18n="kp.programm.m3.l2">Geführte Story &amp; Aktivitäten</li>
+            <li data-i18n="kp.programm.m3.l3">Foto-Ecke mit Requisiten</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="programm-card">
+        <div class="programm-card-head">
+          <p class="programm-card-tag" data-i18n="kp.programm.m4.tag">Modul 4</p>
+          <h3 data-i18n="kp.programm.m4.title">Kinderschminken &amp; Glitzer-Tattoos</h3>
+        </div>
+        <div class="programm-card-body">
+          <p data-i18n="kp.programm.m4.desc">Hochwertige Schminke und glitzernde Tattoos zum Aufpinseln — jedes Kind wird zur Wunschfigur.</p>
+          <ul>
+            <li data-i18n="kp.programm.m4.l1">Hautfreundliche Profi-Schminke</li>
+            <li data-i18n="kp.programm.m4.l2">Auswahl an Tier-, Helden- &amp; Fantasie-Motiven</li>
+            <li data-i18n="kp.programm.m4.l3">Pro Schminkecke bis zu 20 Kinder / Stunde</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="programm-card">
+        <div class="programm-card-head">
+          <p class="programm-card-tag" data-i18n="kp.programm.m5.tag">Modul 5</p>
+          <h3 data-i18n="kp.programm.m5.title">Schatzsuche &amp; Spiele draussen</h3>
+        </div>
+        <div class="programm-card-body">
+          <p data-i18n="kp.programm.m5.desc">Geführte Schatzsuche mit Karten, Hinweisen und kleinem Schatz — perfekt für Open-Air-Anlässe.</p>
+          <ul>
+            <li data-i18n="kp.programm.m5.l1">Themenbezogene Story</li>
+            <li data-i18n="kp.programm.m5.l2">Outdoor oder indoor möglich</li>
+            <li data-i18n="kp.programm.m5.l3">Mit kleiner Belohnung für jedes Kind</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="programm-card">
+        <div class="programm-card-head">
+          <p class="programm-card-tag" data-i18n="kp.programm.m6.tag">Komplett-Paket</p>
+          <h3 data-i18n="kp.programm.m6.title">Kinderzone Vollservice</h3>
+        </div>
+        <div class="programm-card-body">
+          <p data-i18n="kp.programm.m6.desc">Wir gestalten und betreuen Ihre komplette Kinderzone — von Setup bis Aufräumen — als ein zusammenhängendes Erlebnis.</p>
+          <ul>
+            <li data-i18n="kp.programm.m6.l1">Mehrere Module kombiniert</li>
+            <li data-i18n="kp.programm.m6.l2">Mindestens zwei Betreuerinnen</li>
+            <li data-i18n="kp.programm.m6.l3">Auf Ihre Veranstaltungslänge angepasst</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Warum Atelier Glanz ───────────────────────────────────── -->
+  <section id="warum">
+    <div class="section-head">
+      <span class="section-label" data-i18n="kp.warum.label">Warum Atelier Glanz</span>
+      <h2 data-i18n-html="kp.warum.h2.html">Verlässlich.<br /><em>Liebevoll. Erfahren.</em></h2>
+      <p data-i18n="kp.warum.p">Veranstalter und Hochzeitsplanerinnen in Zug, Luzern und Zürich arbeiten regelmässig mit uns — weil sie wissen: Wenn Atelier Glanz für die Kinder zuständig ist, läuft der Anlass.</p>
+    </div>
+    <div class="warum-grid">
+      <div class="warum-item">
+        <div class="warum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h4 data-i18n="kp.warum.i1.h">Liebevoll, nie nur „Aufpassen"</h4>
+        <p data-i18n="kp.warum.i1.p">Wir sehen die kleinen Gäste, hören ihnen zu, gestalten den Tag mit ihnen.</p>
+      </div>
+      <div class="warum-item">
+        <div class="warum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h4 data-i18n="kp.warum.i2.h">Geprüfte Betreuerinnen</h4>
+        <p data-i18n="kp.warum.i2.p">Strafregisterauszug, pädagogische Erfahrung, mehrjährige Praxis im Team.</p>
+      </div>
+      <div class="warum-item">
+        <div class="warum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h4 data-i18n="kp.warum.i3.h">Klare Planung</h4>
+        <p data-i18n="kp.warum.i3.p">Sie erhalten ein schriftliches Konzept inkl. Setup-, Ablauf- und Sicherheitsplan vor der Veranstaltung.</p>
+      </div>
+      <div class="warum-item">
+        <div class="warum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+        <h4 data-i18n="kp.warum.i4.h">Versicherung &amp; Sicherheit</h4>
+        <p data-i18n="kp.warum.i4.p">Vollständig haftpflichtversichert. Erste-Hilfe-zertifiziert. Allergien werden vorab abgeklärt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Anfrage / Contact ───────────────────────────────────── -->
+  <section id="anfrage">
+    <div class="anfrage-box">
+      <span class="section-label" data-i18n="kp.anfrage.label">Anfrage</span>
+      <h2 data-i18n-html="kp.anfrage.h2.html">Lassen Sie uns über Ihren<br /><em>Anlass sprechen</em></h2>
+      <p data-i18n="kp.anfrage.p">Erzählen Sie uns kurz, was Sie planen — wir melden uns innerhalb von 24 Stunden mit einem passenden Vorschlag. Beratung und Angebot sind kostenlos.</p>
+      <a class="btn btn-primary" href="mailto:events@atelier-glanz.ch?subject=Anfrage%20Kinderprogramm" data-i18n="kp.anfrage.cta">Per E-Mail anfragen</a>
+      <div class="anfrage-contacts">
+        <a class="anfrage-contact" href="mailto:events@atelier-glanz.ch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          events@atelier-glanz.ch
+        </a>
+        <a class="anfrage-contact" href="tel:+41786858627">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 9.81a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 2.11 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L6.91 10.9a16 16 0 0 0 6 6l1.27-.89a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          078 685 86 27
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────────────────────── -->
+  <footer>
+    <div>
+      <p class="footer-name">Atelier <em style="color:var(--gold);font-style:italic;">Glanz</em></p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Veronika Bobuska · Zug · Luzern · Zürich</p>
+      <div class="footer-contact-items">
+        <a class="footer-contact-item" href="mailto:events@atelier-glanz.ch">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          events@atelier-glanz.ch
+        </a>
+        <a class="footer-contact-item" href="https://atelier-glanz.ch" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          atelier-glanz.ch
+        </a>
+        <a class="footer-contact-item" href="tel:+41786858627">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 9.81a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 2.11 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L6.91 10.9a16 16 0 0 0 6 6l1.27-.89a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          078 685 86 27
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Schweiz</p>
+      <p class="footer-made" data-i18n="footer.made">Eventorganisation mit Herz und Präzision</p>
+    </div>
+  </footer>
+
+  <script src="assets/i18n.js"></script>
+  <script>
+    // sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+    // hamburger
+    const t = document.querySelector('.nav-toggle');
+    const l = document.querySelector('.nav-links');
+    if (t && l) {
+      t.addEventListener('click', () => {
+        const open = l.classList.toggle('open');
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        l.classList.remove('open');
+        t.setAttribute('aria-expanded', 'false');
+      }));
+    }
+  </script>
+</body>
+</html>

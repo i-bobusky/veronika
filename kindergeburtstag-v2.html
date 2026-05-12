@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kindergeburtstag — Atelier Glanz (v2 · A/B)</title>
+  <meta name="description" content="Atelier Glanz · Kindergeburtstag · A/B Version 2" />
+  <link rel="canonical" href="https://atelier-glanz.ch/kindergeburtstag.html" />
+  <meta name="robots" content="noindex, follow" />
+
+  <!--
+    A/B v2 page.
+    This file simply forwards visitors to /kindergeburtstag.html?v=2,
+    which triggers the overlay in assets/v2-overlay.js. Using a hard
+    redirect (instead of an iframe or fetch) keeps things working
+    under file://, http:// and https:// alike.
+  -->
+  <meta http-equiv="refresh" content="0;url=kindergeburtstag.html?v=2" />
+  <script>
+    // Use replace() so the back button skips this redirect shim.
+    try { window.location.replace('kindergeburtstag.html?v=2'); }
+    catch (_) { window.location.href = 'kindergeburtstag.html?v=2'; }
+  </script>
+
+  <style>
+    html, body { margin: 0; height: 100%; background: #faf8f4;
+      font-family: 'DM Sans', system-ui, sans-serif; color: #7a7670; }
+    .v2-loading {
+      position: fixed; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem; font-size: 0.95rem; letter-spacing: 0.05em;
+    }
+    .v2-loading .spinner {
+      width: 36px; height: 36px;
+      border: 2px solid rgba(201,169,110,0.25);
+      border-top-color: #c9a96e;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .v2-loading a { color: #c9a96e; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="v2-loading">
+    <div class="spinner" aria-hidden="true"></div>
+    <p>Atelier Glanz · Version 2 wird geladen …</p>
+    <p style="font-size:0.8rem;">
+      <a href="kindergeburtstag.html?v=2">Wenn nichts passiert, hier klicken</a>
+    </p>
+  </div>
+</body>
+</html>

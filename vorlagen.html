@@ -92,6 +92,49 @@
       .nav-links a { font-size: 0.66rem; letter-spacing: 0.1em; }
       .nav-logo { font-size: 1.2rem; }
     }
+
+    /* ── Dropdown (Angebote) ── */
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown-toggle {
+      background: transparent; border: 0; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--charcoal); font-weight: 500; padding: 0;
+      white-space: nowrap; transition: color 0.25s;
+    }
+    nav.scrolled .nav-dropdown-toggle { color: rgba(255,255,255,0.9); }
+    .nav-dropdown-toggle:hover { color: var(--gold); }
+    .nav-caret { transition: transform 0.25s; opacity: 0.7; }
+    .nav-dropdown-toggle[aria-expanded="true"] .nav-caret,
+    .nav-has-dropdown:hover .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 0.7rem); left: -0.6rem;
+      background: #1c1c28;
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 4px; box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      padding: 0.4rem 0; min-width: 230px; list-style: none;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      z-index: 110;
+    }
+    .nav-has-dropdown:hover .nav-dropdown,
+    .nav-has-dropdown:focus-within .nav-dropdown,
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li { width: 100%; }
+    .nav-dropdown a {
+      display: block; padding: 0.7rem 1.2rem;
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: rgba(201,169,110,0.12); color: var(--gold); }
+    @media (min-width: 901px) and (max-width: 1280px) {
+      .nav-dropdown-toggle { font-size: 0.66rem; letter-spacing: 0.1em; }
+    }
     .nav-links a:hover { color: var(--gold); }
     .nav-back-link { color: var(--gold) !important; letter-spacing: 0.12em !important; }
     .lang-switcher {
@@ -419,6 +462,30 @@
       }
       .lang-btn { color: rgba(255,255,255,0.55); font-size: 0.66rem; }
 
+      /* Mobile dropdown */
+      .nav-has-dropdown { width: 100%; }
+      .nav-dropdown-toggle {
+        width: 100%; justify-content: space-between;
+        color: rgba(255,255,255,0.85) !important;
+        padding: 0.85rem 0;
+        font-size: 0.85rem; letter-spacing: 0.15em;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-dropdown {
+        position: static; background: rgba(255,255,255,0.04);
+        border: 0; border-radius: 0; box-shadow: none;
+        padding: 0; margin: 0; min-width: 0; width: 100%;
+        opacity: 1; visibility: visible; transform: none;
+        max-height: 0; overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .nav-dropdown.open { max-height: 320px; }
+      .nav-dropdown a {
+        padding: 0.7rem 0 0.7rem 1.5rem;
+        font-size: 0.78rem;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+      }
+
       #hero { padding: 9rem 6vw 4rem; }
       #shop, #faq, #how, #custom { padding: 4rem 6vw; }
     }
@@ -434,10 +501,20 @@
     </button>
     <ul class="nav-links">
       <li><a href="index.html#ueber-mich" data-i18n="nav.about">Über mich</a></li>
-      <li><a href="kindergeburtstag.html" data-i18n="nav.kg">Kindergeburtstag</a></li>
-      <li><a href="kinderprogramm.html" data-i18n="nav.kinderprogramm">Kinderprogramm</a></li>
-      <li><a href="vorlagen.html" data-i18n="nav.vorlagen">Vorlagen</a></li>
-      <li><a class="nav-back-link" href="index.html" data-i18n="nav.back">← Zurück</a></li>
+      <li class="nav-has-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          <span data-i18n="nav.services">Angebote</span>
+          <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="kindergeburtstag.html" data-i18n="nav.kg">Kindergeburtstag</a></li>
+          <li><a href="kinderprogramm.html" data-i18n="nav.kinderprogramm">Kinderprogramm</a></li>
+          <li><a href="vorlagen.html" data-i18n="nav.vorlagen">Vorlagen</a></li>
+        </ul>
+      </li>
+      <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+      <li><a href="index.html#referenzen" data-i18n="nav.refs">Referenzen</a></li>
+      <li><a href="index.html#kontakt" data-i18n="nav.contact">Kontakt</a></li>
       <li>
         <div class="lang-switcher" role="group" aria-label="Choose language">
           <button type="button" class="lang-btn" data-lang="en">EN</button>
@@ -775,6 +852,25 @@
         t.setAttribute('aria-expanded', 'false');
       }));
     }
+    // Services dropdown
+    document.querySelectorAll('.nav-dropdown-toggle').forEach(btn => {
+      const menu = btn.nextElementSibling;
+      if (!menu || !menu.classList.contains('nav-dropdown')) return;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        const opened = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', opened ? 'true' : 'false');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.nav-dropdown.open').forEach(menu => {
+        if (!menu.parentElement.contains(e.target)) {
+          menu.classList.remove('open');
+          const b = menu.previousElementSibling;
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
   </script>
 </body>
 </html>

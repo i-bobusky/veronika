@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · Atelier Glanz — Kindergeburtstage, Events &amp; Familien-Tipps</title>
+  <meta name="description" content="Tipps und Ideen rund um Kindergeburtstage, Kinderbetreuung bei Events und DIY-Themenfeste. Atelier Glanz teilt unser Erfahrungswissen für Eltern in Zug, Luzern und Zürich." />
+  <meta property="og:title" content="Blog · Atelier Glanz" />
+  <meta property="og:description" content="Erfahrungswissen für Eltern: Kindergeburtstage, Kinderbetreuung bei Hochzeiten, Themen-Ideen." />
+  <meta property="og:image" content="https://atelier-glanz.ch/images/kg-hero.jpg.jpg" />
+  <meta property="og:url" content="https://atelier-glanz.ch/blog.html" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://atelier-glanz.ch/blog.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --charcoal:#1c1c28; --charcoal-md:#2a2a3a; --charcoal-lt:#3d3d52;
+      --gold:#c9a96e; --gold-deep:#a98a4a; --gold-lt:#dfc08e;
+      --forest:#1f3d2e; --forest-md:#2e5641; --forest-lt:#d6e3da;
+      --cream:#faf8f4; --cream-deep:#f3efe6;
+      --warm-grey:#b8b4ac; --text-main:#2d2b28; --text-muted:#7a7670;
+      --sage:#8a9e8c; --white:#ffffff; --line:#e6e1d6;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif; font-weight: 300;
+      color: var(--text-main); background: var(--cream);
+      line-height: 1.7; overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; line-height: 1.2; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); display: block; margin-bottom: 1.5rem;
+    }
+
+    /* nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 5vw;
+      background: rgba(250, 248, 244, 0.92);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(28, 28, 40, 0.98);
+      box-shadow: 0 1px 0 rgba(201, 169, 110, 0.25);
+      border-bottom-color: transparent;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+      color: var(--charcoal); letter-spacing: 0.04em; font-weight: 500;
+    }
+    .nav-logo em { font-style: italic; color: var(--gold-deep); margin-left: 0.15em; }
+    nav.scrolled .nav-logo { color: var(--white); }
+    nav.scrolled .nav-logo em { color: var(--gold); }
+    .nav-toggle {
+      display: none; background: transparent;
+      border: 1px solid rgba(28,28,40,0.25); border-radius: 3px;
+      width: 38px; height: 38px; padding: 0; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    }
+    nav.scrolled .nav-toggle { border-color: rgba(255,255,255,0.3); }
+    .nav-toggle span { width: 18px; height: 1.5px; background: var(--charcoal); transition: transform 0.3s, opacity 0.3s, background 0.3s; }
+    nav.scrolled .nav-toggle span { background: var(--white); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a {
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--charcoal); transition: color 0.25s; font-weight: 500; white-space: nowrap;
+    }
+    nav.scrolled .nav-links a { color: rgba(255,255,255,0.9); }
+    .nav-links a:hover { color: var(--gold); }
+    @media (min-width: 901px) and (max-width: 1280px) {
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.66rem; letter-spacing: 0.1em; }
+      .nav-logo { font-size: 1.2rem; }
+    }
+
+    /* ── Dropdown (Angebote) ── */
+    .nav-has-dropdown { position: relative; }
+    .nav-dropdown-toggle {
+      background: transparent; border: 0; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--charcoal); font-weight: 500; padding: 0;
+      white-space: nowrap; transition: color 0.25s;
+    }
+    nav.scrolled .nav-dropdown-toggle { color: rgba(255,255,255,0.9); }
+    .nav-dropdown-toggle:hover { color: var(--gold); }
+    .nav-caret { transition: transform 0.25s; opacity: 0.7; }
+    .nav-dropdown-toggle[aria-expanded="true"] .nav-caret,
+    .nav-has-dropdown:hover .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 0.7rem); left: -0.6rem;
+      background: #1c1c28;
+      border: 1px solid rgba(201,169,110,0.25);
+      border-radius: 4px; box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+      padding: 0.4rem 0; min-width: 230px; list-style: none;
+      opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+      z-index: 110;
+    }
+    .nav-has-dropdown:hover .nav-dropdown,
+    .nav-has-dropdown:focus-within .nav-dropdown,
+    .nav-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown li { width: 100%; }
+    .nav-dropdown a {
+      display: block; padding: 0.7rem 1.2rem;
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: rgba(201,169,110,0.12); color: var(--gold); }
+    @media (min-width: 901px) and (max-width: 1280px) {
+      .nav-dropdown-toggle { font-size: 0.66rem; letter-spacing: 0.1em; }
+    }
+    .lang-switcher {
+      display: inline-flex; gap: 0.25rem; align-items: center;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid rgba(28,28,40,0.18); border-radius: 100px;
+    }
+    nav.scrolled .lang-switcher { border-color: rgba(255,255,255,0.18); }
+    .lang-btn {
+      background: transparent; border: 0; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.66rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.3rem 0.55rem; border-radius: 100px;
+      color: var(--text-muted); transition: all 0.2s ease;
+    }
+    nav.scrolled .lang-btn { color: rgba(255,255,255,0.55); }
+    .lang-btn:hover { color: var(--charcoal); }
+    nav.scrolled .lang-btn:hover { color: var(--white); }
+    .lang-btn.active { background: var(--gold); color: var(--charcoal); }
+
+    /* hero */
+    #blog-hero {
+      padding: 11rem 8vw 5rem;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    #blog-hero::before {
+      content: ''; position: absolute;
+      top: -200px; right: -150px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .blog-hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold-deep); margin-bottom: 1.25rem; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; width: 24px; height: 1px; background: var(--gold);
+    }
+    #blog-hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      color: var(--forest); margin-bottom: 1rem;
+      font-weight: 400; letter-spacing: -0.01em;
+    }
+    #blog-hero h1 em { font-style: italic; color: var(--gold-deep); }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      color: var(--charcoal); margin-bottom: 0;
+    }
+
+    /* article list */
+    #articles { padding: 5rem 8vw 7rem; background: var(--cream); }
+    .articles-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .article-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: all 0.3s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,169,110,0.4);
+      box-shadow: 0 18px 40px rgba(28,28,40,0.08);
+    }
+    .article-cover {
+      height: 200px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .article-cover.cover1 { background: linear-gradient(135deg, var(--forest) 0%, var(--forest-md) 100%); }
+    .article-cover.cover2 { background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold) 100%); }
+    .article-cover.cover3 { background: linear-gradient(135deg, #5a3a5a 0%, #8b5a8b 100%); }
+    .article-cover svg { width: 80px; height: 80px; color: rgba(255,255,255,0.85); }
+    .article-meta {
+      font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-deep); font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .article-body {
+      padding: 1.75rem 1.75rem 2rem;
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .article-card h2 {
+      font-size: 1.45rem; font-weight: 600;
+      color: var(--charcoal); margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .article-card p {
+      color: var(--text-muted); font-size: 0.95rem;
+      line-height: 1.65; flex: 1; margin-bottom: 1.25rem;
+    }
+    .article-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-deep);
+      transition: gap 0.25s, color 0.25s;
+    }
+    .article-card:hover .article-cta { gap: 0.85rem; color: var(--charcoal); }
+    .article-cta::after { content: '→'; transition: transform 0.25s; }
+    .article-card:hover .article-cta::after { transform: translateX(3px); }
+    .article-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px dashed var(--line);
+    }
+    .article-tag {
+      font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted);
+      background: var(--cream-deep);
+      padding: 0.2rem 0.55rem; border-radius: 100px;
+    }
+
+    /* footer */
+    footer {
+      background: var(--charcoal-md); padding: 5rem 8vw 3rem;
+      border-top: 1px solid rgba(201,169,110,0.25);
+    }
+    .footer-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; color: var(--white); margin-bottom: 0.3rem;
+    }
+    .footer-tagline {
+      font-size: 0.78rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+    .footer-contact-items { display: flex; flex-direction: column; gap: 0.9rem; }
+    .footer-contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.6);
+      transition: color 0.25s;
+    }
+    .footer-contact-item:hover { color: var(--gold); }
+    .footer-contact-item .icon { width: 18px; height: 18px; opacity: 0.5; flex-shrink: 0; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 2rem; margin-top: 4rem;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .footer-made { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+
+    /* mobile */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 5vw; }
+      nav.menu-open {
+        background: #1c1c28 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        box-shadow: 0 1px 0 rgba(201,169,110,0.2);
+      }
+      nav.menu-open .nav-logo { color: #ffffff; }
+      nav.menu-open .nav-logo em { color: var(--gold); }
+      nav.menu-open .nav-toggle { border-color: rgba(255,255,255,0.3); }
+      nav.menu-open .nav-toggle span { background: #ffffff; }
+      .nav-toggle { display: flex; position: relative; z-index: 210; }
+      nav .nav-links {
+        position: fixed; top: 0; right: 0; bottom: 0;
+        width: min(82vw, 340px); height: 100vh; height: 100dvh; z-index: 200;
+        background: #1c1c28 !important;
+        flex-direction: column; gap: 0; padding: 5rem 2rem 2rem;
+        transform: translateX(100%); transition: transform 0.35s ease;
+        align-items: flex-start; list-style: none;
+        border-left: 1px solid rgba(201,169,110,0.25);
+        box-shadow: -16px 0 50px rgba(0,0,0,0.45);
+        overflow-y: auto;
+      }
+      nav .nav-links.open { transform: translateX(0) !important; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block; padding: 0.85rem 0;
+        font-size: 0.85rem; letter-spacing: 0.15em;
+        color: rgba(255,255,255,0.85) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06); width: 100%;
+      }
+      .lang-switcher {
+        margin-top: 1.5rem; align-self: stretch;
+        justify-content: space-between;
+        border-color: rgba(255,255,255,0.18);
+      }
+      .lang-btn { color: rgba(255,255,255,0.55); font-size: 0.66rem; }
+      /* Mobile dropdown */
+      .nav-has-dropdown { width: 100%; }
+      .nav-dropdown-toggle {
+        width: 100%; justify-content: space-between;
+        color: rgba(255,255,255,0.85) !important;
+        padding: 0.85rem 0;
+        font-size: 0.85rem; letter-spacing: 0.15em;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-dropdown {
+        position: static; background: rgba(255,255,255,0.04);
+        border: 0; border-radius: 0; box-shadow: none;
+        padding: 0; margin: 0; min-width: 0; width: 100%;
+        opacity: 1; visibility: visible; transform: none;
+        max-height: 0; overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      .nav-dropdown.open { max-height: 320px; }
+      .nav-dropdown a {
+        padding: 0.7rem 0 0.7rem 1.5rem;
+        font-size: 0.78rem;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+      }
+      #blog-hero { padding: 9rem 6vw 4rem; }
+      #articles { padding: 3.5rem 6vw 5rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav id="nav">
+    <a class="nav-logo" href="index.html">Atelier <em>Glanz</em></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html#ueber-mich" data-i18n="nav.about">Über mich</a></li>
+      <li class="nav-has-dropdown">
+        <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          <span data-i18n="nav.services">Angebote</span>
+          <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="kindergeburtstag.html" data-i18n="nav.kg">Kindergeburtstag</a></li>
+          <li><a href="kinderprogramm.html" data-i18n="nav.kinderprogramm">Kinderprogramm</a></li>
+          <li><a href="vorlagen.html" data-i18n="nav.vorlagen">Vorlagen</a></li>
+        </ul>
+      </li>
+      <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+      <li><a href="index.html#referenzen" data-i18n="nav.refs">Referenzen</a></li>
+      <li><a href="index.html#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+      <li>
+        <div class="lang-switcher" role="group" aria-label="Choose language">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
+          <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <section id="blog-hero">
+    <div class="blog-hero-inner">
+      <p class="hero-eyebrow">Blog · Atelier Glanz</p>
+      <h1>Erfahrungswissen für<br /><em>glückliche Familienfeste</em></h1>
+      <p class="hero-sub">Praktische Tipps, Themen-Ideen und Insider-Wissen rund um Kindergeburtstage, Familienanlässe und Kinderbetreuung bei Events — geschrieben von Veronika in Hünenberg, Zug.</p>
+    </div>
+  </section>
+
+  <section id="articles">
+    <div class="articles-grid">
+
+      <article class="article-card">
+        <a href="blog/kindergeburtstag-planen.html" style="display:contents;">
+          <div class="article-cover cover1">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="14" y="18" width="36" height="32" rx="2" fill="currentColor" fill-opacity="0.15"/>
+              <line x1="14" y1="28" x2="50" y2="28"/>
+              <line x1="20" y1="36" x2="44" y2="36"/>
+              <line x1="20" y1="42" x2="38" y2="42"/>
+              <circle cx="32" cy="14" r="3" fill="currentColor"/>
+              <line x1="32" y1="17" x2="32" y2="18"/>
+            </svg>
+          </div>
+          <div class="article-body">
+            <p class="article-meta">Planung · 8 Min. Lesezeit</p>
+            <h2>Kindergeburtstag stressfrei planen: Komplett-Guide für Eltern in Zug, Luzern und Zürich</h2>
+            <p>Sieben konkrete Schritte, mit denen aus dem nächsten Kindergeburtstag ein Tag wird, an den sich Ihr Kind in zehn Jahren noch erinnert — und Sie sich entspannt zurücklehnen können.</p>
+            <span class="article-cta">Artikel lesen</span>
+            <div class="article-tags">
+              <span class="article-tag">Kindergeburtstag</span>
+              <span class="article-tag">Zug</span>
+              <span class="article-tag">Planung</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <article class="article-card">
+        <a href="blog/kinderbetreuung-bei-hochzeiten.html" style="display:contents;">
+          <div class="article-cover cover2">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="22" cy="22" r="8" fill="currentColor" fill-opacity="0.18"/>
+              <circle cx="42" cy="22" r="8" fill="currentColor" fill-opacity="0.18"/>
+              <path d="M10 50 Q10 38 22 38 Q34 38 34 50" fill="currentColor" fill-opacity="0.18"/>
+              <path d="M30 50 Q30 38 42 38 Q54 38 54 50" fill="currentColor" fill-opacity="0.18"/>
+            </svg>
+          </div>
+          <div class="article-body">
+            <p class="article-meta">Events · 7 Min. Lesezeit</p>
+            <h2>Kinderbetreuung bei Hochzeiten und Firmenevents: Was wirklich funktioniert</h2>
+            <p>Die kleinen Gäste brauchen Beschäftigung — und Sie brauchen den Kopf für Ihre Veranstaltung. Was Veranstalter aus 200+ Anlässen über professionelle Kinderbetreuung gelernt haben.</p>
+            <span class="article-cta">Artikel lesen</span>
+            <div class="article-tags">
+              <span class="article-tag">Hochzeit</span>
+              <span class="article-tag">Firmenevent</span>
+              <span class="article-tag">Kinderbetreuung</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <article class="article-card">
+        <a href="blog/themen-ideen-kindergeburtstag.html" style="display:contents;">
+          <div class="article-cover cover3">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 28 L24 14 L34 24 L44 12 L52 26 L48 44 L18 44 Z" fill="currentColor" fill-opacity="0.18"/>
+              <circle cx="24" cy="14" r="2.5" fill="currentColor"/>
+              <circle cx="44" cy="12" r="2.5" fill="currentColor"/>
+              <line x1="14" y1="48" x2="52" y2="48"/>
+            </svg>
+          </div>
+          <div class="article-body">
+            <p class="article-meta">Themen · 9 Min. Lesezeit</p>
+            <h2>10 Themen-Ideen für den nächsten Kindergeburtstag (für jedes Alter)</h2>
+            <p>Tierwelt, Prinzessinnen, Piraten — und sieben weniger offensichtliche Themen, die Kinderaugen zum Leuchten bringen. Mit Altersempfehlung, DIY-Tipps und Material-Liste.</p>
+            <span class="article-cta">Artikel lesen</span>
+            <div class="article-tags">
+              <span class="article-tag">Themen</span>
+              <span class="article-tag">DIY</span>
+              <span class="article-tag">Ideen</span>
+            </div>
+          </div>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <p class="footer-name">Atelier <em style="color:var(--gold);font-style:italic;">Glanz</em></p>
+      <p class="footer-tagline" data-i18n="footer.tagline">Veronika Bobuska · Zug · Luzern · Zürich</p>
+      <div class="footer-contact-items">
+        <a class="footer-contact-item" href="mailto:events@atelier-glanz.ch">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          events@atelier-glanz.ch
+        </a>
+        <a class="footer-contact-item" href="https://atelier-glanz.ch" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          atelier-glanz.ch
+        </a>
+        <a class="footer-contact-item" href="tel:+41786858627">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 9.81a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 2.11 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L6.91 10.9a16 16 0 0 0 6 6l1.27-.89a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          078 685 86 27
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Schweiz</p>
+      <p class="footer-made" data-i18n="footer.made">Eventorganisation mit Herz und Präzision</p>
+    </div>
+  </footer>
+
+  <script src="assets/i18n.js"></script>
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+    const t = document.querySelector('.nav-toggle');
+    const l = document.querySelector('.nav-links');
+    if (t && l) {
+      t.addEventListener('click', () => {
+        const open = l.classList.toggle('open');
+        nav.classList.toggle('menu-open', open);
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      l.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        l.classList.remove('open');
+        nav.classList.remove('menu-open');
+        t.setAttribute('aria-expanded', 'false');
+      }));
+    }
+    // Services dropdown
+    document.querySelectorAll('.nav-dropdown-toggle').forEach(btn => {
+      const menu = btn.nextElementSibling;
+      if (!menu || !menu.classList.contains('nav-dropdown')) return;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        const opened = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', opened ? 'true' : 'false');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.nav-dropdown.open').forEach(menu => {
+        if (!menu.parentElement.contains(e.target)) {
+          menu.classList.remove('open');
+          const b = menu.previousElementSibling;
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

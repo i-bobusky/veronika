@@ -1,0 +1,130 @@
+/* ─── Newsletter section ────────────────────────────────────────
+   Drop-in stylesheet — assumes the same CSS custom properties
+   (--forest, --gold, --cream, --charcoal, --gold-lt, --forest-lt,
+    --sage) defined on the host page.
+   ────────────────────────────────────────────────────────────── */
+#newsletter {
+  background: var(--forest, #1f3d2e);
+  color: var(--cream, #faf8f4);
+  padding: 5rem 8vw;
+  position: relative;
+  overflow: hidden;
+}
+#newsletter::before {
+  content: '';
+  position: absolute;
+  top: -160px; right: -120px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.nl-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.nl-text .section-label {
+  color: var(--gold-lt, #dfc08e);
+  margin-bottom: 1.25rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  display: block;
+}
+.nl-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  color: var(--cream, #faf8f4);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+.nl-text h2 em { color: var(--gold-lt, #dfc08e); font-style: italic; }
+.nl-text p {
+  color: var(--forest-lt, #d6e3da);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 460px;
+}
+.nl-form {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 6px;
+  padding: 1.75rem;
+}
+.nl-input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.nl-input-row input[type="text"],
+.nl-input-row input[type="email"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--charcoal, #1c1c28);
+  transition: box-shadow 0.2s;
+}
+.nl-input-row input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(201,169,110,0.6);
+}
+.nl-input-row button {
+  margin-top: 0.4rem;
+  padding: 0.95rem 1.5rem;
+  background: var(--gold, #c9a96e);
+  color: var(--charcoal, #1c1c28);
+  border: 0;
+  border-radius: 3px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nl-input-row button:hover {
+  background: var(--gold-lt, #dfc08e);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(201,169,110,0.3);
+}
+.nl-input-row button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+.nl-privacy {
+  margin-top: 0.85rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+}
+.nl-success {
+  margin: 1.25rem auto 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(138, 158, 140, 0.2);
+  border-left: 3px solid var(--sage, #8a9e8c);
+  border-radius: 3px;
+  color: var(--cream, #faf8f4);
+  max-width: 640px;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  grid-column: 1 / -1;
+}
+.hp-field { display: none !important; }
+
+@media (max-width: 760px) {
+  .nl-inner { grid-template-columns: 1fr; gap: 1.75rem; text-align: left; }
+  .nl-text p { max-width: none; }
+  .nl-form { padding: 1.5rem 1.25rem; }
+  #newsletter { padding: 4rem 6vw; }
+}

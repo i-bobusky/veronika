@@ -117,6 +117,17 @@
       'footer.copy': '© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Schweiz',
       'footer.made': 'Eventorganisation mit Herz und Präzision',
 
+      // ── Newsletter ─────────────────────────────────────────────────
+      'nl.label': 'Newsletter',
+      'nl.h2.html': 'Bleiben Sie<br /><em>auf dem Laufenden</em>',
+      'nl.p': 'Themen-Ideen, kostenlose Spielanleitungen und Geburtstags-Inspiration — etwa einmal im Monat in Ihrem Posteingang. Kein Spam, jederzeit abbestellbar.',
+      'nl.placeholder': 'ihre@email.ch',
+      'nl.firstname.placeholder': 'Ihr Vorname (optional)',
+      'nl.button': 'Abonnieren',
+      'nl.privacy': 'Mit der Anmeldung stimmen Sie zu, dass wir Ihre E-Mail für unseren Newsletter verwenden. Abmelden ist jederzeit per Klick möglich.',
+      'nl.success': 'Danke! Bitte bestätigen Sie Ihre Anmeldung in Ihrem Posteingang.',
+      'nl.error': 'Hoppla, da ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.',
+
       // ── KG page Hero ───────────────────────────────────────────────
       'hero.eyebrow': 'Kindergeburtstag · Zug · Luzern · Zürich',
       'hero.title.html': 'Wir machen Geburtstage<br /><em>unvergesslich.</em>',
@@ -462,6 +473,17 @@
       'footer.tagline': 'Veronika Bobuska · Zug · Lucerne · Zurich',
       'footer.copy': '© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Switzerland',
       'footer.made': 'Event organisation with heart and precision',
+
+      // ── Newsletter ─────────────────────────────────────────────────
+      'nl.label': 'Newsletter',
+      'nl.h2.html': 'Stay in<br /><em>the loop</em>',
+      'nl.p': 'Theme ideas, free game printables and birthday inspiration — roughly once a month in your inbox. No spam, unsubscribe with one click.',
+      'nl.placeholder': 'your@email.com',
+      'nl.firstname.placeholder': 'Your first name (optional)',
+      'nl.button': 'Subscribe',
+      'nl.privacy': 'By subscribing you allow us to email you our newsletter. You can unsubscribe at any time with one click.',
+      'nl.success': "Thank you! Please confirm your subscription in your inbox.",
+      'nl.error': 'Oops, something went wrong. Please try again or email us directly.',
 
       'hero.eyebrow': "Children's Birthdays · Zug · Lucerne · Zurich",
       'hero.title.html': "We make birthdays<br /><em>unforgettable.</em>",
@@ -1123,6 +1145,17 @@
       'footer.tagline': 'Veronika Bobuska · Zoug · Lucerne · Zurich',
       'footer.copy': '© 2026 Atelier Glanz · Veronika Bobuska · Hünenberg, Suisse',
       'footer.made': "Organisation d'événements avec cœur et précision",
+
+      // ── Newsletter ─────────────────────────────────────────────────
+      'nl.label': 'Newsletter',
+      'nl.h2.html': "Restez<br /><em>informé</em>",
+      'nl.p': "Idées de thèmes, jeux à imprimer gratuits et inspiration anniversaire — environ une fois par mois dans votre boîte. Pas de spam, désinscription en un clic.",
+      'nl.placeholder': 'votre@email.ch',
+      'nl.firstname.placeholder': 'Votre prénom (facultatif)',
+      'nl.button': "S'abonner",
+      'nl.privacy': "En vous inscrivant, vous nous autorisez à vous envoyer notre newsletter. Vous pouvez vous désinscrire à tout moment en un clic.",
+      'nl.success': "Merci ! Veuillez confirmer votre inscription dans votre boîte mail.",
+      'nl.error': "Oups, une erreur s'est produite. Veuillez réessayer ou nous écrire directement.",
 
       'hero.eyebrow': "Anniversaires d'enfants · Zoug · Lucerne · Zurich",
       'hero.title.html': 'Nous rendons les anniversaires<br /><em>inoubliables.</em>',

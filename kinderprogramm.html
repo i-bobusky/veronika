@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/newsletter.css" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -720,6 +721,30 @@
     </div>
   </section>
 
+  <!-- ─── Newsletter ───────────────────────────────────────────── -->
+  <section id="newsletter">
+    <div class="nl-inner">
+      <div class="nl-text">
+        <span class="section-label" data-i18n="nl.label">Newsletter</span>
+        <h2 data-i18n-html="nl.h2.html">Bleiben Sie<br /><em>auf dem Laufenden</em></h2>
+        <p data-i18n="nl.p">Themen-Ideen, kostenlose Spielanleitungen und Geburtstags-Inspiration — etwa einmal im Monat in Ihrem Posteingang. Kein Spam, jederzeit abbestellbar.</p>
+      </div>
+      <form class="nl-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="c96da7b4-269f-4fea-979a-68f6e0f2f244" />
+        <input type="hidden" name="subject" value="Newsletter-Anmeldung — Atelier Glanz" />
+        <input type="hidden" name="from_name" value="Atelier Glanz Newsletter" />
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" />
+        <div class="nl-input-row">
+          <input type="text" name="firstname" placeholder="Ihr Vorname (optional)" data-i18n-attr="placeholder:nl.firstname.placeholder" autocomplete="given-name" />
+          <input type="email" name="email" placeholder="ihre@email.ch" data-i18n-attr="placeholder:nl.placeholder" required autocomplete="email" />
+          <button type="submit" data-i18n="nl.button">Abonnieren</button>
+        </div>
+        <p class="nl-privacy" data-i18n="nl.privacy">Mit der Anmeldung stimmen Sie zu, dass wir Ihre E-Mail für unseren Newsletter verwenden. Abmelden ist jederzeit per Klick möglich.</p>
+      </form>
+      <div class="nl-success" hidden role="status" aria-live="polite" data-i18n="nl.success">Danke! Bitte bestätigen Sie Ihre Anmeldung in Ihrem Posteingang.</div>
+    </div>
+  </section>
+
   <!-- ─── Footer ───────────────────────────────────────────────── -->
   <footer>
     <div>
@@ -747,6 +772,7 @@
   </footer>
 
   <script src="assets/i18n.js"></script>
+  <script src="assets/newsletter.js" defer></script>
   <script>
     // sticky nav
     const nav = document.getElementById('nav');

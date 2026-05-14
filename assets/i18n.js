@@ -125,7 +125,7 @@
       'nl.firstname.placeholder': 'Ihr Vorname (optional)',
       'nl.button': 'Abonnieren',
       'nl.privacy': 'Mit der Anmeldung stimmen Sie zu, dass wir Ihre E-Mail für unseren Newsletter verwenden. Abmelden ist jederzeit per Klick möglich.',
-      'nl.success': 'Danke! Bitte bestätigen Sie Ihre Anmeldung in Ihrem Posteingang.',
+      'nl.success': 'Danke! Wir melden uns bald.',
       'nl.error': 'Hoppla, da ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.',
 
       // ── KG page Hero ───────────────────────────────────────────────
@@ -482,7 +482,7 @@
       'nl.firstname.placeholder': 'Your first name (optional)',
       'nl.button': 'Subscribe',
       'nl.privacy': 'By subscribing you allow us to email you our newsletter. You can unsubscribe at any time with one click.',
-      'nl.success': "Thank you! Please confirm your subscription in your inbox.",
+      'nl.success': 'Thank you! We will be in touch soon.',
       'nl.error': 'Oops, something went wrong. Please try again or email us directly.',
 
       'hero.eyebrow': "Children's Birthdays · Zug · Lucerne · Zurich",
@@ -1154,7 +1154,7 @@
       'nl.firstname.placeholder': 'Votre prénom (facultatif)',
       'nl.button': "S'abonner",
       'nl.privacy': "En vous inscrivant, vous nous autorisez à vous envoyer notre newsletter. Vous pouvez vous désinscrire à tout moment en un clic.",
-      'nl.success': "Merci ! Veuillez confirmer votre inscription dans votre boîte mail.",
+      'nl.success': "Merci ! Nous vous recontactons bientôt.",
       'nl.error': "Oups, une erreur s'est produite. Veuillez réessayer ou nous écrire directement.",
 
       'hero.eyebrow': "Anniversaires d'enfants · Zoug · Lucerne · Zurich",
